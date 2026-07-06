@@ -1,0 +1,266 @@
+---
+/**
+ * /degustacao — página de conversão âncora (produto herói).
+ * Ordem aprovada: hero → como funciona → números → onde fazer →
+ * consultivo → Smart Tap (complementar, nunca protagonista) → FAQ → CTA.
+ * Copy: textos-finais.md seção 2 (aprovada).
+ */
+import Base from '../layouts/Base.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import StepCards from '../components/StepCards.astro';
+import FactStrip from '../components/FactStrip.astro';
+import UnitCard from '../components/UnitCard.astro';
+import Media from '../components/Media.astro';
+import CTAButton from '../components/CTAButton.astro';
+import WhatsAppLink from '../components/WhatsAppLink.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import { degustacao } from '../content';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: degustacao.faq
+    .filter((f) => !f.pendente)
+    .map((f) => ({
+      '@type': 'Question',
+      name: f.pergunta,
+      acceptedAnswer: { '@type': 'Answer', text: f.resposta },
+    })),
+};
+---
+
+<Base
+  title="Régua de Degustação de Cerveja em Monte Verde | Arsenal da Cerveja"
+  description="Régua de degustação em Monte Verde: escolha 4 entre 6 chopps da casa, em taças de 200 ml, por R$ 60. Sem reserva, nas duas lojas do Arsenal. Veja como funciona."
+  path="/degustacao"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <!-- Hero curto -->
+  <section class="topo">
+    <div class="container topo__grid">
+      <div>
+        <Breadcrumb itens={[{ label: 'Home', href: '/' }, { label: 'Degustação' }]} />
+        <h1>Régua de Degustação em Monte Verde</h1>
+        <p class="topo__sub">
+          Escolha 4 estilos entre os 6 chopps engatados da casa e viva uma degustação leve,
+          divertida e perfeita para compartilhar.
+        </p>
+      </div>
+      <div class="topo__midia">
+        <Media id="video-regua-servindo" prioritaria />
+      </div>
+    </div>
+  </section>
+
+  <!-- Como funciona -->
+  <section class="section">
+    <div class="container">
+      <SectionHeader titulo="Como funciona" />
+      <StepCards passos={degustacao.passos} />
+    </div>
+  </section>
+
+  <!-- A régua em números (produto herói: seção verde, respiro extra) -->
+  <section class="section section--verde numeros" data-observe="view_regua">
+    <div class="container">
+      <SectionHeader titulo="A régua em números" />
+      <FactStrip fatos={degustacao.fatos} sobreVerde />
+      <p class="numeros__nota">{degustacao.notaRegua}</p>
+    </div>
+  </section>
+
+  <!-- Onde fazer -->
+  <section class="section">
+    <div class="container">
+      <SectionHeader
+        titulo="Onde fazer a degustação"
+        subtitulo="A régua está disponível nas duas lojas do Arsenal, na avenida principal de Monte Verde."
+      />
+      <div class="onde__grid">
+        <UnitCard unidade="galeria-suica" origem="degustacao" />
+        <UnitCard unidade="vila-germanica" origem="degustacao" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Atendimento consultivo -->
+  <section class="section secao-compacta">
+    <div class="container consultivo">
+      <div>
+        <SectionHeader
+          titulo={degustacao.atendimentoConsultivo.titulo}
+        />
+        <p class="consultivo__texto">{degustacao.atendimentoConsultivo.texto}</p>
+      </div>
+      <Media id="foto-atendimento-consultivo" class="consultivo__foto" />
+    </div>
+  </section>
+
+  <!-- Smart Tap: complementar, visualmente mais quieta -->
+  <section class="section secao-compacta">
+    <div class="container">
+      <article class="smart">
+        <Media id="foto-smart-tap" proporcao="1:1" class="smart__foto" />
+        <div class="smart__corpo">
+          <h2>{degustacao.smartTap.titulo}</h2>
+          <p>{degustacao.smartTap.texto}</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- FAQ da página -->
+  <section class="section secao-compacta" data-observe="scroll_faq">
+    <div class="container faq-pg">
+      <SectionHeader titulo="Perguntas rápidas" />
+      <FAQAccordion itens={degustacao.faq} />
+      <p class="faq-pg__mais"><a href="/perguntas-frequentes">Ver todas as perguntas →</a></p>
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <section class="section section--verde final">
+    <div class="container final__in">
+      <SectionHeader titulo="Escolha sua unidade e venha degustar" centro />
+      <div class="final__ctas">
+        <CTAButton href="/unidades" variante="primario" bloco dataTrack="click_unidades" dataOrigem="degustacao_cta">
+          Ver unidades
+        </CTAButton>
+        <WhatsAppLink contexto="degustacao" origem="degustacao_cta" bloco />
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .topo {
+    padding-block: var(--sp-6) var(--section-y);
+  }
+
+  .topo__grid {
+    display: grid;
+    gap: var(--sp-6);
+  }
+
+  .topo h1 {
+    margin-bottom: var(--sp-4);
+  }
+
+  .topo__sub {
+    color: var(--creme-80);
+  }
+
+  .topo__midia {
+    max-width: 320px;
+  }
+
+  @media (min-width: 1024px) {
+    .topo__grid {
+      grid-template-columns: 7fr 4fr;
+      align-items: center;
+      gap: var(--sp-8);
+    }
+  }
+
+  .numeros {
+    padding-block: var(--section-y-hero);
+  }
+
+  .numeros__nota {
+    margin-top: var(--sp-4);
+    font-size: var(--fs-sm);
+    color: var(--creme-55);
+  }
+
+  .onde__grid {
+    display: grid;
+    gap: var(--sp-5);
+  }
+
+  @media (min-width: 768px) {
+    .onde__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .secao-compacta {
+    padding-block: var(--sp-7);
+  }
+
+  .consultivo {
+    display: grid;
+    gap: var(--sp-6);
+    align-items: center;
+  }
+
+  .consultivo__texto {
+    color: var(--creme-80);
+  }
+
+  .consultivo__foto {
+    max-width: 480px;
+  }
+
+  @media (min-width: 1024px) {
+    .consultivo {
+      grid-template-columns: 7fr 5fr;
+    }
+  }
+
+  /* Smart Tap: card horizontal quieto (sem dourado, tipografia menor) */
+  .smart {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: var(--sp-4);
+    background: var(--preto-800);
+    border: var(--border-soft);
+    border-radius: var(--radius-lg);
+    padding: var(--sp-4);
+    align-items: start;
+    max-width: 720px;
+  }
+
+  .smart__corpo h2 {
+    font-family: var(--font-text);
+    font-size: var(--fs-h3);
+    margin-bottom: var(--sp-2);
+  }
+
+  .smart__corpo p {
+    font-size: var(--fs-sm);
+    color: var(--creme-70);
+  }
+
+  .faq-pg {
+    max-width: 760px;
+  }
+
+  .faq-pg__mais {
+    margin-top: var(--sp-5);
+    font-size: var(--fs-sm);
+  }
+
+  .final__in {
+    display: grid;
+    justify-items: center;
+  }
+
+  .final__ctas {
+    display: grid;
+    gap: var(--sp-3);
+    width: 100%;
+    max-width: 400px;
+  }
+
+  @media (min-width: 1024px) {
+    .final__ctas {
+      grid-template-columns: auto auto;
+      max-width: none;
+      justify-content: center;
+    }
+  }
+</style>

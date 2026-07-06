@@ -1,0 +1,648 @@
+---
+/**
+ * HOME — Fase D.
+ * Estrutura: wireframe-home.md v1.1 · Copy: textos-finais.md (aprovados).
+ * Sequência de fundos: preto → preto → VERDE (régua, produto herói) → preto →
+ * preto → preto → VERDE (Monte Verde) → preto → preto → VERDE (CTA final).
+ * Regra vinculante: 1 CTA dourado por viewport; régua com tratamento de
+ * lançamento de produto (adendo UX aprovado).
+ * Tracking: apenas atributos data-track/data-observe (track.ts é fase própria).
+ */
+import Base from '../layouts/Base.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import StatusBadge from '../components/StatusBadge.astro';
+import CTAButton from '../components/CTAButton.astro';
+import WhatsAppLink from '../components/WhatsAppLink.astro';
+import Media from '../components/Media.astro';
+import UnitCard from '../components/UnitCard.astro';
+import FactStrip from '../components/FactStrip.astro';
+import NoticeBar from '../components/NoticeBar.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import { site, unidades, degustacao, kits, mapsHref } from '../content';
+
+/** FactStrip da Home: 5 fatos (sem "disponível nas duas lojas" — wireframe). */
+const fatosHome = degustacao.fatos.filter((f) => f.icone !== 'pino');
+
+/** Mini-FAQ da Home — copy aprovada específica desta página (textos-finais.md). */
+const miniFaq = [
+  {
+    id: 'home-faq-regua',
+    pergunta: 'Como funciona a régua de degustação?',
+    resposta:
+      'Em cada loja há 6 estilos de chopp engatados. Você escolhe 4 e recebe a régua com 4 taças de 200 ml, por R$ 60. Pode dividir no casal.',
+    link: { label: 'Ver detalhes →', href: '/degustacao' },
+  },
+  {
+    id: 'home-faq-reserva',
+    pergunta: 'Precisa reservar a degustação?',
+    resposta: 'Não — a régua é por ordem de chegada, conforme o funcionamento das lojas. É só chegar.',
+  },
+  {
+    id: 'home-faq-online',
+    pergunta: 'Tem venda online?',
+    resposta:
+      'Por enquanto, não. Kits e rótulos são vendidos somente nas lojas físicas, em Monte Verde. Para saber se um item está disponível antes de vir, chame no WhatsApp.',
+  },
+  {
+    id: 'home-faq-unidade',
+    pergunta: 'Qual unidade escolher?',
+    resposta:
+      'Galeria Suíça para degustação, porções e experiência com calma; Vila Germânica para kits, presentes e uma forte curadoria de cervejas mineiras. A régua existe nas duas.',
+    link: { label: 'Comparar unidades →', href: '/unidades' },
+  },
+  {
+    id: 'home-faq-kit-online',
+    pergunta: 'O kit de R$ 39,90 é vendido online?',
+    resposta:
+      'Não — como todos os kits, ele é vendido somente nas lojas físicas. Consulte a disponibilidade do dia pelo WhatsApp.',
+  },
+];
+
+/** Mídias dos 4 cards de Kits e Cervejas (ordem do wireframe). */
+const midiasKits = [
+  'foto-kit-presente-01',
+  'foto-prateleira-mineiras',
+  'foto-torneiras-chopp',
+  'foto-rotulos-especiais',
+];
+---
+
+<Base
+  title="Arsenal da Cerveja | Degustação, Kits e Cervejas Especiais em Monte Verde"
+  description={site.descricaoSEO}
+  path="/"
+>
+  <!-- 1 · HERO — apresentar -->
+  <section class="hero">
+    <div class="container hero__grid">
+      <div class="hero__texto">
+        <h1>{site.headline}</h1>
+        <p class="hero__sub">{site.subtituloHero}</p>
+        <div class="hero__ctas">
+          <CTAButton
+            href="/degustacao"
+            variante="primario"
+            bloco
+            dataTrack="click_degustacao"
+            dataOrigem="hero"
+          >
+            Fazer degustação
+          </CTAButton>
+          <CTAButton href="/unidades" variante="secundario" bloco dataTrack="click_unidades" dataOrigem="hero">
+            Ver unidades
+          </CTAButton>
+        </div>
+        <p class="hero__status">
+          {
+            unidades.map((u) => (
+              <span class="hero__status-item">
+                {u.nome}: <StatusBadge variante="inline" unidade={u.id} />
+              </span>
+            ))
+          }
+        </p>
+      </div>
+      <div class="hero__midia">
+        <Media id="hero-regua-fallback" prioritaria />
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · STATUS DAS LOJAS — orientar a visita -->
+  <section class="section status">
+    <div class="container">
+      <SectionHeader titulo="Estamos abertos?" />
+      <div class="status__grid">
+        <UnitCard unidade="galeria-suica" variante="mini" origem="status_bar" />
+        <UnitCard unidade="vila-germanica" variante="mini" origem="status_bar" />
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · RÉGUA — produto herói (criar desejo) -->
+  <section class="section section--verde regua" data-observe="view_regua">
+    <div class="container">
+      <div class="regua__grid">
+        <div class="regua__midia">
+          <Media id="foto-regua-completa" />
+        </div>
+        <div class="regua__conteudo">
+          <SectionHeader
+            titulo="A experiência mais fotografada do Arsenal"
+            subtitulo="Escolha 4 estilos entre os 6 chopps engatados da casa e viva uma degustação leve, divertida e perfeita para compartilhar."
+          />
+          <p class="regua__texto">
+            Em cada loja, 6 estilos de chopp engatados. Você escolhe 4 e recebe a régua com 4
+            taças de 200 ml para provar, comparar e descobrir seu favorito.
+          </p>
+          <FactStrip fatos={fatosHome} sobreVerde />
+          <p class="regua__nota">
+            Por ordem de chegada, nas duas lojas. Os estilos variam conforme o dia.
+          </p>
+          <CTAButton
+            href="/degustacao"
+            variante="primario"
+            dataTrack="click_degustacao"
+            dataOrigem="home_regua"
+          >
+            Fazer degustação
+          </CTAButton>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · UNIDADES — orientar a visita -->
+  <section class="section">
+    <div class="container">
+      <SectionHeader titulo="Duas lojas, dois jeitos de viver o Arsenal" />
+      <div class="unidades__grid">
+        <UnitCard unidade="galeria-suica" origem="home_unidades" />
+        <UnitCard unidade="vila-germanica" origem="home_unidades" />
+      </div>
+      <p class="unidades__comparar">
+        Não sabe qual escolher? <a href="/unidades">Compare as unidades →</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- 5 · KITS E CERVEJAS — criar desejo -->
+  <section class="section kits">
+    <div class="container">
+      <SectionHeader
+        titulo="Kits, presentes e rótulos escolhidos a dedo"
+        subtitulo="Curadoria de cervejas especiais — com orgulho das mineiras."
+      />
+      <NoticeBar
+        texto="Vendemos somente nas lojas físicas. Para consultar disponibilidade, chame no WhatsApp."
+        linkTexto="chame no WhatsApp"
+        contexto="produto"
+        origem="home_kits"
+        class="kits__aviso"
+      />
+      <div class="kits__destaque">
+        <p class="kits__destaque-titulo">Kit Arsenal a partir de R$ 39,90</p>
+        <p class="kits__destaque-texto">
+          Disponível somente nas lojas físicas. A composição pode variar conforme
+          disponibilidade.
+        </p>
+      </div>
+      <ul class="kits__grid" role="list">
+        {
+          kits.cardsHome.map((card, i) => (
+            <li class="kits__card">
+              <Media id={midiasKits[i]} proporcao="1:1" />
+              <p class="kits__card-titulo">{card.titulo}</p>
+              <p class="kits__card-texto">{card.texto}</p>
+            </li>
+          ))
+        }
+      </ul>
+      <CTAButton href="/cervejas-e-kits" variante="secundario" dataTrack="click_kits" dataOrigem="home_kits">
+        Ver kits e cervejas
+      </CTAButton>
+    </div>
+  </section>
+
+  <!-- 6 · EXPERIÊNCIAS COMPLEMENTARES — explicar -->
+  <section class="section">
+    <div class="container">
+      <SectionHeader titulo="Para ir além da régua" />
+      <div class="exp__grid">
+        <article class="exp__card">
+          <Media id="foto-smart-tap" proporcao="1:1" class="exp__foto" />
+          <div class="exp__corpo">
+            <h3>Smart Tap</h3>
+            <p>
+              Conheça também a Smart Tap, uma experiência complementar do universo Arsenal para
+              quem quer praticidade, tecnologia e bebida na medida certa em pontos selecionados
+              de Monte Verde.
+            </p>
+            <a href="/degustacao">Saiba mais na página de degustação →</a>
+          </div>
+        </article>
+        <article class="exp__card">
+          <Media id="foto-atendimento-consultivo" proporcao="1:1" class="exp__foto" />
+          <div class="exp__corpo">
+            <h3>Não sabe por onde começar?</h3>
+            <p>
+              Nossa equipe apresenta os estilos, entende seu gosto e monta a régua com você. É
+              assim que muita gente descobre o primeiro estilo favorito.
+            </p>
+            <a href="/degustacao" data-track="click_degustacao" data-track-origem="home_experiencias">
+              Fazer degustação →
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · MONTE VERDE / COMO CHEGAR — orientar a visita -->
+  <section class="section section--verde">
+    <div class="container">
+      <SectionHeader
+        titulo="No coração de Monte Verde"
+        subtitulo="As duas lojas ficam na avenida principal, no caminho de quem passeia por Monte Verde. Escolha a unidade, veja o status ao vivo e venha sem pressa. A régua, os chopps e os kits esperam por você."
+      />
+      <div class="mv__midias">
+        <Media id="foto-monte-verde-avenida" />
+        <Media id="mapa-estatico-unidades" />
+      </div>
+      <div class="mv__acoes">
+        {
+          unidades.map((u) => (
+            <a
+              class="mv__maps"
+              href={mapsHref(u)}
+              target="_blank"
+              rel="noopener"
+              data-track="click_maps"
+              data-track-origem="home_mapa"
+              data-track-unidade={u.id}
+            >
+              Abrir no Google Maps — {u.nome}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · SOBRE O ARSENAL — apresentar (confiança, sem CTA) -->
+  <section class="section sobre">
+    <div class="container sobre__grid">
+      <div>
+        <SectionHeader titulo="Um arsenal de cervejas especiais na serra" />
+        <p class="sobre__texto">
+          Desde 2013, o Arsenal da Cerveja serve Monte Verde com a vontade de atender bem quem
+          leva cerveja a sério — e quem está só começando. Hoje são duas casas na avenida
+          principal, uma curadoria que privilegia as cervejarias mineiras e um atendimento que
+          gosta de conversar antes de servir.
+        </p>
+      </div>
+      <Media id="foto-equipe" class="sobre__foto" />
+    </div>
+  </section>
+
+  <!-- 9 · MINI-FAQ — reduzir dúvidas -->
+  <section class="section" data-observe="scroll_faq">
+    <div class="container faq-home">
+      <SectionHeader
+        titulo="Antes de perguntar no WhatsApp"
+        subtitulo="As respostas que mais ajudam a planejar sua visita."
+      />
+      <FAQAccordion itens={miniFaq} />
+      <p class="faq-home__mais">
+        <a href="/perguntas-frequentes">Ver todas as perguntas →</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- 10 · CTA FINAL — orientar a visita -->
+  <section class="section section--verde final">
+    <div class="container final__in">
+      <SectionHeader
+        titulo="Já sabe qual experiência combina com você?"
+        subtitulo="A régua, um kit para presentear ou só uma boa conversa sobre cerveja — te esperamos em Monte Verde."
+        centro
+      />
+      <div class="final__ctas">
+        <CTAButton href="/unidades" variante="secundario" bloco dataTrack="click_unidades" dataOrigem="home_cta_final">
+          Ver unidades
+        </CTAButton>
+        <CTAButton
+          href="/degustacao"
+          variante="primario"
+          bloco
+          dataTrack="click_degustacao"
+          dataOrigem="home_cta_final"
+        >
+          Fazer degustação
+        </CTAButton>
+        <WhatsAppLink contexto="geral" origem="home_cta_final" bloco />
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* ---------- 1 · Hero ---------- */
+  .hero {
+    padding-block: var(--section-y-hero);
+  }
+
+  .hero__grid {
+    display: grid;
+    gap: var(--sp-6);
+    align-items: center;
+  }
+
+  .hero h1 {
+    font-size: var(--fs-display-1);
+    line-height: var(--lh-display);
+    margin-bottom: var(--sp-4);
+  }
+
+  .hero__sub {
+    color: var(--creme-80);
+    margin-bottom: var(--sp-6);
+  }
+
+  .hero__ctas {
+    display: grid;
+    gap: var(--sp-3);
+    margin-bottom: var(--sp-4);
+  }
+
+  .hero__status {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-2) var(--sp-4);
+    font-size: var(--fs-sm);
+    color: var(--creme-55);
+  }
+
+  .hero__status-item {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-2);
+  }
+
+  @media (min-width: 1024px) {
+    .hero__grid {
+      grid-template-columns: 7fr 5fr;
+      gap: var(--sp-8);
+    }
+
+    .hero__ctas {
+      grid-template-columns: auto auto;
+      justify-content: start;
+    }
+  }
+
+  /* ---------- 2 · Status ---------- */
+  .status {
+    padding-top: 0;
+  }
+
+  .status__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--sp-3);
+  }
+
+  @media (min-width: 768px) {
+    .status__grid {
+      max-width: 640px;
+      gap: var(--sp-4);
+    }
+  }
+
+  /* ---------- 3 · Régua (produto herói) ---------- */
+  .regua {
+    padding-block: var(--section-y-hero);
+  }
+
+  .regua__grid {
+    display: grid;
+    gap: var(--sp-6);
+  }
+
+  .regua__texto {
+    color: var(--creme-80);
+    margin-bottom: var(--sp-5);
+  }
+
+  .regua__conteudo :global(.facts) {
+    margin-bottom: var(--sp-4);
+  }
+
+  .regua__nota {
+    font-size: var(--fs-sm);
+    color: var(--creme-55);
+    margin-bottom: var(--sp-5);
+  }
+
+  .regua__midia {
+    max-width: 480px;
+  }
+
+  @media (min-width: 1024px) {
+    .regua__grid {
+      grid-template-columns: 5fr 7fr;
+      gap: var(--sp-8);
+      align-items: center;
+    }
+  }
+
+  /* ---------- 4 · Unidades ---------- */
+  .unidades__grid {
+    display: grid;
+    gap: var(--sp-5);
+  }
+
+  @media (min-width: 768px) {
+    .unidades__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .unidades__comparar {
+    margin-top: var(--sp-5);
+    font-size: var(--fs-sm);
+    color: var(--creme-70);
+  }
+
+  /* ---------- 5 · Kits ---------- */
+  .kits__aviso {
+    margin-bottom: var(--sp-5);
+  }
+
+  .kits__destaque {
+    border: var(--border-dourada);
+    border-top-width: 2px;
+    border-radius: var(--radius-lg);
+    background: var(--preto-800);
+    padding: var(--sp-5);
+    margin-bottom: var(--sp-5);
+    display: grid;
+    gap: var(--sp-2);
+  }
+
+  .kits__destaque-titulo {
+    font-family: var(--font-display);
+    font-size: var(--fs-h3);
+    font-weight: 600;
+    color: var(--dourado-400);
+  }
+
+  .kits__destaque-texto {
+    font-size: var(--fs-sm);
+    color: var(--creme-70);
+  }
+
+  .kits__grid {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--sp-4);
+    margin-bottom: var(--sp-6);
+  }
+
+  @media (min-width: 1024px) {
+    .kits__grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  .kits__card {
+    display: grid;
+    gap: var(--sp-2);
+    align-content: start;
+  }
+
+  .kits__card-titulo {
+    font-weight: 600;
+    color: var(--branco-50);
+    font-size: var(--fs-sm);
+  }
+
+  .kits__card-texto {
+    font-size: var(--fs-sm);
+    color: var(--creme-70);
+  }
+
+  /* ---------- 6 · Experiências (subordinadas à régua) ---------- */
+  .exp__grid {
+    display: grid;
+    gap: var(--sp-4);
+  }
+
+  @media (min-width: 768px) {
+    .exp__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .exp__card {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: var(--sp-4);
+    background: var(--preto-800);
+    border: var(--border-soft);
+    border-radius: var(--radius-lg);
+    padding: var(--sp-4);
+    align-items: start;
+  }
+
+  .exp__corpo {
+    display: grid;
+    gap: var(--sp-2);
+    justify-items: start;
+  }
+
+  .exp__corpo h3 {
+    color: var(--branco-50);
+  }
+
+  .exp__corpo p {
+    font-size: var(--fs-sm);
+    color: var(--creme-70);
+  }
+
+  .exp__corpo a {
+    font-size: var(--fs-sm);
+    font-weight: 600;
+  }
+
+  /* ---------- 7 · Monte Verde ---------- */
+  .mv__midias {
+    display: grid;
+    gap: var(--sp-4);
+    margin-bottom: var(--sp-5);
+  }
+
+  @media (min-width: 1024px) {
+    .mv__midias {
+      grid-template-columns: 3fr 2fr;
+      align-items: start;
+    }
+  }
+
+  .mv__acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-3);
+  }
+
+  .mv__maps {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--touch-min);
+    padding: 10px var(--sp-4);
+    border: 1px solid var(--creme-40);
+    border-radius: var(--radius-md);
+    color: var(--creme-100);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+  }
+
+  .mv__maps:hover {
+    text-decoration: none;
+    border-color: var(--creme-100);
+  }
+
+  /* ---------- 8 · Sobre ---------- */
+  .sobre__grid {
+    display: grid;
+    gap: var(--sp-6);
+    align-items: center;
+  }
+
+  .sobre__texto {
+    color: var(--creme-80);
+  }
+
+  .sobre__foto {
+    max-width: 480px;
+  }
+
+  @media (min-width: 1024px) {
+    .sobre__grid {
+      grid-template-columns: 7fr 5fr;
+    }
+  }
+
+  /* ---------- 9 · FAQ ---------- */
+  .faq-home {
+    max-width: 760px;
+  }
+
+  .faq-home__mais {
+    margin-top: var(--sp-5);
+    font-size: var(--fs-sm);
+  }
+
+  /* ---------- 10 · CTA final ---------- */
+  .final__in {
+    display: grid;
+    justify-items: center;
+  }
+
+  .final__ctas {
+    display: grid;
+    gap: var(--sp-3);
+    width: 100%;
+    max-width: 400px;
+  }
+
+  @media (min-width: 1024px) {
+    .final__ctas {
+      grid-template-columns: repeat(3, auto);
+      max-width: none;
+      justify-content: center;
+    }
+  }
+</style>

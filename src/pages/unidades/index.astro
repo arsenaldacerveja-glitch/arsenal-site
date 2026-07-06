@@ -1,0 +1,225 @@
+---
+/**
+ * Hub das unidades — ajudar a escolher em segundos (tom de concierge).
+ * Copy: textos-finais.md seção 3 (aprovada).
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import UnitCard from '../../components/UnitCard.astro';
+import StatusBadge from '../../components/StatusBadge.astro';
+import Media from '../../components/Media.astro';
+import CTAButton from '../../components/CTAButton.astro';
+import WhatsAppLink from '../../components/WhatsAppLink.astro';
+import { unidades, mapsHref } from '../../content';
+
+const comparativo: { criterio: string; gs: string; vg: string }[] = [
+  { criterio: 'Régua de degustação', gs: '✓', vg: '✓' },
+  { criterio: 'Chopps engatados', gs: '6 estilos', vg: '6 estilos' },
+  { criterio: 'Porções', gs: '✓', vg: '—' },
+  { criterio: 'Atendimento consultivo', gs: '✓ destaque', vg: '✓' },
+  { criterio: 'Kits e presentes', gs: '—', vg: '✓ destaque' },
+  { criterio: 'Curadoria de mineiras', gs: 'seleção', vg: '✓ destaque' },
+  { criterio: 'Aberto de terça a domingo', gs: '—', vg: '✓' },
+];
+---
+
+<Base
+  title="Nossas Lojas em Monte Verde — Galeria Suíça e Vila Germânica | Arsenal da Cerveja"
+  description="Duas lojas de cervejas especiais na avenida principal de Monte Verde. Compare horários, perfis e escolha a sua: degustação na Galeria Suíça, kits na Vila Germânica."
+  path="/unidades"
+>
+  <section class="section topo">
+    <div class="container">
+      <Breadcrumb itens={[{ label: 'Home', href: '/' }, { label: 'Unidades' }]} />
+      <SectionHeader
+        tag="h1"
+        titulo="Duas lojas, dois jeitos de viver o Arsenal"
+        subtitulo="Na mesma avenida, a poucos minutos uma da outra. Veja qual combina com o seu momento."
+      />
+      <div class="cards">
+        <UnitCard unidade="galeria-suica" origem="hub" />
+        <UnitCard unidade="vila-germanica" origem="hub" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--verde">
+    <div class="container">
+      <SectionHeader titulo="Qual unidade escolher?" />
+      <div class="comp__wrap">
+        <table class="comp">
+          <caption class="sr-only">Comparativo entre as unidades</caption>
+          <thead>
+            <tr>
+              <th scope="col"><span class="sr-only">Critério</span></th>
+              <th scope="col">Galeria Suíça</th>
+              <th scope="col">Vila Germânica</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              comparativo.map((linha) => (
+                <tr>
+                  <th scope="row">{linha.criterio}</th>
+                  <td>{linha.gs}</td>
+                  <td>{linha.vg}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <p class="comp__dica">
+        Na dúvida, comece pela que estiver aberta agora:
+        {unidades.map((u) => <StatusBadge variante="unidade" unidade={u.id} sobreVerde />)}
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeader titulo="As duas na avenida principal" />
+      <div class="mapa">
+        <Media id="mapa-estatico-unidades" />
+      </div>
+      <div class="mapa__acoes">
+        {
+          unidades.map((u) => (
+            <a
+              class="mapa__link"
+              href={mapsHref(u)}
+              target="_blank"
+              rel="noopener"
+              data-track="click_maps"
+              data-track-origem="hub_mapa"
+              data-track-unidade={u.id}
+            >
+              Abrir no Google Maps — {u.nome}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--verde final">
+    <div class="container final__in">
+      <SectionHeader titulo="Escolheu a sua? A régua espera nas duas." centro />
+      <div class="final__ctas">
+        <CTAButton href="/degustacao" variante="primario" bloco dataTrack="click_degustacao" dataOrigem="hub_cta">
+          Fazer degustação
+        </CTAButton>
+        <WhatsAppLink contexto="geral" origem="hub_cta" bloco />
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .topo :global(.bc) {
+    margin-bottom: var(--sp-4);
+  }
+
+  .cards {
+    display: grid;
+    gap: var(--sp-5);
+  }
+
+  @media (min-width: 768px) {
+    .cards {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .comp__wrap {
+    overflow-x: auto;
+  }
+
+  .comp {
+    width: 100%;
+    max-width: 720px;
+    border-collapse: collapse;
+    font-size: var(--fs-sm);
+  }
+
+  .comp th,
+  .comp td {
+    text-align: left;
+    padding: var(--sp-3) var(--sp-3);
+    border-bottom: 1px solid var(--verde-700);
+  }
+
+  .comp thead th {
+    color: var(--branco-50);
+    font-weight: 600;
+  }
+
+  .comp tbody th {
+    color: var(--creme-80);
+    font-weight: 600;
+  }
+
+  .comp td {
+    color: var(--creme-70);
+    white-space: nowrap;
+  }
+
+  .comp__dica {
+    margin-top: var(--sp-5);
+    font-size: var(--fs-sm);
+    color: var(--creme-70);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--sp-3);
+  }
+
+  .mapa {
+    max-width: 640px;
+    margin-bottom: var(--sp-5);
+  }
+
+  .mapa__acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-3);
+  }
+
+  .mapa__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--touch-min);
+    padding: 10px var(--sp-4);
+    border: 1px solid var(--creme-40);
+    border-radius: var(--radius-md);
+    color: var(--creme-100);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+  }
+
+  .mapa__link:hover {
+    text-decoration: none;
+    border-color: var(--creme-100);
+  }
+
+  .final__in {
+    display: grid;
+    justify-items: center;
+  }
+
+  .final__ctas {
+    display: grid;
+    gap: var(--sp-3);
+    width: 100%;
+    max-width: 400px;
+  }
+
+  @media (min-width: 1024px) {
+    .final__ctas {
+      grid-template-columns: auto auto;
+      max-width: none;
+      justify-content: center;
+    }
+  }
+</style>

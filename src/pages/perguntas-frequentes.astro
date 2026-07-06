@@ -1,0 +1,134 @@
+---
+/**
+ * /perguntas-frequentes — rede de segurança do site.
+ * Índice por âncoras; deep-link abre o accordion (ui.ts) — a equipe pode
+ * enviar o link de uma resposta direto no WhatsApp.
+ * Itens pendentes (pet, estacionamento, acessibilidade) não são renderizados.
+ * Copy: textos-finais.md seção 7 (aprovada).
+ */
+import Base from '../layouts/Base.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import WhatsAppLink from '../components/WhatsAppLink.astro';
+import { faqGrupos } from '../content';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqGrupos.flatMap((g) =>
+    g.perguntas
+      .filter((p) => !p.pendente)
+      .map((p) => ({
+        '@type': 'Question',
+        name: p.pergunta,
+        acceptedAnswer: { '@type': 'Answer', text: p.resposta },
+      }))
+  ),
+};
+---
+
+<Base
+  title="Perguntas Frequentes — Arsenal da Cerveja Monte Verde"
+  description="Horários, régua de degustação, kits, venda online e localização: as respostas para planejar sua visita ao Arsenal da Cerveja em Monte Verde, MG."
+  path="/perguntas-frequentes"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <section class="topo">
+    <div class="container faq-page">
+      <Breadcrumb itens={[{ label: 'Home', href: '/' }, { label: 'Perguntas frequentes' }]} />
+      <SectionHeader
+        tag="h1"
+        titulo="Perguntas frequentes"
+        subtitulo="Tudo o que você precisa saber antes de visitar o Arsenal em Monte Verde."
+      />
+
+      <nav class="indice" aria-label="Grupos de perguntas">
+        {faqGrupos.map((g) => <a href={`#${g.id}`}>{g.grupo}</a>)}
+      </nav>
+    </div>
+  </section>
+
+  <section class="section grupos" data-observe="scroll_faq">
+    <div class="container faq-page">
+      {
+        faqGrupos.map((g) => (
+          <div class="grupo" id={g.id}>
+            <h2>{g.grupo}</h2>
+            <FAQAccordion itens={g.perguntas} />
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section section--verde final">
+    <div class="container final__in">
+      <SectionHeader titulo="Não achou sua resposta?" centro />
+      <WhatsAppLink contexto="faq" origem="faq" bloco class="final__wa" />
+      <p class="final__micro">Respondemos durante o horário de funcionamento das lojas.</p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .topo {
+    padding-block: var(--sp-6) var(--sp-6);
+  }
+
+  .faq-page {
+    max-width: 760px;
+  }
+
+  .indice {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-2);
+  }
+
+  .indice a {
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    color: var(--creme-100);
+    border: 1px solid var(--linha-suave);
+    border-radius: var(--radius-pill);
+    padding: 8px 14px;
+    min-height: 0;
+  }
+
+  .indice a:hover {
+    text-decoration: none;
+    border-color: var(--creme-40);
+  }
+
+  .grupos {
+    padding-top: var(--sp-6);
+  }
+
+  .grupo {
+    margin-bottom: var(--sp-7);
+    scroll-margin-top: calc(var(--header-h) + var(--sp-4));
+  }
+
+  .grupo h2 {
+    margin-bottom: var(--sp-4);
+  }
+
+  .final__in {
+    display: grid;
+    justify-items: center;
+    gap: var(--sp-4);
+  }
+
+  .final__in :global(.final__wa) {
+    max-width: 320px;
+  }
+
+  .final__micro {
+    font-size: var(--fs-sm);
+    color: var(--creme-55);
+  }
+</style>

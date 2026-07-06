@@ -1,0 +1,213 @@
+---
+/**
+ * Card de unidade — variantes:
+ *  - mini      → barra de status da Home (sem foto: nome, badge, hoje, link)
+ *  - completa  → foto, badge sobre a foto, nome, endereço, perfil, CTAs
+ * "Como chegar" só aparece quando o link do Maps for real (não PENDENTE).
+ */
+import StatusBadge from './StatusBadge.astro';
+import Media from './Media.astro';
+import { getUnidade, mapsHref } from '../content';
+
+interface Props {
+  unidade: 'galeria-suica' | 'vila-germanica';
+  variante?: 'mini' | 'completa';
+  /** Origem para o tracking dos cliques deste card. */
+  origem: string;
+  class?: string;
+}
+
+const { unidade, variante = 'completa', origem, class: className } = Astro.props;
+const u = getUnidade(unidade);
+const hrefMaps = mapsHref(u);
+const fachadaId = unidade === 'galeria-suica' ? 'fachada-galeria-suica' : 'fachada-vila-germanica';
+const eventoUnidade = `click_unidade_${unidade.replace(/-/g, '_')}`;
+---
+
+{
+  variante === 'mini' ? (
+    <div class:list={['ucard', 'ucard--mini', className]}>
+      <p class="ucard__nome">{u.nome}</p>
+      <StatusBadge variante="unidade" unidade={unidade} />
+      <p class="ucard__hoje" data-status-hoje data-unidade={unidade} hidden />
+      <a
+        class="ucard__ver"
+        href={`/unidades/${unidade}`}
+        data-track={eventoUnidade}
+        data-track-origem={origem}
+      >
+        Ver unidade →
+      </a>
+    </div>
+  ) : (
+    <article class:list={['ucard', 'ucard--completa', className]}>
+      <div class="ucard__foto">
+        <Media id={fachadaId} proporcao="4:5" />
+        <StatusBadge variante="unidade" unidade={unidade} class="ucard__badge" />
+      </div>
+      <div class="ucard__corpo">
+        <h3 class="ucard__nome">{u.nome}</h3>
+        <a
+          class="ucard__endereco"
+          href={hrefMaps}
+          target="_blank"
+          rel="noopener"
+          data-track="click_maps"
+          data-track-origem={origem}
+          data-track-unidade={unidade}
+        >
+          {u.endereco}
+        </a>
+        <p class="ucard__perfil">{u.perfil}</p>
+        <div class="ucard__acoes">
+          <a
+            class="ucard__maps"
+            href={hrefMaps}
+            target="_blank"
+            rel="noopener"
+            data-track="click_maps"
+            data-track-origem={origem}
+            data-track-unidade={unidade}
+          >
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21s-6-5.2-6-10a6 6 0 1 1 12 0c0 4.8-6 10-6 10Z" />
+              <circle cx="12" cy="11" r="2" />
+            </svg>
+            Como chegar
+          </a>
+          <a
+            class="ucard__ver"
+            href={`/unidades/${unidade}`}
+            data-track={eventoUnidade}
+            data-track-origem={origem}
+          >
+            Ver unidade →
+          </a>
+        </div>
+      </div>
+    </article>
+  )
+}
+
+<style>
+  .ucard {
+    background: var(--preto-800);
+    border: var(--border-soft);
+    border-radius: var(--radius-lg);
+  }
+
+  /* ---- mini ---- */
+  .ucard--mini {
+    display: grid;
+    gap: var(--sp-2);
+    padding: var(--sp-4);
+    justify-items: start;
+    align-content: start;
+  }
+
+  .ucard--mini .ucard__nome {
+    font-family: var(--font-text);
+    font-weight: 600;
+    color: var(--branco-50);
+    font-size: var(--fs-body);
+  }
+
+  .ucard__hoje {
+    font-size: var(--fs-sm);
+    color: var(--creme-70);
+  }
+
+  .ucard__ver {
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    color: var(--dourado-400);
+  }
+
+  /* ---- completa ---- */
+  .ucard--completa {
+    overflow: hidden;
+    display: grid;
+  }
+
+  .ucard__foto {
+    position: relative;
+  }
+
+  .ucard__foto :global(.media),
+  .ucard__foto :global(.media-placeholder) {
+    border-radius: 0;
+  }
+
+  .ucard__foto :global(.ucard__badge) {
+    position: absolute;
+    top: var(--sp-4);
+    left: var(--sp-4);
+    z-index: 1;
+  }
+
+  .ucard__corpo {
+    display: grid;
+    gap: var(--sp-3);
+    padding: var(--sp-5);
+    justify-items: start;
+  }
+
+  .ucard--completa .ucard__nome {
+    font-family: var(--font-display);
+    font-size: var(--fs-h3);
+    font-weight: 600;
+    color: var(--branco-50);
+  }
+
+  .ucard__endereco {
+    font-size: var(--fs-sm);
+    color: var(--creme-80);
+  }
+
+  a.ucard__endereco:hover {
+    color: var(--branco-50);
+  }
+
+  .ucard__perfil {
+    font-size: var(--fs-sm);
+    color: var(--creme-70);
+    font-style: italic;
+  }
+
+  .ucard__acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-4);
+    align-items: center;
+    margin-top: var(--sp-2);
+  }
+
+  .ucard__maps {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-2);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    color: var(--creme-100);
+    border: 1px solid var(--creme-40);
+    border-radius: var(--radius-md);
+    padding: 10px var(--sp-4);
+    min-height: var(--touch-min);
+  }
+
+  .ucard__maps:hover {
+    text-decoration: none;
+    border-color: var(--creme-100);
+  }
+
+  .ucard__maps svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  @media (min-width: 768px) {
+    .ucard__foto :global(.ratio-4x5) {
+      aspect-ratio: 16 / 9;
+    }
+  }
+</style>

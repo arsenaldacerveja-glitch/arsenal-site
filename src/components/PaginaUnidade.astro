@@ -1,0 +1,387 @@
+---
+/**
+ * Template das páginas de unidade (destino do Google Business Profile).
+ * Ordem aprovada: hero+status → ação imediata → horários → localização →
+ * o que tem → galeria → FAQ → crosslink. Quem chega do Google quer agir:
+ * o bloco Como chegar + WhatsApp vem antes de qualquer conteúdo.
+ */
+import Base from '../layouts/Base.astro';
+import Breadcrumb from './Breadcrumb.astro';
+import StatusBadge from './StatusBadge.astro';
+import HoursTable from './HoursTable.astro';
+import Media from './Media.astro';
+import WhatsAppLink from './WhatsAppLink.astro';
+import FAQAccordion from './FAQAccordion.astro';
+import NoticeBar from './NoticeBar.astro';
+import { getUnidade, mapsHref, site } from '../content';
+
+interface Props {
+  unidade: 'galeria-suica' | 'vila-germanica';
+  title: string;
+  description: string;
+}
+
+const { unidade, title, description } = Astro.props;
+const u = getUnidade(unidade);
+const hrefMaps = mapsHref(u);
+const origem = `unidade_${unidade.replace(/-/g, '_')}`;
+const contextoWa = unidade === 'galeria-suica' ? 'galeriaSuica' : 'vilaGermanica';
+const outra = getUnidade(unidade === 'galeria-suica' ? 'vila-germanica' : 'galeria-suica');
+const crossTexto =
+  unidade === 'galeria-suica'
+    ? 'Procurando kits, presentes e cervejas mineiras? Conheça a'
+    : 'Quer sentar, provar e conversar sobre cerveja? Conheça a';
+const galeriaFotos =
+  unidade === 'galeria-suica'
+    ? ['interior-galeria-suica-01', 'interior-galeria-suica-02']
+    : ['interior-vila-germanica-01', 'interior-vila-germanica-02'];
+const temReferencia = !u.referencia.startsWith('PENDENTE');
+
+/* Schema.org BarOrPub com horários */
+const DIA_SCHEMA: Record<string, string> = {
+  dom: 'Sunday', seg: 'Monday', ter: 'Tuesday', qua: 'Wednesday',
+  qui: 'Thursday', sex: 'Friday', sab: 'Saturday',
+};
+const openingHours = Object.entries(u.horarios)
+  .filter(([, i]) => i !== null)
+  .map(([dia, i]) => ({
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: DIA_SCHEMA[dia],
+    opens: i!.abre,
+    closes: i!.fecha === '24:00' ? '23:59' : i!.fecha,
+  }));
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BarOrPub',
+  name: u.nomeCompleto,
+  url: `${site.dominio}/unidades/${unidade}`,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: u.endereco.replace(' · ', ', '),
+    addressLocality: 'Monte Verde',
+    addressRegion: 'MG',
+    addressCountry: 'BR',
+  },
+  ...(u.geo.lat && u.geo.lng
+    ? { geo: { '@type': 'GeoCoordinates', latitude: u.geo.lat, longitude: u.geo.lng } }
+    : {}),
+  openingHoursSpecification: openingHours,
+  servesCuisine: 'Cervejas especiais',
+};
+---
+
+<Base title={title} description={description} path={`/unidades/${unidade}`}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <!-- Hero + status -->
+  <section class="topo">
+    <div class="container">
+      <Breadcrumb itens={[{ label: 'Home', href: '/' }, { label: 'Unidades', href: '/unidades' }, { label: u.nome }]} />
+      <h1>{u.nomeCompleto}</h1>
+      <div class="topo__status">
+        <StatusBadge variante="grande" unidade={unidade} />
+        <span class="topo__hoje" data-status-hoje data-unidade={unidade} hidden></span>
+      </div>
+
+      <!-- Ação imediata: acima de qualquer conteúdo -->
+      <div class="topo__acoes">
+        <a
+          class="topo__maps"
+          href={hrefMaps}
+          target="_blank"
+          rel="noopener"
+          data-track="click_maps"
+          data-track-origem={origem}
+          data-track-unidade={unidade}
+        >
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 21s-6-5.2-6-10a6 6 0 1 1 12 0c0 4.8-6 10-6 10Z"></path>
+            <circle cx="12" cy="11" r="2"></circle>
+          </svg>
+          Como chegar (Google Maps)
+        </a>
+        <WhatsAppLink contexto={contextoWa} origem={origem} bloco />
+      </div>
+      <p class="topo__endereco">
+        <a href={hrefMaps} target="_blank" rel="noopener" data-track="click_maps" data-track-origem={origem} data-track-unidade={unidade}>
+          {u.endereco}
+        </a>
+      </p>
+
+      <div class="topo__midia">
+        <Media id={unidade === 'galeria-suica' ? 'fachada-galeria-suica' : 'fachada-vila-germanica'} prioritaria />
+      </div>
+    </div>
+  </section>
+
+  <!-- Horários -->
+  <section class="section secao-compacta">
+    <div class="container">
+      <h2>Horários</h2>
+      <HoursTable unidade={unidade} />
+    </div>
+  </section>
+
+  <!-- Localização -->
+  <section class="section section--verde secao-compacta">
+    <div class="container">
+      <h2>Como chegar</h2>
+      <p class="loc__texto">
+        Estamos na {u.endereco}, na avenida principal.{temReferencia && ` ${u.referencia}`}
+      </p>
+      <div class="loc__mapa">
+        <Media id={`mapa-estatico-${unidade}`} />
+      </div>
+      <a class="topo__maps" href={hrefMaps} target="_blank" rel="noopener" data-track="click_maps" data-track-origem={`${origem}_mapa`} data-track-unidade={unidade}>
+        Abrir no Google Maps
+      </a>
+    </div>
+  </section>
+
+  <!-- O que tem -->
+  <section class="section secao-compacta">
+    <div class="container">
+      <h2>O que tem na {u.nome}</h2>
+      <ul class="tem" role="list">
+        {
+          u.oQueTem.map((item) => (
+            <li class="tem__item">
+              <span class="tem__marca" aria-hidden="true"></span>
+              <p>
+                <strong>{item.titulo}</strong> — {item.texto}
+                {item.href && (
+                  <>
+                    {' '}
+                    <a href={item.href}>Como funciona →</a>
+                  </>
+                )}
+              </p>
+            </li>
+          ))
+        }
+      </ul>
+      {
+        unidade === 'vila-germanica' && (
+          <NoticeBar
+            texto="Vendas somente na loja física. Consulte disponibilidade pelo WhatsApp."
+            linkTexto="pelo WhatsApp"
+            contexto="produto"
+            origem={origem}
+            class="tem__aviso"
+          />
+        )
+      }
+      <p class="tem__perfil">Perfil da casa: {u.perfilCurto}.</p>
+    </div>
+  </section>
+
+  <!-- Galeria -->
+  <section class="section secao-compacta">
+    <div class="container">
+      <h2 class="sr-only">Fotos do ambiente</h2>
+      <div class="galeria">
+        {galeriaFotos.map((id) => <Media id={id} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ da unidade -->
+  <section class="section secao-compacta" data-observe="scroll_faq">
+    <div class="container faq-un">
+      <h2>Perguntas rápidas</h2>
+      <FAQAccordion itens={u.faq} />
+      <p class="faq-un__mais"><a href="/perguntas-frequentes">Ver todas as perguntas →</a></p>
+    </div>
+  </section>
+
+  <!-- CrossLink -->
+  <section class="section section--verde secao-compacta">
+    <div class="container">
+      <div class="cross">
+        <p class="cross__texto">
+          {crossTexto} <strong>{outra.nome}</strong>
+        </p>
+        <StatusBadge variante="unidade" unidade={outra.id} sobreVerde />
+        <a
+          class="cross__link"
+          href={`/unidades/${outra.id}`}
+          data-track={`click_unidade_${outra.id.replace(/-/g, '_')}`}
+          data-track-origem="crosslink"
+        >
+          Ver unidade →
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .topo {
+    padding-block: var(--sp-6) var(--section-y);
+  }
+
+  .topo h1 {
+    margin-bottom: var(--sp-4);
+  }
+
+  .topo__status {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--sp-4);
+    margin-bottom: var(--sp-5);
+  }
+
+  .topo__hoje {
+    font-size: var(--fs-body);
+    color: var(--creme-80);
+  }
+
+  .topo__acoes {
+    display: grid;
+    gap: var(--sp-3);
+    max-width: 420px;
+    margin-bottom: var(--sp-3);
+  }
+
+  .topo__maps {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--sp-2);
+    height: var(--btn-h);
+    padding-inline: var(--sp-5);
+    border: 1px solid var(--creme-40);
+    border-radius: var(--radius-md);
+    color: var(--creme-100);
+    font-size: var(--fs-label);
+    font-weight: 600;
+  }
+
+  .topo__maps:hover {
+    text-decoration: none;
+    border-color: var(--creme-100);
+    background: rgba(240, 230, 210, 0.06);
+  }
+
+  .topo__maps svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .topo__endereco {
+    font-size: var(--fs-sm);
+    margin-bottom: var(--sp-6);
+  }
+
+  .topo__endereco a {
+    color: var(--creme-70);
+  }
+
+  .topo__midia {
+    max-width: 760px;
+  }
+
+  @media (min-width: 1024px) {
+    .topo__acoes {
+      grid-template-columns: auto auto;
+      justify-content: start;
+    }
+  }
+
+  .secao-compacta {
+    padding-block: var(--sp-7);
+  }
+
+  .secao-compacta h2 {
+    margin-bottom: var(--sp-5);
+  }
+
+  .loc__texto {
+    color: var(--creme-80);
+    margin-bottom: var(--sp-5);
+  }
+
+  .loc__mapa {
+    max-width: 560px;
+    margin-bottom: var(--sp-5);
+  }
+
+  .tem {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: var(--sp-4);
+    margin-bottom: var(--sp-5);
+    max-width: 720px;
+  }
+
+  .tem__item {
+    display: flex;
+    gap: var(--sp-3);
+    align-items: flex-start;
+  }
+
+  .tem__marca {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--dourado-500);
+    flex-shrink: 0;
+    margin-top: 9px;
+  }
+
+  .tem__item p {
+    color: var(--creme-80);
+    font-size: var(--fs-body);
+  }
+
+  .tem__aviso {
+    margin-bottom: var(--sp-5);
+    max-width: 720px;
+  }
+
+  .tem__perfil {
+    font-size: var(--fs-sm);
+    font-style: italic;
+    color: var(--creme-55);
+  }
+
+  .galeria {
+    display: grid;
+    gap: var(--sp-4);
+  }
+
+  @media (min-width: 768px) {
+    .galeria {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .faq-un {
+    max-width: 760px;
+  }
+
+  .faq-un__mais {
+    margin-top: var(--sp-5);
+    font-size: var(--fs-sm);
+  }
+
+  .cross {
+    display: grid;
+    gap: var(--sp-3);
+    justify-items: start;
+  }
+
+  .cross__texto {
+    font-family: var(--font-display);
+    font-size: var(--fs-h3);
+    color: var(--branco-50);
+  }
+
+  .cross__link {
+    font-weight: 600;
+  }
+</style>

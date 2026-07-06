@@ -1,0 +1,102 @@
+---
+/**
+ * Faixa de fatos rápidos — as "especificações" da régua (produto herói).
+ * Ícones de linha em dourado, número/fato em destaque, escaneável em 3s.
+ */
+interface Props {
+  fatos: { icone: string; texto: string }[];
+  /** true quando a faixa senta sobre seção verde (células em verde-800). */
+  sobreVerde?: boolean;
+  class?: string;
+}
+
+const { fatos, sobreVerde = false, class: className } = Astro.props;
+
+/** Paths de ícone (traço 1.5, 24px) por chave do JSON. */
+const ICONES: Record<string, string> = {
+  torneira: 'M4 6h9M13 4v4M13 6c3 0 5 1.5 5 4v1M18 11h1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-1zM6 6v3c0 1.5 1 2 2 2M8 11v6a2 2 0 0 0 4 0v-2',
+  escolha: 'M5 12l4 4L19 6',
+  taca: 'M8 3h8l-.8 10a3.2 3.2 0 0 1-6.4 0L8 3ZM12 16.5V21M9 21h6',
+  preco: 'M12 3v18M16.5 7.5c0-1.7-2-2.5-4.5-2.5S7.6 6 7.6 7.7c0 4.1 8.8 2 8.8 6.3 0 1.7-1.9 2.8-4.4 2.8s-4.5-1-4.5-2.7',
+  brinde: 'M7 3h4l-.5 7a2.6 2.6 0 0 1-1.5 2.2V21M5.5 21h4M13 5h4l-.4 6a2.4 2.4 0 0 1-1.6 2V21M13.5 21h4',
+  pino: 'M12 21s-6-5.2-6-10a6 6 0 1 1 12 0c0 4.8-6 10-6 10ZM12 13a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z',
+};
+---
+
+<ul class:list={['facts', { 'facts--verde': sobreVerde }, className]} role="list">
+  {
+    fatos.map((f) => (
+      <li class="facts__item">
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d={ICONES[f.icone] ?? ICONES.taca} />
+        </svg>
+        <span>{f.texto}</span>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .facts {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--sp-3);
+  }
+
+  @media (min-width: 768px) {
+    .facts {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .facts {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .facts__item {
+      flex: 1 1 0;
+      min-width: 150px;
+    }
+  }
+
+  .facts__item {
+    display: grid;
+    gap: var(--sp-2);
+    justify-items: start;
+    align-content: start;
+    background: var(--preto-800);
+    border: var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: var(--sp-4);
+  }
+
+  .facts--verde .facts__item {
+    background: var(--verde-800);
+    border-color: var(--verde-700);
+  }
+
+  .facts__item svg {
+    width: 24px;
+    height: 24px;
+    color: var(--dourado-400);
+  }
+
+  .facts__item span {
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    color: var(--branco-50);
+    line-height: 1.35;
+  }
+</style>

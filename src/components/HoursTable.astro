@@ -1,0 +1,95 @@
+---
+/**
+ * Tabela semanal de horários — o fallback estático que existe sem JS.
+ * O dia atual é destacado pelo status-dom.ts (atributo data-hoje na linha);
+ * sem JS a tabela completa continua respondendo pelo conteúdo.
+ */
+import { getUnidade } from '../content';
+import { formatHora, type DiaSemana } from '../scripts/status';
+
+interface Props {
+  unidade: 'galeria-suica' | 'vila-germanica';
+}
+
+const { unidade } = Astro.props;
+const u = getUnidade(unidade);
+
+const ORDEM: DiaSemana[] = ['seg', 'ter', 'qua', 'qui', 'sex', 'sab', 'dom'];
+const LABEL: Record<DiaSemana, string> = {
+  seg: 'Segunda',
+  ter: 'Terça',
+  qua: 'Quarta',
+  qui: 'Quinta',
+  sex: 'Sexta',
+  sab: 'Sábado',
+  dom: 'Domingo',
+};
+---
+
+<table class="horas" data-hours-table>
+  <caption class="sr-only">Horários de funcionamento — {u.nome}</caption>
+  <tbody>
+    {
+      ORDEM.map((dia) => {
+        const i = u.horarios[dia];
+        return (
+          <tr data-dia={dia}>
+            <th scope="row">{LABEL[dia]}</th>
+            <td>{i ? `${formatHora(i.abre)} às ${formatHora(i.fecha)}` : 'Fechado'}</td>
+          </tr>
+        );
+      })
+    }
+  </tbody>
+</table>
+{
+  u.override.ativo && u.override.mensagem && (
+    <p class="horas__override">{u.override.mensagem}</p>
+  )
+}
+
+<style>
+  .horas {
+    width: 100%;
+    max-width: 420px;
+    border-collapse: collapse;
+    font-size: var(--fs-sm);
+  }
+
+  .horas tr {
+    border-bottom: 1px solid var(--linha-suave);
+  }
+
+  .horas th,
+  .horas td {
+    text-align: left;
+    padding: var(--sp-3) var(--sp-2);
+  }
+
+  .horas th {
+    font-weight: 600;
+    color: var(--creme-80);
+  }
+
+  .horas td {
+    color: var(--creme-70);
+  }
+
+  /* Dia atual — marcado pelo status-dom.ts */
+  .horas tr[data-hoje] th,
+  .horas tr[data-hoje] td {
+    color: var(--branco-50);
+  }
+
+  .horas tr[data-hoje] {
+    background: rgba(240, 230, 210, 0.05);
+    border-left: 2px solid var(--dourado-500);
+  }
+
+  .horas__override {
+    margin-top: var(--sp-3);
+    font-size: var(--fs-sm);
+    color: var(--dourado-400);
+    font-weight: 600;
+  }
+</style>

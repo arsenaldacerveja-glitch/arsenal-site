@@ -1,0 +1,61 @@
+---
+/** 404 — curta, útil, no tom da casa. */
+import Base from '../layouts/Base.astro';
+import CTAButton from '../components/CTAButton.astro';
+---
+
+<Base
+  title="Página não encontrada | Arsenal da Cerveja"
+  description="Essa página não existe — mas a cerveja gelada existe. Veja a degustação e as unidades do Arsenal da Cerveja em Monte Verde."
+  path="/404"
+  noindex
+>
+  <section class="section nf">
+    <div class="container nf__in">
+      <p class="nf__code">404</p>
+      <h1>Essa página evaporou como colarinho</h1>
+      <p class="nf__texto">
+        O endereço não existe (ou mudou). O que não muda: a régua de degustação e as duas lojas
+        na avenida principal de Monte Verde.
+      </p>
+      <div class="nf__ctas">
+        <CTAButton href="/" variante="secundario">Voltar ao início</CTAButton>
+        <CTAButton href="/degustacao" variante="primario" dataTrack="click_degustacao" dataOrigem="404">
+          Fazer degustação
+        </CTAButton>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .nf {
+    padding-block: var(--section-y-hero);
+  }
+
+  .nf__in {
+    display: grid;
+    gap: var(--sp-4);
+    justify-items: start;
+    max-width: 560px;
+  }
+
+  .nf__code {
+    font-family: var(--font-display);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--dourado-400);
+  }
+
+  .nf__texto {
+    color: var(--creme-80);
+  }
+
+  .nf__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-3);
+    margin-top: var(--sp-2);
+  }
+</style>

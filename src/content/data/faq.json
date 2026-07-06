@@ -1,0 +1,173 @@
+[
+  {
+    "grupo": "Funcionamento e horários",
+    "id": "funcionamento",
+    "perguntas": [
+      {
+        "id": "faq-horarios",
+        "pergunta": "Que horas vocês abrem?",
+        "resposta": "Cada loja tem seu horário. Galeria Suíça: quarta, quinta e domingo, das 10h às 19h; sexta, das 10h às 23h; sábado, das 10h à meia-noite (segunda e terça, fechado). Vila Germânica: terça a quinta e domingo, das 10h às 22h; sexta, das 10h às 23h; sábado, das 10h à meia-noite (segunda, fechado). O status ao vivo aparece no topo do site.",
+        "pendente": false
+      },
+      {
+        "id": "faq-feriados",
+        "pergunta": "Abrem em feriados?",
+        "resposta": "Os horários de feriado podem mudar — avisamos no topo do site e no Google. Na dúvida, chame no WhatsApp.",
+        "pendente": false
+      },
+      {
+        "id": "faq-qual-unidade",
+        "pergunta": "Qual unidade escolher?",
+        "resposta": "Galeria Suíça para degustação, porções e experiência com calma; Vila Germânica para kits, presentes e uma forte curadoria de cervejas mineiras. A régua de degustação existe nas duas.",
+        "link": { "label": "Comparar unidades →", "href": "/unidades" },
+        "pendente": false
+      }
+    ]
+  },
+  {
+    "grupo": "Degustação",
+    "id": "degustacao",
+    "perguntas": [
+      {
+        "id": "faq-regua",
+        "pergunta": "Como funciona a régua de degustação?",
+        "resposta": "Em cada loja há 6 estilos de chopp engatados. Você escolhe 4 e recebe a régua com 4 taças de 200 ml, por R$ 60.",
+        "link": { "label": "Ver detalhes →", "href": "/degustacao" },
+        "pendente": false
+      },
+      {
+        "id": "faq-reserva",
+        "pergunta": "Precisa reservar?",
+        "resposta": "Não — é por ordem de chegada, conforme o funcionamento das lojas.",
+        "pendente": false
+      },
+      {
+        "id": "faq-dividir",
+        "pergunta": "Pode dividir a régua?",
+        "resposta": "Sim, a régua pode ser dividida no casal.",
+        "pendente": false
+      },
+      {
+        "id": "faq-tempo",
+        "pergunta": "Quanto tempo dura a degustação?",
+        "resposta": "Não existe tempo fixo. A ideia é provar com calma, comparar os estilos e aproveitar a experiência no seu ritmo.",
+        "pendente": false
+      },
+      {
+        "id": "faq-estilos",
+        "pergunta": "Quais estilos vou encontrar?",
+        "resposta": "Os 6 estilos engatados variam conforme o dia — a equipe apresenta as opções na hora.",
+        "pendente": false
+      },
+      {
+        "id": "faq-smart-tap",
+        "pergunta": "O que é a Smart Tap?",
+        "resposta": "Uma experiência complementar do universo Arsenal para quem quer praticidade, tecnologia e bebida na medida certa, em pontos selecionados de Monte Verde. Pergunte à equipe.",
+        "pendente": false
+      }
+    ]
+  },
+  {
+    "grupo": "Compras, kits e presentes",
+    "id": "compras",
+    "perguntas": [
+      {
+        "id": "faq-kit-preco",
+        "pergunta": "Quanto custa o Kit Arsenal?",
+        "resposta": "A partir de R$ 39,90, somente nas lojas físicas. A composição pode variar conforme disponibilidade.",
+        "pendente": false
+      },
+      {
+        "id": "faq-kit-personalizado",
+        "pergunta": "Vocês montam kits personalizados?",
+        "resposta": "Sim — a equipe pode montar com você na loja, conforme a disponibilidade do dia.",
+        "pendente": false
+      },
+      {
+        "id": "faq-mineiras",
+        "pergunta": "Têm cervejas mineiras?",
+        "resposta": "Sim — a curadoria privilegia cervejarias de Minas. A forte curadoria de mineiras está na Vila Germânica, dentro de uma seleção com mais de 250 rótulos entre as unidades.",
+        "pendente": false
+      },
+      {
+        "id": "faq-disponibilidade",
+        "pergunta": "Como sei se um rótulo específico está disponível?",
+        "resposta": "O estoque gira rápido — chame no WhatsApp que a gente confere na hora.",
+        "pendente": false
+      }
+    ]
+  },
+  {
+    "grupo": "Venda online e entrega",
+    "id": "online",
+    "perguntas": [
+      {
+        "id": "faq-online",
+        "pergunta": "Vocês vendem online?",
+        "resposta": "Por enquanto, não. Kits e rótulos são vendidos somente nas lojas físicas, em Monte Verde.",
+        "pendente": false
+      },
+      {
+        "id": "faq-entrega",
+        "pergunta": "Fazem entrega?",
+        "resposta": "Não — no momento, a venda é somente presencial, nas lojas físicas.",
+        "pendente": false
+      },
+      {
+        "id": "faq-kit-online",
+        "pergunta": "O kit de R$ 39,90 é vendido online?",
+        "resposta": "Não — como todos os kits, somente nas lojas físicas. Consulte a disponibilidade pelo WhatsApp.",
+        "pendente": false
+      }
+    ]
+  },
+  {
+    "grupo": "Localização e estrutura",
+    "id": "localizacao",
+    "perguntas": [
+      {
+        "id": "faq-onde",
+        "pergunta": "Onde ficam as lojas?",
+        "resposta": "As duas na avenida principal de Monte Verde: Galeria Suíça (Av. Monte Verde, 858, loja 4) e Vila Germânica (Av. Monte Verde, 1057).",
+        "link": { "label": "Ver unidades →", "href": "/unidades" },
+        "pendente": false
+      },
+      {
+        "id": "faq-estacionamento",
+        "pergunta": "Tem estacionamento?",
+        "resposta": "PENDENTE: confirmação operacional antes de publicar.",
+        "pendente": true
+      },
+      {
+        "id": "faq-pet",
+        "pergunta": "Pode levar pet?",
+        "resposta": "PENDENTE: confirmação operacional antes de publicar.",
+        "pendente": true
+      },
+      {
+        "id": "faq-criancas",
+        "pergunta": "Crianças podem entrar?",
+        "resposta": "Crianças podem acompanhar responsáveis nas áreas permitidas, mas a venda e o consumo de bebidas alcoólicas são exclusivos para maiores de 18 anos.",
+        "pendente": false
+      },
+      {
+        "id": "faq-acessibilidade",
+        "pergunta": "É acessível para cadeirantes?",
+        "resposta": "PENDENTE: confirmação operacional antes de publicar.",
+        "pendente": true
+      }
+    ]
+  },
+  {
+    "grupo": "Pagamento",
+    "id": "pagamento",
+    "perguntas": [
+      {
+        "id": "faq-pagamento",
+        "pergunta": "Aceitam cartão e Pix?",
+        "resposta": "Sim — cartão, Pix e dinheiro nas duas lojas.",
+        "pendente": false
+      }
+    ]
+  }
+]

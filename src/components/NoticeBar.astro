@@ -1,0 +1,76 @@
+---
+/**
+ * Aviso âncora — "vendemos somente nas lojas físicas".
+ * Discreto mas inescapável: borda esquerda dourada, sem tom de desculpa.
+ * Se receber contexto, o final do texto vira link de WhatsApp.
+ */
+import { waLink, whatsapp } from '../content';
+
+interface Props {
+  texto: string;
+  /** Trecho final do texto que vira link de WhatsApp (opcional). */
+  linkTexto?: string;
+  contexto?: keyof typeof whatsapp.mensagens;
+  origem?: string;
+  class?: string;
+}
+
+const { texto, linkTexto, contexto, origem, class: className } = Astro.props;
+
+const temLink = linkTexto && contexto && texto.includes(linkTexto);
+const [antes, depois] = temLink ? texto.split(linkTexto!) : [texto, ''];
+---
+
+<p class:list={['notice', className]}>
+  <svg
+    aria-hidden="true"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.5"
+    stroke-linecap="round"
+  >
+    <circle cx="12" cy="12" r="9"></circle>
+    <path d="M12 8h.01M12 11v5"></path>
+  </svg>
+  <span>
+    {antes}{temLink && (
+      <a
+        href={waLink(contexto!)}
+        target="_blank"
+        rel="noopener"
+        data-track="click_whatsapp"
+        data-track-origem={origem}
+      >{linkTexto}</a>
+    )}{depois}
+  </span>
+</p>
+
+<style>
+  .notice {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--sp-3);
+    background: var(--verde-800);
+    border-left: 3px solid var(--dourado-500);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    padding: var(--sp-4);
+    font-size: var(--fs-sm);
+    color: var(--branco-50);
+    max-width: 100%;
+  }
+
+  .notice svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    color: var(--dourado-400);
+    margin-top: 1px;
+  }
+
+  .notice a {
+    color: var(--dourado-400);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>

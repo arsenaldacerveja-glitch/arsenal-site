@@ -1,0 +1,23 @@
+{
+  "name": "arsenal-site",
+  "version": "0.1.0",
+  "description": "Site Arsenal da Cerveja — cervejas especiais, degustação e presentes em Monte Verde, MG",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "astro": "astro"
+  },
+  "devDependencies": {
+    "vitest": "^2.1.8"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.2.1",
+    "@fontsource-variable/fraunces": "^5.1.0",
+    "@fontsource-variable/source-sans-3": "^5.1.0",
+    "astro": "^5.1.0"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "kitArsenal": {
+    "titulo": "Kit Arsenal — a partir de R$ 39,90",
+    "texto": "Uma seleção da casa pronta para presentear — ou para levar a viagem na mala. A composição pode variar conforme a disponibilidade do dia, e a equipe monta com você na loja.",
+    "fatos": ["A partir de R$ 39,90", "Somente nas lojas físicas", "Composição variável"]
+  },
+  "aviso": "Kits e rótulos são vendidos somente nas lojas físicas. Para consultar disponibilidade, chame no WhatsApp.",
+  "cardsHome": [
+    { "titulo": "Kits e presentes", "texto": "Prontos para presentear — ou para levar a viagem na mala." },
+    { "titulo": "Cervejas mineiras", "texto": "Uma curadoria de Minas na prateleira." },
+    { "titulo": "Chopps da casa", "texto": "6 estilos engatados em cada loja, sempre girando." },
+    { "titulo": "Rótulos especiais", "texto": "Mais de 250 rótulos no universo Arsenal, para quem gosta de garimpar." }
+  ],
+  "ocasioes": [
+    { "titulo": "Para quem ama IPA", "texto": "Amargor e aroma para quem já sabe o que gosta." },
+    { "titulo": "Kit mineiras", "texto": "Minas em garrafas: uma seleção de cervejarias do estado." },
+    { "titulo": "Lembrança de viagem", "texto": "Monte Verde para levar — também em versão corporativa." }
+  ],
+  "microcopyOcasiao": "Monte na loja com a equipe, conforme a disponibilidade do dia.",
+  "chopps": {
+    "titulo": "6 estilos engatados em cada loja",
+    "texto": "As torneiras giram conforme a disponibilidade — sempre 6 estilos por loja. É delas que sai a régua de degustação."
+  },
+  "mineiras": {
+    "titulo": "Uma curadoria de Minas na prateleira",
+    "texto": "A curadoria do Arsenal privilegia cervejarias mineiras — é a nossa forma de servir Monte Verde com o que Minas faz de melhor. A forte curadoria de mineiras está na Vila Germânica."
+  },
+  "estilos": [
+    { "nome": "IPA", "texto": "Lúpulo em primeiro plano: amargor marcante e aromas de frutas tropicais e cítricos. Se você gosta de sabores intensos, comece aqui." },
+    { "nome": "Lager / Pilsen", "texto": "Leve, refrescante e fácil de gostar. A porta de entrada clássica — e uma ótima companhia para o dia inteiro." },
+    { "nome": "Weiss", "texto": "Cerveja de trigo, macia e frutada, com notas de banana e cravo. Para quem prefere suavidade com personalidade." },
+    { "nome": "Stout / Porter", "texto": "Escuras e encorpadas, com café, chocolate e torrefação. Perfeitas para o friozinho da serra." },
+    { "nome": "Sour", "texto": "Ácida, frutada e surpreendente. Para quem gosta de sair do óbvio — muita gente descobre seu estilo favorito aqui." }
+  ],
+  "microcopyEstilos": "Na loja, a equipe indica um rótulo ou chopp do seu estilo."
+}

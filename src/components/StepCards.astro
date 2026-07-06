@@ -1,0 +1,73 @@
+---
+/** Passo a passo numerado — "como funciona" da régua. */
+interface Props {
+  passos: { titulo: string; texto: string }[];
+}
+
+const { passos } = Astro.props;
+---
+
+<ol class="passos" role="list">
+  {
+    passos.map((p, i) => (
+      <li class="passos__item">
+        <span class="passos__num" aria-hidden="true">{i + 1}</span>
+        <div>
+          <p class="passos__titulo">{p.titulo}</p>
+          <p class="passos__texto">{p.texto}</p>
+        </div>
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  .passos {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: var(--sp-4);
+    counter-reset: passo;
+  }
+
+  @media (min-width: 1024px) {
+    .passos {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  .passos__item {
+    display: flex;
+    gap: var(--sp-4);
+    background: var(--preto-800);
+    border: var(--border-soft);
+    border-radius: var(--radius-lg);
+    padding: var(--sp-5);
+  }
+
+  .passos__num {
+    font-family: var(--font-display);
+    font-size: var(--fs-h1);
+    font-weight: 600;
+    line-height: 1;
+    color: var(--dourado-400);
+    flex-shrink: 0;
+  }
+
+  .passos__titulo {
+    font-weight: 600;
+    color: var(--branco-50);
+    margin-bottom: var(--sp-1);
+  }
+
+  .passos__texto {
+    font-size: var(--fs-sm);
+    color: var(--creme-70);
+  }
+
+  @media (min-width: 1024px) {
+    .passos__item {
+      flex-direction: column;
+    }
+  }
+</style>

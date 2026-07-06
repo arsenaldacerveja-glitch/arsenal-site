@@ -1,0 +1,92 @@
+/* ============================================================
+   Arsenal da Cerveja — Design Tokens
+   Fonte: direcao-visual.md v1.1 (aprovada)
+   Regra de ouro: dourado é acento (~2% do viewport), nunca superfície.
+   ============================================================ */
+
+:root {
+  /* ---------- Cores de marca ---------- */
+  --preto-900: #171310; /* fundo base do site */
+  --preto-800: #211b16; /* superfícies elevadas (cards, header) */
+  --verde-900: #12291f; /* seções de destaque, footer */
+  --verde-800: #1a3a2c; /* cards sobre verde, hover de superfícies verdes */
+  --verde-700: #24503c; /* bordas e divisores sobre verde */
+  --dourado-400: #d4b36a; /* CTA primário (fundo), texto dourado */
+  --dourado-500: #b08d3e; /* hover do CTA, filetes, ícones-chave */
+  --creme-100: #f0e6d2; /* texto principal sobre fundos escuros */
+  --branco-50: #faf6ed; /* títulos e texto sobre verde */
+
+  /* ---------- Cores funcionais ---------- */
+  --status-aberto: #8fbf7f;
+  --status-breve: #d9a93f;
+  --status-fechado: #a79e8c; /* nunca vermelho */
+  --whatsapp: #25d366; /* somente o ícone */
+  --erro: #c25b4e;
+
+  /* ---------- Cores derivadas (opacidades recorrentes) ---------- */
+  --creme-80: rgba(240, 230, 210, 0.8);
+  --creme-70: rgba(240, 230, 210, 0.7);
+  --creme-55: rgba(240, 230, 210, 0.55);
+  --creme-40: rgba(240, 230, 210, 0.4);
+  --linha-suave: rgba(240, 230, 210, 0.12);
+  --linha-media: rgba(240, 230, 210, 0.08);
+
+  /* ---------- Tipografia ---------- */
+  --font-display: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
+  --font-text: 'Source Sans 3 Variable', -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  /* Escala (mobile → desktop via clamp) */
+  --fs-display-1: clamp(2.125rem, 1.4rem + 3.2vw, 3.5rem);   /* 34 → 56 */
+  --fs-h1: clamp(1.75rem, 1.35rem + 1.8vw, 2.5rem);          /* 28 → 40 */
+  --fs-h2: clamp(1.5rem, 1.25rem + 1.1vw, 2rem);             /* 24 → 32 */
+  --fs-h3: clamp(1.125rem, 1.08rem + 0.25vw, 1.25rem);       /* 18 → 20 */
+  --fs-body: clamp(1rem, 0.98rem + 0.15vw, 1.0625rem);       /* 16 → 17 */
+  --fs-sm: 0.875rem;                                          /* 14 */
+  --fs-fact: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);        /* 20 → 24 */
+  --fs-label: 0.9375rem;                                      /* 15 */
+
+  --lh-display: 1.12;
+  --lh-heading: 1.2;
+  --lh-body: 1.6;
+
+  /* ---------- Espaçamento (base 4px) ---------- */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --sp-8: 64px;
+  --sp-9: 96px;
+
+  --section-y: clamp(4rem, 3rem + 4vw, 6rem); /* 64 → 96 */
+  --section-y-hero: clamp(5rem, 3.5rem + 6vw, 8rem); /* seções-herói (régua): mais respiro */
+  --container-max: 1200px;
+  --container-pad: clamp(1.25rem, 1rem + 1.5vw, 2rem); /* 20 → 32 */
+
+  /* ---------- Raios ---------- */
+  --radius-sm: 4px;  /* badges, inputs */
+  --radius-md: 8px;  /* botões, cards */
+  --radius-lg: 12px; /* cards grandes, mídia */
+  --radius-pill: 999px;
+
+  /* ---------- Bordas e sombras ---------- */
+  --border-soft: 1px solid var(--linha-suave);
+  --border-dourada: 1px solid var(--dourado-500);
+  --shadow-float: 0 -4px 24px rgba(0, 0, 0, 0.35); /* só sticky bar e popover */
+
+  /* ---------- Dimensões de componentes ---------- */
+  --header-h: 64px;
+  --header-h-compact: 56px;
+  --stickybar-h: 64px;
+  --btn-h: 52px;
+  --btn-h-desktop: 48px;
+  --touch-min: 48px;
+
+  /* ---------- Motion ---------- */
+  --dur-fast: 200ms;
+  --dur-base: 250ms;
+  --dur-reveal: 400ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}

@@ -1,0 +1,239 @@
+---
+/**
+ * Header fixo global.
+ * - Navegação básica 100% sem JS (menu mobile e popover usam <details>).
+ * - JS apenas aprimora: preenche os badges de status, fecha popover/menu
+ *   com Esc e clique fora, encolhe o header no scroll (ui.ts + status-dom.ts).
+ * - Badge agregado: toque/clique (mobile) ou hover (desktop, via CSS) abre
+ *   o popover com o status individual das duas unidades.
+ */
+import StatusBadge from './StatusBadge.astro';
+import { unidades, site } from '../content';
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+const links = [
+  { href: '/degustacao', label: 'Degustação' },
+  { href: '/unidades', label: 'Unidades' },
+  { href: '/cervejas-e-kits', label: 'Kits e Cervejas' },
+  { href: '/perguntas-frequentes', label: 'FAQ' },
+];
+
+const ativo = (href: string) => path === href || (href !== '/' && path.startsWith(href + '/'));
+---
+
+<header class="hdr" data-header>
+  <div class="container hdr__in">
+    <a class="hdr__logo" href="/" aria-label={`${site.nome} — início`}>
+      Arsenal <span>da Cerveja</span>
+    </a>
+
+    <nav class="hdr__nav" aria-label="Navegação principal">
+      {
+        links.map((l) => (
+          <a href={l.href} aria-current={ativo(l.href) ? 'page' : undefined}>
+            {l.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <details class="hdr__status" data-fechavel>
+      <summary aria-label="Ver status das duas lojas">
+        <StatusBadge variante="agregado" />
+      </summary>
+      <div class="hdr__pop">
+        {
+          unidades.map((u) => (
+            <p class="hdr__pop-linha">
+              <strong>{u.nome}</strong>
+              <StatusBadge variante="unidade" unidade={u.id} />
+            </p>
+          ))
+        }
+      </div>
+    </details>
+
+    <details class="hdr__menu" data-fechavel>
+      <summary aria-label="Abrir menu">
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+        >
+          <path d="M4 7h16M4 12h16M4 17h16"></path>
+        </svg>
+      </summary>
+      <div class="hdr__panel">
+        <nav aria-label="Menu">
+          {
+            links.map((l) => (
+              <a href={l.href} aria-current={ativo(l.href) ? 'page' : undefined}>
+                {l.label}
+              </a>
+            ))
+          }
+        </nav>
+      </div>
+    </details>
+  </div>
+</header>
+
+<style>
+  .hdr {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(23, 19, 16, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--linha-media);
+  }
+
+  .hdr__in {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-4);
+    height: var(--header-h);
+    transition: height var(--dur-fast) ease;
+  }
+
+  .hdr[data-compact] .hdr__in {
+    height: var(--header-h-compact);
+  }
+
+  .hdr__logo {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--branco-50);
+    white-space: nowrap;
+    line-height: 1;
+  }
+
+  .hdr__logo span {
+    color: var(--dourado-400);
+  }
+
+  .hdr__logo:hover {
+    text-decoration: none;
+  }
+
+  .hdr__nav {
+    display: none;
+  }
+
+  .hdr__status {
+    position: relative;
+    margin-left: auto;
+  }
+
+  /* <details> sem marcador nativo */
+  summary {
+    list-style: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--touch-min);
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .hdr__pop {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+    z-index: 60;
+    min-width: 300px;
+    background: var(--preto-800);
+    border: var(--border-soft);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+    padding: var(--sp-4);
+    display: grid;
+    gap: var(--sp-4);
+  }
+
+  .hdr__pop-linha {
+    display: grid;
+    gap: var(--sp-2);
+  }
+
+  .hdr__pop-linha strong {
+    font-size: var(--fs-sm);
+  }
+
+  .hdr__menu summary svg {
+    width: 26px;
+    height: 26px;
+    color: var(--creme-100);
+  }
+
+  .hdr__panel {
+    position: fixed;
+    inset: var(--header-h) 0 0 0;
+    z-index: 40;
+    background: var(--verde-900);
+    border-top: 1px solid var(--dourado-500);
+    padding: var(--sp-6) var(--container-pad);
+    overflow-y: auto;
+  }
+
+  .hdr__panel nav {
+    display: grid;
+    gap: var(--sp-4);
+  }
+
+  .hdr__panel nav a {
+    font-family: var(--font-display);
+    font-size: var(--fs-h2);
+    font-weight: 600;
+    color: var(--branco-50);
+    padding-block: var(--sp-2);
+  }
+
+  .hdr__panel nav a[aria-current='page'] {
+    color: var(--dourado-400);
+  }
+
+  @media (min-width: 1024px) {
+    .hdr__nav {
+      display: flex;
+      gap: var(--sp-5);
+      margin-left: auto;
+    }
+
+    .hdr__nav a {
+      font-size: var(--fs-label);
+      font-weight: 600;
+      color: var(--creme-100);
+      padding-block: var(--sp-2);
+    }
+
+    .hdr__nav a:hover {
+      color: var(--branco-50);
+      text-decoration: none;
+    }
+
+    .hdr__nav a[aria-current='page'] {
+      color: var(--dourado-400);
+      box-shadow: 0 1px 0 0 var(--dourado-500);
+    }
+
+    .hdr__status {
+      margin-left: 0;
+    }
+
+    .hdr__menu {
+      display: none;
+    }
+  }
+  /* Desktop: abertura por hover é aprimoramento de JS (ui.ts) —
+     <details> fechado não renderiza o conteúdo, então CSS puro não basta.
+     Clique/toque e teclado funcionam nativamente em qualquer viewport. */
+</style>

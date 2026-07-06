@@ -1,0 +1,116 @@
+---
+/**
+ * Barra fixa mobile — Degustação · Unidades · WhatsApp.
+ * Zona do polegar, safe-area do iOS, invisível no desktop (≥1024px).
+ * O padding-bottom do body é compensado aqui para nada ficar escondido.
+ * Autocontida (não reutiliza WhatsAppLink) para controle total do estilo.
+ */
+import { waLink } from '../content';
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const ativo = (href: string) => path === href || path.startsWith(href + '/');
+const hrefWhats = waLink('geral');
+---
+
+<nav class="sticky" aria-label="Ações rápidas">
+  <a
+    href="/degustacao"
+    class:list={['sticky__item', { 'sticky__item--ativo': ativo('/degustacao') }]}
+    data-track="click_degustacao"
+    data-track-origem="sticky_bar"
+  >
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 3h8l-.8 10a3.2 3.2 0 0 1-6.4 0L8 3Z"></path>
+      <path d="M12 16.5V21M9 21h6M8.4 8h7.2"></path>
+    </svg>
+    <span>Degustação</span>
+  </a>
+
+  <a
+    href="/unidades"
+    class:list={['sticky__item', { 'sticky__item--ativo': ativo('/unidades') }]}
+    data-track="click_unidades"
+    data-track-origem="sticky_bar"
+  >
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 21s-6-5.2-6-10a6 6 0 1 1 12 0c0 4.8-6 10-6 10Z"></path>
+      <circle cx="12" cy="11" r="2"></circle>
+    </svg>
+    <span>Unidades</span>
+  </a>
+
+  <a
+    href={hrefWhats}
+    target="_blank"
+    rel="noopener"
+    class="sticky__item"
+    data-track="click_whatsapp"
+    data-track-origem="sticky_bar"
+  >
+    <svg class="sticky__wa" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3Z"></path>
+      <path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1.5-1.5-2-1.5-1 .8a4.2 4.2 0 0 1-2.3-2.3l.8-1-1.5-2L9 9.5Z"></path>
+    </svg>
+    <span>WhatsApp</span>
+  </a>
+</nav>
+
+<style>
+  .sticky {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 50;
+    display: flex;
+    background: rgba(33, 27, 22, 0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid var(--linha-suave);
+    box-shadow: var(--shadow-float);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .sticky__item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    height: var(--stickybar-h);
+    color: var(--creme-100);
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .sticky__item:hover {
+    text-decoration: none;
+  }
+
+  .sticky__item svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .sticky__wa {
+    color: var(--whatsapp); /* o verde fica só no ícone */
+  }
+
+  .sticky__item--ativo {
+    color: var(--dourado-400);
+  }
+
+  /* Compensa a altura da barra para o conteúdo/footer não ficarem escondidos */
+  :global(body) {
+    padding-bottom: calc(var(--stickybar-h) + env(safe-area-inset-bottom));
+  }
+
+  @media (min-width: 1024px) {
+    .sticky {
+      display: none;
+    }
+
+    :global(body) {
+      padding-bottom: 0;
+    }
+  }
+</style>

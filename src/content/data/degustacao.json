@@ -1,0 +1,64 @@
+{
+  "preco": "R$ 60",
+  "fatos": [
+    { "icone": "torneira", "texto": "6 estilos engatados por loja" },
+    { "icone": "escolha", "texto": "Você escolhe 4" },
+    { "icone": "taca", "texto": "4 taças de 200 ml" },
+    { "icone": "preco", "texto": "R$ 60" },
+    { "icone": "brinde", "texto": "Pode dividir no casal" },
+    { "icone": "pino", "texto": "Disponível nas duas lojas" }
+  ],
+  "notaRegua": "Por ordem de chegada, conforme o funcionamento das lojas. Os estilos variam conforme o dia.",
+  "passos": [
+    { "titulo": "Chegue em uma das lojas", "texto": "Sem reserva: a régua é por ordem de chegada." },
+    { "titulo": "Veja os 6 estilos do dia", "texto": "Cada loja mantém 6 chopps engatados, que giram conforme a disponibilidade." },
+    { "titulo": "Escolha os seus 4", "texto": "Sozinho ou com a ajuda da equipe." },
+    { "titulo": "Receba a régua", "texto": "4 taças de 200 ml, servidas juntas, prontas para comparar." }
+  ],
+  "atendimentoConsultivo": {
+    "titulo": "Não sabe por onde começar?",
+    "texto": "Nossa equipe apresenta os 6 estilos do dia, entende seu gosto e monta a régua com você. Para quem já ama cerveja especial — e para quem quer descobrir seu primeiro estilo favorito."
+  },
+  "smartTap": {
+    "titulo": "Experiência complementar",
+    "texto": "Conheça também a Smart Tap, uma experiência complementar do universo Arsenal para quem quer praticidade, tecnologia e bebida na medida certa em pontos selecionados de Monte Verde."
+  },
+  "faq": [
+    {
+      "id": "deg-reserva",
+      "pergunta": "Precisa reservar?",
+      "resposta": "Não — a régua é por ordem de chegada, conforme o funcionamento das lojas.",
+      "pendente": false
+    },
+    {
+      "id": "deg-dividir",
+      "pergunta": "Posso dividir com alguém?",
+      "resposta": "Sim, a régua pode ser dividida no casal. São 4 taças de 200 ml — dá para provar junto e comparar.",
+      "pendente": false
+    },
+    {
+      "id": "deg-estilos",
+      "pergunta": "Quais estilos vou encontrar?",
+      "resposta": "Cada loja mantém 6 estilos engatados, que variam conforme o dia. A surpresa faz parte da experiência.",
+      "pendente": false
+    },
+    {
+      "id": "deg-menos-de-4",
+      "pergunta": "Posso escolher menos de 4?",
+      "resposta": "A régua completa vem com 4 taças. Se preferir apenas um estilo, consulte as opções disponíveis no balcão da unidade.",
+      "pendente": false
+    },
+    {
+      "id": "deg-tempo",
+      "pergunta": "Quanto tempo dura a degustação?",
+      "resposta": "Não existe tempo fixo. A ideia é provar com calma, comparar os estilos e aproveitar a experiência no seu ritmo.",
+      "pendente": false
+    },
+    {
+      "id": "deg-criancas",
+      "pergunta": "Crianças podem acompanhar?",
+      "resposta": "Crianças podem acompanhar responsáveis nas áreas permitidas, mas a venda e o consumo de bebidas alcoólicas são exclusivos para maiores de 18 anos.",
+      "pendente": false
+    }
+  ]
+}

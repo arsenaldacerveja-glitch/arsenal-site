@@ -1,0 +1,105 @@
+---
+/**
+ * Accordion de perguntas — <details>/<summary> nativos (funciona sem JS,
+ * teclado de graça). Itens com pendente: true NÃO são renderizados.
+ * Estilo da direção visual: linhas, não caixas; chevron dourado.
+ */
+interface Item {
+  id: string;
+  pergunta: string;
+  resposta: string;
+  link?: { label: string; href: string };
+  pendente?: boolean;
+}
+
+interface Props {
+  itens: Item[];
+  class?: string;
+}
+
+const { itens, class: className } = Astro.props;
+const visiveis = itens.filter((i) => !i.pendente);
+---
+
+<div class:list={['faq', className]}>
+  {
+    visiveis.map((item) => (
+      <details class="faq__item" id={item.id}>
+        <summary>
+          <span>{item.pergunta}</span>
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="m6 9 6 6 6-6" />
+          </svg>
+        </summary>
+        <div class="faq__resposta">
+          <p>
+            {item.resposta}
+            {item.link && (
+              <>
+                {' '}
+                <a href={item.link.href}>{item.link.label}</a>
+              </>
+            )}
+          </p>
+        </div>
+      </details>
+    ))
+  }
+</div>
+
+<style>
+  .faq {
+    display: grid;
+  }
+
+  .faq__item {
+    border-bottom: 1px solid var(--linha-suave);
+  }
+
+  .faq__item summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-4);
+    min-height: 56px;
+    padding-block: var(--sp-4);
+    font-family: var(--font-text);
+    font-size: var(--fs-h3);
+    font-weight: 600;
+    color: var(--creme-100);
+  }
+
+  .faq__item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq__item summary svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    color: var(--dourado-400);
+    transition: transform var(--dur-base) var(--ease-out);
+  }
+
+  .faq__item[open] summary svg {
+    transform: rotate(180deg);
+  }
+
+  .faq__resposta {
+    padding-bottom: var(--sp-5);
+  }
+
+  .faq__resposta p {
+    color: var(--creme-80);
+  }
+</style>

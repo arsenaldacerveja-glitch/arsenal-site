@@ -1,0 +1,64 @@
+---
+/**
+ * Cabeçalho padrão de seção — uma mensagem por bloco (adendo UX).
+ * Alinhado à esquerda por padrão; centralizado apenas em hero e CTA final.
+ */
+interface Props {
+  titulo: string;
+  subtitulo?: string;
+  /** Rótulo curto acima do título (uso raro). */
+  eyebrow?: string;
+  centro?: boolean;
+  /** Nível do heading (h1 apenas no topo de página). */
+  tag?: 'h1' | 'h2' | 'h3';
+  class?: string;
+}
+
+const { titulo, subtitulo, eyebrow, centro = false, tag = 'h2', class: className } = Astro.props;
+const Tag = tag;
+---
+
+<div class:list={['sec-head', { 'sec-head--centro': centro }, className]}>
+  {eyebrow && <p class="sec-head__eyebrow">{eyebrow}</p>}
+  <Tag class="sec-head__titulo">{titulo}</Tag>
+  {subtitulo && <p class="sec-head__sub">{subtitulo}</p>}
+</div>
+
+<style>
+  .sec-head {
+    display: grid;
+    gap: var(--sp-3);
+    margin-bottom: var(--sp-6);
+    max-width: 46rem;
+  }
+
+  .sec-head--centro {
+    text-align: center;
+    margin-inline: auto;
+  }
+
+  .sec-head--centro .sec-head__sub {
+    margin-inline: auto;
+  }
+
+  .sec-head__eyebrow {
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--dourado-400);
+  }
+
+  .sec-head__titulo {
+    font-size: var(--fs-h2);
+  }
+
+  :global(h1).sec-head__titulo {
+    font-size: var(--fs-h1);
+  }
+
+  .sec-head__sub {
+    color: var(--creme-70);
+    max-width: 56ch;
+  }
+</style>

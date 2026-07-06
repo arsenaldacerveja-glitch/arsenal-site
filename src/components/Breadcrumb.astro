@@ -1,0 +1,38 @@
+---
+/** Trilha de navegação das páginas internas. */
+interface Props {
+  itens: { label: string; href?: string }[];
+}
+
+const { itens } = Astro.props;
+---
+
+<nav class="bc" aria-label="Você está em">
+  {
+    itens.map((item, i) => (
+      <>
+        {i > 0 && <span aria-hidden="true">→</span>}
+        {item.href ? <a href={item.href}>{item.label}</a> : <span aria-current="page">{item.label}</span>}
+      </>
+    ))
+  }
+</nav>
+
+<style>
+  .bc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-2);
+    font-size: var(--fs-sm);
+    color: var(--creme-55);
+    margin-bottom: var(--sp-5);
+  }
+
+  .bc a {
+    color: var(--creme-55);
+  }
+
+  .bc a:hover {
+    color: var(--creme-100);
+  }
+</style>

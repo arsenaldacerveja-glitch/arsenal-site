@@ -1,0 +1,299 @@
+---
+/**
+ * /cervejas-e-kits — curadoria, não catálogo. Sem preço além do Kit Arsenal,
+ * sem carrinho, aviso de venda física antes de qualquer produto.
+ * Copy: textos-finais.md seção 6 (aprovada).
+ */
+import Base from '../layouts/Base.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import NoticeBar from '../components/NoticeBar.astro';
+import Media from '../components/Media.astro';
+import UnitCard from '../components/UnitCard.astro';
+import CTAButton from '../components/CTAButton.astro';
+import WhatsAppLink from '../components/WhatsAppLink.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import { kits } from '../content';
+
+/** Guia de estilos como accordion educativo. */
+const estilosAccordion = kits.estilos.map((e) => ({
+  id: `estilo-${e.nome.toLowerCase().replace(/[^a-z]+/g, '-')}`,
+  pergunta: e.nome,
+  resposta: e.texto,
+}));
+---
+
+<Base
+  title="Kits de Cerveja, Presentes e +250 Rótulos em Monte Verde | Arsenal da Cerveja"
+  description="Kit Arsenal a partir de R$ 39,90, presentes e mais de 250 rótulos com forte curadoria de cervejas mineiras. Venda somente nas lojas físicas em Monte Verde. Confira."
+  path="/cervejas-e-kits"
+>
+  <!-- Hero + aviso âncora -->
+  <section class="topo">
+    <div class="container">
+      <Breadcrumb itens={[{ label: 'Home', href: '/' }, { label: 'Kits e Cervejas' }]} />
+      <SectionHeader
+        tag="h1"
+        titulo="Kits, presentes e mais de 250 rótulos no universo Arsenal"
+        subtitulo="Curadoria de cervejas especiais — com orgulho das mineiras."
+      />
+      <NoticeBar
+        texto={kits.aviso}
+        linkTexto="chame no WhatsApp"
+        contexto="produto"
+        origem="pagina_kits"
+      />
+    </div>
+  </section>
+
+  <!-- Kit Arsenal (destaque com filete dourado) -->
+  <section class="section section--verde kit">
+    <div class="container kit__grid">
+      <div>
+        <SectionHeader titulo={kits.kitArsenal.titulo} />
+        <p class="kit__texto">{kits.kitArsenal.texto}</p>
+        <ul class="kit__fatos" role="list">
+          {kits.kitArsenal.fatos.map((f) => <li>{f}</li>)}
+        </ul>
+        <WhatsAppLink contexto="kitArsenal" origem="kit_arsenal">
+          Consultar disponibilidade no WhatsApp
+        </WhatsAppLink>
+      </div>
+      <Media id="foto-kit-presente-01" class="kit__foto" />
+    </div>
+  </section>
+
+  <!-- Kits por ocasião -->
+  <section class="section secao-compacta">
+    <div class="container">
+      <SectionHeader titulo="Para presentear (ou se presentear)" />
+      <div class="ocasioes">
+        {
+          kits.ocasioes.map((o) => (
+            <article class="ocasioes__card">
+              <h3>{o.titulo}</h3>
+              <p>{o.texto}</p>
+              <p class="ocasioes__micro">{kits.microcopyOcasiao}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Cervejas mineiras -->
+  <section class="section secao-compacta">
+    <div class="container mineiras">
+      <div>
+        <SectionHeader titulo={kits.mineiras.titulo} />
+        <p class="mineiras__texto">{kits.mineiras.texto}</p>
+      </div>
+      <Media id="foto-prateleira-mineiras" class="mineiras__foto" />
+    </div>
+  </section>
+
+  <!-- Chopps da casa -->
+  <section class="section section--verde secao-compacta">
+    <div class="container chopps">
+      <div>
+        <SectionHeader titulo={kits.chopps.titulo} />
+        <p class="chopps__texto">{kits.chopps.texto}</p>
+        <CTAButton href="/degustacao" variante="primario" dataTrack="click_degustacao" dataOrigem="pagina_kits">
+          Fazer degustação
+        </CTAButton>
+      </div>
+      <Media id="foto-torneiras-chopp" class="chopps__foto" />
+    </div>
+  </section>
+
+  <!-- Guia rápido de estilos -->
+  <section class="section secao-compacta">
+    <div class="container estilos">
+      <SectionHeader titulo="Ainda não sabe seu estilo? Comece por aqui" />
+      <FAQAccordion itens={estilosAccordion} />
+      <p class="estilos__micro">{kits.microcopyEstilos}</p>
+    </div>
+  </section>
+
+  <!-- Onde comprar -->
+  <section class="section secao-compacta">
+    <div class="container">
+      <SectionHeader titulo="Onde encontrar" />
+      <div class="onde__grid">
+        <UnitCard unidade="vila-germanica" origem="pagina_kits" />
+        <UnitCard unidade="galeria-suica" origem="pagina_kits" />
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <section class="section section--verde final">
+    <div class="container final__in">
+      <SectionHeader titulo="Quer confirmar se um rótulo ou kit está disponível hoje?" centro />
+      <div class="final__ctas">
+        <WhatsAppLink contexto="produto" origem="pagina_kits_cta" bloco />
+        <CTAButton href="/unidades" variante="secundario" bloco dataTrack="click_unidades" dataOrigem="pagina_kits_cta">
+          Ver unidades
+        </CTAButton>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .topo {
+    padding-block: var(--sp-6) var(--sp-7);
+  }
+
+  .topo :global(.notice) {
+    max-width: 720px;
+  }
+
+  .kit__grid {
+    display: grid;
+    gap: var(--sp-6);
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .kit__grid {
+      grid-template-columns: 7fr 5fr;
+      gap: var(--sp-8);
+    }
+  }
+
+  .kit__texto {
+    color: var(--creme-80);
+    margin-bottom: var(--sp-5);
+  }
+
+  .kit__fatos {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-2);
+    margin-bottom: var(--sp-5);
+  }
+
+  .kit__fatos li {
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    color: var(--dourado-400);
+    border: 1px solid rgba(176, 141, 62, 0.45);
+    border-radius: var(--radius-pill);
+    padding: 6px 14px;
+  }
+
+  .kit__foto {
+    max-width: 420px;
+  }
+
+  .secao-compacta {
+    padding-block: var(--sp-7);
+  }
+
+  .ocasioes {
+    display: grid;
+    gap: var(--sp-4);
+  }
+
+  @media (min-width: 768px) {
+    .ocasioes {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .ocasioes__card {
+    background: var(--preto-800);
+    border: var(--border-soft);
+    border-radius: var(--radius-lg);
+    padding: var(--sp-5);
+    display: grid;
+    gap: var(--sp-2);
+    align-content: start;
+  }
+
+  .ocasioes__card h3 {
+    color: var(--branco-50);
+  }
+
+  .ocasioes__card p {
+    font-size: var(--fs-sm);
+    color: var(--creme-70);
+  }
+
+  .ocasioes__micro {
+    color: var(--creme-55);
+    font-style: italic;
+  }
+
+  .mineiras,
+  .chopps {
+    display: grid;
+    gap: var(--sp-6);
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .mineiras,
+    .chopps {
+      grid-template-columns: 7fr 5fr;
+    }
+  }
+
+  .mineiras__texto,
+  .chopps__texto {
+    color: var(--creme-80);
+  }
+
+  .chopps__texto {
+    margin-bottom: var(--sp-5);
+  }
+
+  .mineiras__foto,
+  .chopps__foto {
+    max-width: 480px;
+  }
+
+  .estilos {
+    max-width: 760px;
+  }
+
+  .estilos__micro {
+    margin-top: var(--sp-4);
+    font-size: var(--fs-sm);
+    color: var(--creme-55);
+  }
+
+  .onde__grid {
+    display: grid;
+    gap: var(--sp-5);
+  }
+
+  @media (min-width: 768px) {
+    .onde__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .final__in {
+    display: grid;
+    justify-items: center;
+  }
+
+  .final__ctas {
+    display: grid;
+    gap: var(--sp-3);
+    width: 100%;
+    max-width: 400px;
+  }
+
+  @media (min-width: 1024px) {
+    .final__ctas {
+      grid-template-columns: auto auto;
+      max-width: none;
+      justify-content: center;
+    }
+  }
+</style>

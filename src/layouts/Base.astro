@@ -1,0 +1,102 @@
+---
+/**
+ * Layout base de todas as páginas.
+ * Head completo (SEO, OG, canonical, JSON-LD Organization), fontes, estilos,
+ * componentes globais (Header, Footer, StickyBar) e dados de status embutidos
+ * para hidratação client-side (status-dom.ts).
+ * GA4 (gtag adiado) entra na fase de tracking — placeholder marcado abaixo.
+ */
+import '@fontsource-variable/fraunces';
+import '@fontsource-variable/source-sans-3';
+import '../styles/tokens.css';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import StickyBar from '../components/StickyBar.astro';
+import { site, unidades } from '../content';
+
+/** Dados mínimos para o cálculo de status no navegador. */
+const dadosStatus = unidades.map((u) => ({
+  id: u.id,
+  nome: u.nome,
+  horarios: u.horarios,
+  override: u.override,
+}));
+
+/** GA4 só entra no HTML com ID válido — vazio ou PENDENTE = nenhum tracking. */
+const ga4Valido = /^G-[A-Z0-9]+$/i.test(site.ga4Id) && !site.ga4Id.toUpperCase().includes('PENDENTE');
+
+interface Props {
+  title: string;
+  description: string;
+  /** Caminho da página, ex.: "/degustacao". Usado no canonical e no OG. */
+  path: string;
+  /** Caminho da OG image em /public, ex.: "/og/og-home.jpg". */
+  ogImage?: string;
+  noindex?: boolean;
+}
+
+const { title, description, path, ogImage = '/og/og-home.jpg', noindex = false } = Astro.props;
+
+const canonical = new URL(path, site.dominio).href;
+const ogImageUrl = new URL(ogImage, site.dominio).href;
+
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: site.nome,
+  url: site.dominio,
+  foundingDate: String(site.fundacao),
+  description: site.descricaoSEO,
+};
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.nome} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:locale" content="pt_BR" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <meta name="theme-color" content="#171310" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(organizationJsonLd)} />
+
+    {ga4Valido && <meta name="ga4-id" content={site.ga4Id} />}
+
+    <slot name="head" />
+  </head>
+  <body>
+    <a href="#conteudo" class="skip-link">Pular para o conteúdo</a>
+
+    <Header />
+
+    <main id="conteudo">
+      <slot />
+    </main>
+
+    <Footer />
+    <StickyBar />
+
+    <script type="application/json" id="dados-status" set:html={JSON.stringify(dadosStatus)} />
+    <script>
+      import '../scripts/status-dom';
+      import '../scripts/ui';
+      import '../scripts/track';
+    </script>
+  </body>
+</html>

@@ -1,0 +1,226 @@
+---
+/**
+ * Footer global — 4 colunas (marca, 2 unidades, navegação/contato),
+ * aviso legal discreto e linha SEO natural.
+ * Os resumos de horário são gerados NO BUILD a partir de unidades.json —
+ * é o fallback estático que existe mesmo sem JS.
+ */
+import WhatsAppLink from './WhatsAppLink.astro';
+import { site, unidades, mapsHref } from '../content';
+import { formatHora, type Horarios, type DiaSemana } from '../scripts/status';
+
+const ORDEM: DiaSemana[] = ['seg', 'ter', 'qua', 'qui', 'sex', 'sab', 'dom'];
+const LABEL: Record<DiaSemana, string> = {
+  seg: 'Seg',
+  ter: 'Ter',
+  qua: 'Qua',
+  qui: 'Qui',
+  sex: 'Sex',
+  sab: 'Sáb',
+  dom: 'Dom',
+};
+
+/** Agrupa dias com o mesmo horário: "Qua–Qui e Dom: 10h–19h · Seg–Ter: fechado" */
+function resumoHorarios(h: Horarios): string {
+  const chave = (d: DiaSemana) => {
+    const i = h[d];
+    return i ? `${formatHora(i.abre)}–${formatHora(i.fecha)}` : 'fechado';
+  };
+
+  // faixas de dias consecutivos com a mesma chave
+  const faixas: { dias: DiaSemana[]; k: string }[] = [];
+  for (const d of ORDEM) {
+    const k = chave(d);
+    const ultima = faixas[faixas.length - 1];
+    if (ultima && ultima.k === k && ORDEM.indexOf(d) === ORDEM.indexOf(ultima.dias[ultima.dias.length - 1]) + 1) {
+      ultima.dias.push(d);
+    } else {
+      faixas.push({ dias: [d], k });
+    }
+  }
+
+  // junta faixas não consecutivas com a mesma chave ("Qua–Qui e Dom")
+  const grupos = new Map<string, string[]>();
+  for (const f of faixas) {
+    const rotulo =
+      f.dias.length === 1
+        ? LABEL[f.dias[0]]
+        : `${LABEL[f.dias[0]]}–${LABEL[f.dias[f.dias.length - 1]]}`;
+    grupos.set(f.k, [...(grupos.get(f.k) ?? []), rotulo]);
+  }
+
+  // abertos primeiro (na ordem de aparição), fechado por último
+  const partes: string[] = [];
+  for (const [k, rotulos] of grupos) {
+    if (k === 'fechado') continue;
+    partes.push(`${rotulos.join(' e ')}: ${k}`);
+  }
+  const fechados = grupos.get('fechado');
+  if (fechados) partes.push(`${fechados.join(' e ')}: fechado`);
+
+  return partes.join(' · ');
+}
+
+const anoAtual = new Date().getFullYear();
+const temInstagram = !site.instagram.startsWith('PENDENTE');
+---
+
+<footer class="ftr">
+  <div class="container">
+    <div class="ftr__grid">
+      <div class="ftr__col ftr__marca">
+        <p class="ftr__logo">Arsenal <span>da Cerveja</span></p>
+        <p class="ftr__frase">{site.fraseFooter}</p>
+      </div>
+
+      {
+        unidades.map((u) => (
+          <div class="ftr__col">
+            <p class="ftr__titulo">{u.nome}</p>
+            <a href={mapsHref(u)} target="_blank" rel="noopener" data-track="click_maps" data-track-origem="footer" data-track-unidade={u.id}>
+              {u.endereco}
+            </a>
+            <p class="ftr__horarios">{resumoHorarios(u.horarios)}</p>
+            <a class="ftr__ver" href={`/unidades/${u.id}`}>Ver unidade →</a>
+          </div>
+        ))
+      }
+
+      <div class="ftr__col">
+        <p class="ftr__titulo">Navegue</p>
+        <nav class="ftr__nav" aria-label="Rodapé">
+          <a href="/degustacao">Degustação</a>
+          <a href="/unidades">Unidades</a>
+          <a href="/cervejas-e-kits">Kits e Cervejas</a>
+          <a href="/perguntas-frequentes">FAQ</a>
+        </nav>
+        <div class="ftr__contato">
+          <WhatsAppLink contexto="geral" origem="footer" variante="texto">WhatsApp</WhatsAppLink>
+          {temInstagram && (
+            <a href={site.instagram} target="_blank" rel="noopener" data-track="click_instagram" data-track-origem="footer">Instagram</a>
+          )}
+        </div>
+      </div>
+    </div>
+
+    <div class="ftr__base">
+      <p class="ftr__seo">{site.linhaSEOFooter}</p>
+      <p class="ftr__legal">{site.avisoLegal}</p>
+      <p class="ftr__copy">© {anoAtual} {site.nome}</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .ftr {
+    background: var(--verde-900);
+    border-top: 1px solid var(--dourado-500);
+    padding-block: var(--sp-8) var(--sp-6);
+    margin-top: var(--sp-8);
+  }
+
+  .ftr__grid {
+    display: grid;
+    gap: var(--sp-6);
+    margin-bottom: var(--sp-7);
+  }
+
+  @media (min-width: 768px) {
+    .ftr__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .ftr__grid {
+      grid-template-columns: 1.2fr 1fr 1fr 0.8fr;
+    }
+  }
+
+  .ftr__col {
+    display: grid;
+    gap: var(--sp-3);
+    align-content: start;
+    font-size: var(--fs-sm);
+  }
+
+  .ftr__col > a,
+  .ftr__col > p {
+    color: var(--creme-80);
+  }
+
+  .ftr__logo {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--branco-50);
+  }
+
+  .ftr__logo span {
+    color: var(--dourado-400);
+  }
+
+  .ftr__frase {
+    color: var(--creme-70);
+  }
+
+  .ftr__titulo {
+    font-weight: 600;
+    color: var(--branco-50);
+    font-size: var(--fs-body);
+  }
+
+  .ftr__horarios {
+    line-height: 1.7;
+  }
+
+  .ftr__ver {
+    color: var(--dourado-400);
+  }
+
+  .ftr__nav {
+    display: grid;
+    gap: var(--sp-2);
+  }
+
+  .ftr__nav a {
+    color: var(--creme-80);
+  }
+
+  .ftr__nav a:hover,
+  .ftr__col > a:hover {
+    color: var(--branco-50);
+  }
+
+  .ftr__contato {
+    display: grid;
+    gap: var(--sp-2);
+    justify-items: start;
+  }
+
+  .ftr__contato a {
+    color: var(--creme-80);
+  }
+
+  .ftr__base {
+    border-top: 1px solid var(--verde-700);
+    padding-top: var(--sp-5);
+    display: grid;
+    gap: var(--sp-2);
+  }
+
+  .ftr__seo {
+    font-size: var(--fs-sm);
+    color: var(--creme-55);
+  }
+
+  .ftr__legal {
+    font-size: 13px;
+    color: var(--creme-55);
+  }
+
+  .ftr__copy {
+    font-size: 13px;
+    color: var(--creme-40);
+  }
+</style>

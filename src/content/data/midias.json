@@ -1,0 +1,252 @@
+[
+  {
+    "id": "hero-regua-fallback",
+    "arquivo": "hero-regua-fallback.webp",
+    "tipo": "foto",
+    "proporcao": "16:9",
+    "descricao": "Régua com 4 taças, luz quente, fundo escuro de madeira — fallback estático do hero (3D fica para a fase 2)",
+    "alt": "Régua de degustação do Arsenal da Cerveja com quatro taças de chopp de estilos diferentes sobre balcão de madeira",
+    "usos": ["home/hero"],
+    "existe": false
+  },
+  {
+    "id": "foto-regua-completa",
+    "arquivo": "foto-regua-completa.jpg",
+    "tipo": "foto",
+    "proporcao": "4:5",
+    "descricao": "Régua com 4 taças de cores/estilos diferentes, luz quente, madeira",
+    "alt": "Quatro taças de 200 ml com chopps de cores diferentes na régua de degustação",
+    "usos": ["home/regua", "degustacao/hero-fallback"],
+    "existe": false
+  },
+  {
+    "id": "video-regua-servindo",
+    "arquivo": "video-regua-servindo.mp4",
+    "tipo": "video",
+    "proporcao": "9:16",
+    "descricao": "Vídeo curto (10–15 s, sem áudio) do chopp sendo tirado e a régua montada",
+    "alt": "Chopp sendo servido na torneira e régua de degustação sendo montada",
+    "usos": ["degustacao/hero"],
+    "existe": false
+  },
+  {
+    "id": "foto-regua-casal",
+    "arquivo": "foto-regua-casal.jpg",
+    "tipo": "foto",
+    "proporcao": "3:2",
+    "descricao": "Casal dividindo a régua, clima acolhedor",
+    "alt": "Casal brindando com taças da régua de degustação",
+    "usos": ["degustacao/dividir"],
+    "existe": false
+  },
+  {
+    "id": "foto-torneiras-chopp",
+    "arquivo": "foto-torneiras-chopp.jpg",
+    "tipo": "foto",
+    "proporcao": "3:2",
+    "descricao": "As 6 torneiras engatadas, close com identificação dos estilos",
+    "alt": "Seis torneiras de chopp engatadas no balcão do Arsenal da Cerveja",
+    "usos": ["degustacao", "cervejas-e-kits/chopps", "home/kits-card-3"],
+    "existe": false
+  },
+  {
+    "id": "foto-smart-tap",
+    "arquivo": "foto-smart-tap.jpg",
+    "tipo": "foto",
+    "proporcao": "4:5",
+    "descricao": "Cliente usando a Smart Tap",
+    "alt": "Cliente servindo o próprio chopp na Smart Tap",
+    "usos": ["home/experiencias", "degustacao/smart-tap"],
+    "existe": false
+  },
+  {
+    "id": "fachada-galeria-suica",
+    "arquivo": "fachada-galeria-suica.jpg",
+    "tipo": "foto",
+    "proporcao": "16:9",
+    "descricao": "Fachada da loja 4, Av. Monte Verde 858, ao entardecer com luz acesa",
+    "alt": "Fachada do Arsenal da Cerveja na Galeria Suíça, em Monte Verde",
+    "usos": ["unidades/galeria-suica/hero", "home/unidades", "unidades/hub"],
+    "existe": false
+  },
+  {
+    "id": "fachada-vila-germanica",
+    "arquivo": "fachada-vila-germanica.jpg",
+    "tipo": "foto",
+    "proporcao": "16:9",
+    "descricao": "Fachada da Av. Monte Verde 1057, ao entardecer com luz acesa",
+    "alt": "Fachada do Arsenal da Cerveja na Vila Germânica, em Monte Verde",
+    "usos": ["unidades/vila-germanica/hero", "home/unidades", "unidades/hub"],
+    "existe": false
+  },
+  {
+    "id": "interior-galeria-suica-01",
+    "arquivo": "interior-galeria-suica-01.jpg",
+    "tipo": "foto",
+    "proporcao": "3:2",
+    "descricao": "Ambiente: balcão, mesas, torneiras, clima de degustação",
+    "alt": "Interior da unidade Galeria Suíça com balcão e torneiras de chopp",
+    "usos": ["unidades/galeria-suica/galeria"],
+    "existe": false
+  },
+  {
+    "id": "interior-galeria-suica-02",
+    "arquivo": "interior-galeria-suica-02.jpg",
+    "tipo": "foto",
+    "proporcao": "3:2",
+    "descricao": "Ambiente: mesas e clima de degustação, ângulo alternativo",
+    "alt": "Mesas e ambiente acolhedor da unidade Galeria Suíça",
+    "usos": ["unidades/galeria-suica/galeria"],
+    "existe": false
+  },
+  {
+    "id": "interior-vila-germanica-01",
+    "arquivo": "interior-vila-germanica-01.jpg",
+    "tipo": "foto",
+    "proporcao": "3:2",
+    "descricao": "Ambiente: prateleiras de rótulos, área de kits, geladeiras",
+    "alt": "Prateleiras de cervejas especiais na unidade Vila Germânica",
+    "usos": ["unidades/vila-germanica/galeria"],
+    "existe": false
+  },
+  {
+    "id": "interior-vila-germanica-02",
+    "arquivo": "interior-vila-germanica-02.jpg",
+    "tipo": "foto",
+    "proporcao": "3:2",
+    "descricao": "Área de kits e presentes, ângulo alternativo",
+    "alt": "Área de kits e presentes da unidade Vila Germânica",
+    "usos": ["unidades/vila-germanica/galeria"],
+    "existe": false
+  },
+  {
+    "id": "foto-atendimento-consultivo",
+    "arquivo": "foto-atendimento-consultivo.jpg",
+    "tipo": "foto",
+    "proporcao": "3:2",
+    "descricao": "Atendente apresentando estilos a um cliente no balcão",
+    "alt": "Atendente do Arsenal apresentando estilos de cerveja a um cliente",
+    "usos": ["degustacao/consultivo", "home/experiencias"],
+    "existe": false
+  },
+  {
+    "id": "foto-kit-presente-01",
+    "arquivo": "foto-kit-presente-01.jpg",
+    "tipo": "foto",
+    "proporcao": "1:1",
+    "descricao": "Kit montado com embalagem de presente",
+    "alt": "Kit Arsenal montado com garrafas de cerveja especial em embalagem de presente",
+    "usos": ["cervejas-e-kits/kit-arsenal", "home/kits-card-1"],
+    "existe": false
+  },
+  {
+    "id": "foto-kit-presente-02",
+    "arquivo": "foto-kit-presente-02.jpg",
+    "tipo": "foto",
+    "proporcao": "1:1",
+    "descricao": "Segunda variação de kit (ocasião diferente)",
+    "alt": "Variação do kit de cervejas especiais para presente",
+    "usos": ["cervejas-e-kits/ocasioes"],
+    "existe": false
+  },
+  {
+    "id": "foto-prateleira-mineiras",
+    "arquivo": "foto-prateleira-mineiras.jpg",
+    "tipo": "foto",
+    "proporcao": "3:2",
+    "descricao": "Prateleira com destaque para rótulos mineiros",
+    "alt": "Prateleira com cervejas de cervejarias mineiras",
+    "usos": ["cervejas-e-kits/mineiras", "home/kits-card-2"],
+    "existe": false
+  },
+  {
+    "id": "foto-rotulos-especiais",
+    "arquivo": "foto-rotulos-especiais.jpg",
+    "tipo": "foto",
+    "proporcao": "1:1",
+    "descricao": "Composição de garrafas premium, fundo escuro",
+    "alt": "Garrafas de cervejas especiais em composição sobre fundo escuro",
+    "usos": ["cervejas-e-kits/rotulos", "home/kits-card-4"],
+    "existe": false
+  },
+  {
+    "id": "foto-monte-verde-avenida",
+    "arquivo": "foto-monte-verde-avenida.jpg",
+    "tipo": "foto",
+    "proporcao": "21:9",
+    "descricao": "Avenida principal de Monte Verde, clima de montanha (névoa/friozinho)",
+    "alt": "Avenida principal de Monte Verde com clima de montanha",
+    "usos": ["home/monte-verde"],
+    "existe": false
+  },
+  {
+    "id": "foto-equipe",
+    "arquivo": "foto-equipe.jpg",
+    "tipo": "foto",
+    "proporcao": "3:2",
+    "descricao": "Equipe nas lojas, tom acolhedor",
+    "alt": "Equipe do Arsenal da Cerveja nas lojas em Monte Verde",
+    "usos": ["home/sobre"],
+    "existe": false
+  },
+  {
+    "id": "mapa-estatico-unidades",
+    "arquivo": "mapa-estatico-unidades.png",
+    "tipo": "mapa",
+    "proporcao": "4:3",
+    "descricao": "Mapa com os 2 pins nomeados (Galeria Suíça 858 / Vila Germânica 1057)",
+    "alt": "Mapa da avenida principal de Monte Verde com as duas unidades do Arsenal marcadas",
+    "usos": ["home/monte-verde", "unidades/hub"],
+    "existe": false
+  },
+  {
+    "id": "mapa-estatico-galeria-suica",
+    "arquivo": "mapa-estatico-galeria-suica.png",
+    "tipo": "mapa",
+    "proporcao": "4:3",
+    "descricao": "Mapa com pin da unidade Galeria Suíça",
+    "alt": "Mapa com a localização da unidade Galeria Suíça",
+    "usos": ["unidades/galeria-suica"],
+    "existe": false
+  },
+  {
+    "id": "mapa-estatico-vila-germanica",
+    "arquivo": "mapa-estatico-vila-germanica.png",
+    "tipo": "mapa",
+    "proporcao": "4:3",
+    "descricao": "Mapa com pin da unidade Vila Germânica",
+    "alt": "Mapa com a localização da unidade Vila Germânica",
+    "usos": ["unidades/vila-germanica"],
+    "existe": false
+  },
+  {
+    "id": "og-home",
+    "arquivo": "og-home.jpg",
+    "tipo": "og",
+    "proporcao": "livre",
+    "descricao": "Imagem de compartilhamento 1200×630 com headline sobre foto escura",
+    "alt": "Arsenal da Cerveja — degustação, kits e cervejas especiais em Monte Verde",
+    "usos": ["meta/og"],
+    "existe": false
+  },
+  {
+    "id": "logo-horizontal",
+    "arquivo": "logo-horizontal.svg",
+    "tipo": "logo",
+    "proporcao": "livre",
+    "descricao": "Logo horizontal para header (versão clara para fundo escuro)",
+    "alt": "Arsenal da Cerveja",
+    "usos": ["header"],
+    "existe": false
+  },
+  {
+    "id": "logo-simbolo",
+    "arquivo": "logo-simbolo.svg",
+    "tipo": "logo",
+    "proporcao": "1:1",
+    "descricao": "Símbolo do logo para footer e favicon",
+    "alt": "Símbolo do Arsenal da Cerveja",
+    "usos": ["footer", "favicon"],
+    "existe": false
+  }
+]

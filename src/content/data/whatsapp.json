@@ -1,0 +1,13 @@
+{
+  "numero": "5535000000000",
+  "numeroPendente": true,
+  "mensagens": {
+    "geral": "Oi! Vim pelo site do Arsenal da Cerveja e tenho uma dúvida.",
+    "degustacao": "Oi! Vim pelo site e quero saber sobre a régua de degustação hoje.",
+    "kitArsenal": "Oi! Vim pelo site e quero consultar a disponibilidade do Kit Arsenal.",
+    "produto": "Oi! Vim pelo site e quero consultar a disponibilidade de um produto.",
+    "galeriaSuica": "Oi! Estou indo à unidade Galeria Suíça e queria confirmar uma informação.",
+    "vilaGermanica": "Oi! Estou indo à unidade Vila Germânica e queria confirmar uma informação.",
+    "faq": "Oi! Não achei minha resposta no site. Minha dúvida é:"
+  }
+}

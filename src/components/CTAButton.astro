@@ -1,0 +1,111 @@
+---
+/**
+ * Botão de ação — variantes da direção visual.
+ * Regra vinculante: máximo 1 CTA primário (dourado) por viewport.
+ *
+ * Tracking: os atributos data-track/data-track-origem ficam preparados;
+ * a captura real entra na fase de tracking (track.ts lê esses atributos).
+ */
+interface Props {
+  href: string;
+  variante?: 'primario' | 'secundario' | 'terciario';
+  /** Largura total (empilhado no mobile). */
+  bloco?: boolean;
+  /** Nome do evento, ex.: "click_degustacao". */
+  dataTrack?: string;
+  /** Origem do clique, ex.: "hero", "home_regua". */
+  dataOrigem?: string;
+  class?: string;
+}
+
+const {
+  href,
+  variante = 'secundario',
+  bloco = false,
+  dataTrack,
+  dataOrigem,
+  class: className,
+} = Astro.props;
+---
+
+<a
+  href={href}
+  class:list={['cta', `cta--${variante}`, { 'cta--bloco': bloco }, className]}
+  data-track={dataTrack}
+  data-track-origem={dataOrigem}
+>
+  <slot />
+</a>
+
+<style>
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--sp-2);
+    height: var(--btn-h);
+    padding-inline: var(--sp-5);
+    border-radius: var(--radius-md);
+    font-family: var(--font-text);
+    font-size: var(--fs-label);
+    font-weight: 600;
+    line-height: 1;
+    transition:
+      background var(--dur-fast) ease,
+      border-color var(--dur-fast) ease,
+      color var(--dur-fast) ease;
+  }
+
+  .cta:hover {
+    text-decoration: none;
+  }
+
+  @media (min-width: 1024px) {
+    .cta {
+      height: var(--btn-h-desktop);
+    }
+  }
+
+  .cta--bloco {
+    width: 100%;
+  }
+
+  /* Primário: dourado claro (#D4B36A), hover escurece (#B08D3E) */
+  .cta--primario {
+    background: var(--dourado-400);
+    color: var(--preto-900);
+  }
+
+  .cta--primario:hover {
+    background: var(--dourado-500);
+  }
+
+  .cta--primario:active {
+    background: var(--dourado-500);
+    filter: brightness(0.92);
+  }
+
+  /* Secundário: contorno creme */
+  .cta--secundario {
+    background: transparent;
+    border: 1px solid var(--creme-40);
+    color: var(--creme-100);
+  }
+
+  .cta--secundario:hover {
+    border-color: var(--creme-100);
+    background: rgba(240, 230, 210, 0.06);
+  }
+
+  /* Terciário: link dourado */
+  .cta--terciario {
+    height: auto;
+    padding: 0;
+    color: var(--dourado-400);
+  }
+
+  .cta--terciario:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>
