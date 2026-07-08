@@ -104,7 +104,7 @@ const jsonLd = {
   <section class="section secao-compacta">
     <div class="container">
       <article class="smart">
-        <Media id="foto-smart-tap" proporcao="1:1" class="smart__foto" />
+        <Media id="foto-smart-tap" proporcao="1:1" compacta class="smart__foto" />
         <div class="smart__corpo">
           <h2>{degustacao.smartTap.titulo}</h2>
           <p>{degustacao.smartTap.texto}</p>
@@ -155,7 +155,8 @@ const jsonLd = {
   }
 
   .topo__midia {
-    max-width: 320px;
+    max-width: 300px;
+    margin-inline: auto;
   }
 
   @media (min-width: 1024px) {
@@ -163,6 +164,13 @@ const jsonLd = {
       grid-template-columns: 7fr 4fr;
       align-items: center;
       gap: var(--sp-8);
+    }
+
+    /* 9:16 alto demais no desktop: limita a largura (a proporção limita a altura) */
+    .topo__midia {
+      max-width: 260px;
+      margin-inline: 0;
+      justify-self: end;
     }
   }
 

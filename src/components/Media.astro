@@ -18,10 +18,12 @@ interface Props {
   proporcao?: '16:9' | '4:5' | '3:2' | '1:1' | '4:3' | '21:9' | '9:16';
   /** Desativa lazy-loading (usar APENAS na mídia LCP do topo da página). */
   prioritaria?: boolean;
+  /** Placeholder compacto (só ícone) — para containers pequenos (< ~160px). */
+  compacta?: boolean;
   class?: string;
 }
 
-const { id, proporcao, prioritaria = false, class: className } = Astro.props;
+const { id, proporcao, prioritaria = false, compacta = false, class: className } = Astro.props;
 const m = getMidia(id);
 
 const RATIO: Record<string, string> = {
@@ -49,9 +51,10 @@ const ratioClass = RATIO[prop] ?? '';
     />
   ) : (
     <div
-      class:list={['media-placeholder', ratioClass, className]}
+      class:list={['media-placeholder', { 'media-placeholder--compacta': compacta }, ratioClass, className]}
       role="img"
       aria-label={m.alt}
+      title={compacta ? `${m.arquivo} · ${prop}` : undefined}
     >
       <svg
         class="media-placeholder__icone"
@@ -81,8 +84,12 @@ const ratioClass = RATIO[prop] ?? '';
           </>
         )}
       </svg>
-      <span class="media-placeholder__arquivo">{m.arquivo} · {prop}</span>
-      <span class="media-placeholder__info">{m.descricao}</span>
+      {!compacta && (
+        <>
+          <span class="media-placeholder__arquivo">{m.arquivo} · {prop}</span>
+          <span class="media-placeholder__info">{m.descricao}</span>
+        </>
+      )}
     </div>
   )
 }
@@ -99,5 +106,16 @@ const ratioClass = RATIO[prop] ?? '';
     height: 32px;
     color: var(--creme-40);
     margin-inline: auto;
+  }
+
+  /* Compacto: só o ícone, sem texto — nada transborda em cards pequenos */
+  .media-placeholder--compacta {
+    padding: var(--sp-2);
+    gap: 0;
+  }
+
+  .media-placeholder--compacta .media-placeholder__icone {
+    width: 24px;
+    height: 24px;
   }
 </style>

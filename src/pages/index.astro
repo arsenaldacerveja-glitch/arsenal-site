@@ -110,7 +110,7 @@ const midiasKits = [
 
   <!-- 2 · STATUS DAS LOJAS — orientar a visita -->
   <section class="section status">
-    <div class="container">
+    <div class="container status__in">
       <SectionHeader titulo="Estamos abertos?" />
       <div class="status__grid">
         <UnitCard unidade="galeria-suica" variante="mini" origem="status_bar" />
@@ -205,12 +205,12 @@ const midiasKits = [
   </section>
 
   <!-- 6 · EXPERIÊNCIAS COMPLEMENTARES — explicar -->
-  <section class="section">
+  <section class="section exp">
     <div class="container">
       <SectionHeader titulo="Para ir além da régua" />
       <div class="exp__grid">
         <article class="exp__card">
-          <Media id="foto-smart-tap" proporcao="1:1" class="exp__foto" />
+          <Media id="foto-smart-tap" proporcao="1:1" compacta class="exp__foto" />
           <div class="exp__corpo">
             <h3>Smart Tap</h3>
             <p>
@@ -222,7 +222,7 @@ const midiasKits = [
           </div>
         </article>
         <article class="exp__card">
-          <Media id="foto-atendimento-consultivo" proporcao="1:1" class="exp__foto" />
+          <Media id="foto-atendimento-consultivo" proporcao="1:1" compacta class="exp__foto" />
           <div class="exp__corpo">
             <h3>Não sabe por onde começar?</h3>
             <p>
@@ -386,15 +386,30 @@ const midiasKits = [
     padding-top: 0;
   }
 
+  .status__in {
+    display: grid;
+    gap: var(--sp-4);
+  }
+
+  .status__in :global(.sec-head) {
+    margin-bottom: 0;
+  }
+
   .status__grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--sp-3);
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
+    /* Equilíbrio desktop: título à esquerda, cards ocupando a direita */
+    .status__in {
+      grid-template-columns: 4fr 8fr;
+      align-items: center;
+      gap: var(--sp-6);
+    }
+
     .status__grid {
-      max-width: 640px;
       gap: var(--sp-4);
     }
   }
@@ -515,6 +530,16 @@ const midiasKits = [
   }
 
   /* ---------- 6 · Experiências (subordinadas à régua) ---------- */
+  /* Ritmo: kits fecha mais perto e experiências abre mais perto —
+     um respiro, não um buraco */
+  .kits {
+    padding-bottom: var(--sp-7);
+  }
+
+  .exp {
+    padding-top: var(--sp-7);
+  }
+
   .exp__grid {
     display: grid;
     gap: var(--sp-4);

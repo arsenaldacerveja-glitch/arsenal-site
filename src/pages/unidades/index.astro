@@ -20,7 +20,7 @@ const comparativo: { criterio: string; gs: string; vg: string }[] = [
   { criterio: 'Atendimento consultivo', gs: '✓ destaque', vg: '✓' },
   { criterio: 'Kits e presentes', gs: '—', vg: '✓ destaque' },
   { criterio: 'Curadoria de mineiras', gs: 'seleção', vg: '✓ destaque' },
-  { criterio: 'Aberto de terça a domingo', gs: '—', vg: '✓' },
+  { criterio: 'Aberto todos os dias em julho', gs: '✓', vg: '✓' },
 ];
 ---
 
@@ -78,27 +78,29 @@ const comparativo: { criterio: string; gs: string; vg: string }[] = [
   </section>
 
   <section class="section">
-    <div class="container">
-      <SectionHeader titulo="As duas na avenida principal" />
+    <div class="container mapa__grid">
+      <div class="mapa__info">
+        <SectionHeader titulo="As duas na avenida principal" />
+        <div class="mapa__acoes">
+          {
+            unidades.map((u) => (
+              <a
+                class="mapa__link"
+                href={mapsHref(u)}
+                target="_blank"
+                rel="noopener"
+                data-track="click_maps"
+                data-track-origem="hub_mapa"
+                data-track-unidade={u.id}
+              >
+                Abrir no Google Maps — {u.nome}
+              </a>
+            ))
+          }
+        </div>
+      </div>
       <div class="mapa">
         <Media id="mapa-estatico-unidades" />
-      </div>
-      <div class="mapa__acoes">
-        {
-          unidades.map((u) => (
-            <a
-              class="mapa__link"
-              href={mapsHref(u)}
-              target="_blank"
-              rel="noopener"
-              data-track="click_maps"
-              data-track-origem="hub_mapa"
-              data-track-unidade={u.id}
-            >
-              Abrir no Google Maps — {u.nome}
-            </a>
-          ))
-        }
       </div>
     </div>
   </section>
@@ -175,15 +177,33 @@ const comparativo: { criterio: string; gs: string; vg: string }[] = [
     gap: var(--sp-3);
   }
 
+  .mapa__grid {
+    display: grid;
+    gap: var(--sp-5);
+  }
+
   .mapa {
     max-width: 640px;
-    margin-bottom: var(--sp-5);
   }
 
   .mapa__acoes {
     display: flex;
     flex-wrap: wrap;
     gap: var(--sp-3);
+  }
+
+  @media (min-width: 1024px) {
+    /* Equilíbrio desktop: título e botões à esquerda, mapa à direita */
+    .mapa__grid {
+      grid-template-columns: 5fr 7fr;
+      gap: var(--sp-7);
+      align-items: center;
+    }
+
+    .mapa__acoes {
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
 
   .mapa__link {

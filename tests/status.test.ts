@@ -1,8 +1,10 @@
 /**
  * Testes do motor de status "aberto agora".
  *
- * Os horários vêm do arquivo REAL de conteúdo (unidades.json) — se a operação
- * mudar um horário, os testes validam contra o dado publicado.
+ * Os horários aqui são FIXTURES FIXAS (não o unidades.json publicado): elas
+ * preservam para sempre os casos-limite do motor — dias fechados, fechamento
+ * às 19h, sábado até 00h — independentemente de mudanças operacionais de
+ * horário nas lojas. O JSON publicado é validado por schema (Zod) no build.
  *
  * Datas de referência (São Paulo é UTC-3, sem horário de verão desde 2019):
  *   seg 29/06/2026 · ter 30/06 · qua 01/07 · qui 02/07 · sex 03/07 · sáb 04/07 · dom 05/07
@@ -20,15 +22,30 @@ import {
   type Horarios,
   type Override,
 } from '../src/scripts/status';
-import unidadesJson from '../src/content/data/unidades.json';
 
-/* ---------------- Dados reais ---------------- */
+/* ---------------- Fixtures (cobrem os casos-limite do motor) ---------------- */
 
-const GS = unidadesJson.find((u) => u.id === 'galeria-suica')!;
-const VG = unidadesJson.find((u) => u.id === 'vila-germanica')!;
+/** "GS": fecha cedo (19h), fechada seg e ter, sábado até 00h. */
+const gsHorarios: Horarios = {
+  dom: { abre: '10:00', fecha: '19:00' },
+  seg: null,
+  ter: null,
+  qua: { abre: '10:00', fecha: '19:00' },
+  qui: { abre: '10:00', fecha: '19:00' },
+  sex: { abre: '10:00', fecha: '23:00' },
+  sab: { abre: '10:00', fecha: '24:00' },
+};
 
-const gsHorarios = GS.horarios as Horarios;
-const vgHorarios = VG.horarios as Horarios;
+/** "VG": fechada só na segunda, fecha às 22h, sábado até 00h. */
+const vgHorarios: Horarios = {
+  dom: { abre: '10:00', fecha: '22:00' },
+  seg: null,
+  ter: { abre: '10:00', fecha: '22:00' },
+  qua: { abre: '10:00', fecha: '22:00' },
+  qui: { abre: '10:00', fecha: '22:00' },
+  sex: { abre: '10:00', fecha: '23:00' },
+  sab: { abre: '10:00', fecha: '24:00' },
+};
 
 const semOverride: Override = { ativo: false, mensagem: '' };
 const comOverride: Override = {

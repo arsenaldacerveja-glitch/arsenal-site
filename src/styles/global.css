@@ -138,6 +138,7 @@ strong {
 
 /* ---------- Placeholder de mídia (direção visual, seção 6) ---------- */
 .media-placeholder {
+  overflow: hidden;
   background: #243830;
   background-image: repeating-linear-gradient(
     45deg,

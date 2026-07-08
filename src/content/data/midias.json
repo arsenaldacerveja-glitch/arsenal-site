@@ -5,9 +5,9 @@
     "tipo": "foto",
     "proporcao": "16:9",
     "descricao": "Régua com 4 taças, luz quente, fundo escuro de madeira — fallback estático do hero (3D fica para a fase 2)",
-    "alt": "Régua de degustação do Arsenal da Cerveja com quatro taças de chopp de estilos diferentes sobre balcão de madeira",
+    "alt": "Régua de degustação do Arsenal da Cerveja com quatro taças de chopp de estilos diferentes, com a vila de Monte Verde ao fundo",
     "usos": ["home/hero"],
-    "existe": false
+    "existe": true
   },
   {
     "id": "foto-regua-completa",
@@ -17,7 +17,7 @@
     "descricao": "Régua com 4 taças de cores/estilos diferentes, luz quente, madeira",
     "alt": "Quatro taças de 200 ml com chopps de cores diferentes na régua de degustação",
     "usos": ["home/regua", "degustacao/hero-fallback"],
-    "existe": false
+    "existe": true
   },
   {
     "id": "video-regua-servindo",
@@ -34,10 +34,10 @@
     "arquivo": "foto-regua-casal.jpg",
     "tipo": "foto",
     "proporcao": "3:2",
-    "descricao": "Casal dividindo a régua, clima acolhedor",
-    "alt": "Casal brindando com taças da régua de degustação",
+    "descricao": "Brinde de duas taças com o neon do Arsenal ao fundo",
+    "alt": "Brinde de duas taças de chopp em frente ao letreiro neon do Arsenal da Cerveja",
     "usos": ["degustacao/dividir"],
-    "existe": false
+    "existe": true
   },
   {
     "id": "foto-torneiras-chopp",
@@ -45,9 +45,9 @@
     "tipo": "foto",
     "proporcao": "3:2",
     "descricao": "As 6 torneiras engatadas, close com identificação dos estilos",
-    "alt": "Seis torneiras de chopp engatadas no balcão do Arsenal da Cerveja",
+    "alt": "Torneiras de chopp cromadas no balcão do Arsenal da Cerveja",
     "usos": ["degustacao", "cervejas-e-kits/chopps", "home/kits-card-3"],
-    "existe": false
+    "existe": true
   },
   {
     "id": "foto-smart-tap",
@@ -124,10 +124,10 @@
     "arquivo": "foto-atendimento-consultivo.jpg",
     "tipo": "foto",
     "proporcao": "3:2",
-    "descricao": "Atendente apresentando estilos a um cliente no balcão",
-    "alt": "Atendente do Arsenal apresentando estilos de cerveja a um cliente",
+    "descricao": "Equipe do Arsenal servindo os estilos da degustação",
+    "alt": "Integrante da equipe do Arsenal servindo estilos de chopp para a degustação",
     "usos": ["degustacao/consultivo", "home/experiencias"],
-    "existe": false
+    "existe": true
   },
   {
     "id": "foto-kit-presente-01",
@@ -135,9 +135,9 @@
     "tipo": "foto",
     "proporcao": "1:1",
     "descricao": "Kit montado com embalagem de presente",
-    "alt": "Kit Arsenal montado com garrafas de cerveja especial em embalagem de presente",
+    "alt": "Kit do Arsenal da Cerveja com garrafa e taças em caixa de presente",
     "usos": ["cervejas-e-kits/kit-arsenal", "home/kits-card-1"],
-    "existe": false
+    "existe": true
   },
   {
     "id": "foto-kit-presente-02",
@@ -165,9 +165,9 @@
     "tipo": "foto",
     "proporcao": "1:1",
     "descricao": "Composição de garrafas premium, fundo escuro",
-    "alt": "Garrafas de cervejas especiais em composição sobre fundo escuro",
+    "alt": "Garrafas de cervejas especiais importadas na prateleira do Arsenal",
     "usos": ["cervejas-e-kits/rotulos", "home/kits-card-4"],
-    "existe": false
+    "existe": true
   },
   {
     "id": "foto-monte-verde-avenida",

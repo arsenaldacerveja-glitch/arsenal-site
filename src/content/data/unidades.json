@@ -10,11 +10,11 @@
     "perfil": "Degustação, porções e atendimento consultivo para viver a experiência com calma.",
     "perfilCurto": "experiência com calma — sente, prove, converse",
     "horarios": {
-      "dom": { "abre": "10:00", "fecha": "19:00" },
-      "seg": null,
-      "ter": null,
-      "qua": { "abre": "10:00", "fecha": "19:00" },
-      "qui": { "abre": "10:00", "fecha": "19:00" },
+      "dom": { "abre": "10:00", "fecha": "22:00" },
+      "seg": { "abre": "10:00", "fecha": "22:00" },
+      "ter": { "abre": "10:00", "fecha": "22:00" },
+      "qua": { "abre": "10:00", "fecha": "22:00" },
+      "qui": { "abre": "10:00", "fecha": "22:00" },
       "sex": { "abre": "10:00", "fecha": "23:00" },
       "sab": { "abre": "10:00", "fecha": "24:00" }
     },
@@ -65,7 +65,7 @@
     "perfilCurto": "para presentear ou colecionar",
     "horarios": {
       "dom": { "abre": "10:00", "fecha": "22:00" },
-      "seg": null,
+      "seg": { "abre": "10:00", "fecha": "22:00" },
       "ter": { "abre": "10:00", "fecha": "22:00" },
       "qua": { "abre": "10:00", "fecha": "22:00" },
       "qui": { "abre": "10:00", "fecha": "22:00" },
