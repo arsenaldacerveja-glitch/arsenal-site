@@ -141,8 +141,8 @@
       {
         "id": "faq-pet",
         "pergunta": "Pode levar pet?",
-        "resposta": "PENDENTE: confirmação operacional antes de publicar.",
-        "pendente": true
+        "resposta": "Sim — pets são bem-vindos nas nossas lojas.",
+        "pendente": false
       },
       {
         "id": "faq-criancas",

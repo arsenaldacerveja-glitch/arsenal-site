@@ -42,8 +42,8 @@
       {
         "id": "gs-pet",
         "pergunta": "Pode levar pet?",
-        "resposta": "PENDENTE: confirmação operacional antes de publicar.",
-        "pendente": true
+        "resposta": "Sim — pets são bem-vindos nas nossas lojas.",
+        "pendente": false
       },
       {
         "id": "gs-criancas",
@@ -96,8 +96,8 @@
       {
         "id": "vg-pet",
         "pergunta": "Pode levar pet?",
-        "resposta": "PENDENTE: confirmação operacional antes de publicar.",
-        "pendente": true
+        "resposta": "Sim — pets são bem-vindos nas nossas lojas.",
+        "pendente": false
       },
       {
         "id": "vg-criancas",
