@@ -1,0 +1,39 @@
+{
+  "degustacao": [
+    {
+      "arquivo": "foto-regua-completa.jpg",
+      "alt": "Quatro taças com chopps de cores diferentes no suporte de madeira do Arsenal da Cerveja"
+    },
+    {
+      "arquivo": "galeria-degustacao-01.jpg",
+      "alt": "Três amigas brindando com as taças da régua de degustação na varanda do Arsenal da Cerveja"
+    },
+    {
+      "arquivo": "galeria-degustacao-02.jpg",
+      "alt": "Cliente sorrindo segurando a régua de degustação com quatro taças coloridas"
+    },
+    {
+      "arquivo": "galeria-degustacao-03.jpg",
+      "alt": "Casal brindando com as taças da régua de degustação do Arsenal da Cerveja"
+    },
+    {
+      "arquivo": "galeria-degustacao-04.jpg",
+      "alt": "Cliente na varanda do Arsenal com a régua de degustação e a vila de Monte Verde ao fundo"
+    },
+    {
+      "arquivo": "hero-regua-fallback.webp",
+      "alt": "Régua de degustação com quatro taças e a vila de Monte Verde ao fundo"
+    },
+    {
+      "arquivo": "foto-regua-casal.jpg",
+      "alt": "Brinde de duas taças de chopp em frente ao letreiro neon do Arsenal da Cerveja"
+    }
+  ],
+  "galeria-suica": [],
+  "vila-germanica": [
+    {
+      "arquivo": "fachada-vila-germanica.jpg",
+      "alt": "Fachada do Arsenal da Cerveja na Vila Germânica à noite, com letreiro iluminado"
+    }
+  ]
+}

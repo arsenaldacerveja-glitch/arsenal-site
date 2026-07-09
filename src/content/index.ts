@@ -11,7 +11,9 @@ import {
   kitsSchema,
   faqSchema,
   midiasSchema,
+  galeriasSchema,
 } from './schemas';
+import galeriasJson from './data/galerias.json';
 
 import siteJson from './data/site.json';
 import unidadesJson from './data/unidades.json';
@@ -28,6 +30,7 @@ export const degustacao = degustacaoSchema.parse(degustacaoJson);
 export const kits = kitsSchema.parse(kitsJson);
 export const faqGrupos = faqSchema.parse(faqJson);
 export const midias = midiasSchema.parse(midiasJson);
+export const galerias = galeriasSchema.parse(galeriasJson);
 
 /** Busca uma unidade pelo id, com erro claro se o id não existir. */
 export function getUnidade(id: 'galeria-suica' | 'vila-germanica') {

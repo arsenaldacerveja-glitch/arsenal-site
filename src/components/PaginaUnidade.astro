@@ -13,7 +13,8 @@ import Media from './Media.astro';
 import WhatsAppLink from './WhatsAppLink.astro';
 import FAQAccordion from './FAQAccordion.astro';
 import NoticeBar from './NoticeBar.astro';
-import { getUnidade, mapsHref, site } from '../content';
+import Carousel from './Carousel.astro';
+import { getUnidade, mapsHref, site, galerias } from '../content';
 
 interface Props {
   unidade: 'galeria-suica' | 'vila-germanica';
@@ -181,13 +182,17 @@ const jsonLd = {
     </div>
   </section>
 
-  <!-- Galeria -->
+  <!-- Galeria (carrossel manual quando houver fotos reais) -->
   <section class="section secao-compacta">
     <div class="container">
       <h2 class="sr-only">Fotos do ambiente</h2>
-      <div class="galeria">
-        {galeriaFotos.map((id) => <Media id={id} />)}
-      </div>
+      {
+        galerias[unidade].length > 0 ? (
+          <Carousel fotos={galerias[unidade]} rotulo={`Fotos da unidade ${u.nome}`} />
+        ) : (
+          <div class="galeria">{galeriaFotos.map((id) => <Media id={id} />)}</div>
+        )
+      }
     </div>
   </section>
 

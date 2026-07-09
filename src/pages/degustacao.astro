@@ -15,7 +15,8 @@ import Media from '../components/Media.astro';
 import CTAButton from '../components/CTAButton.astro';
 import WhatsAppLink from '../components/WhatsAppLink.astro';
 import FAQAccordion from '../components/FAQAccordion.astro';
-import { degustacao } from '../content';
+import Carousel from '../components/Carousel.astro';
+import { degustacao, galerias } from '../content';
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -72,6 +73,18 @@ const jsonLd = {
       <p class="numeros__nota">{degustacao.notaRegua}</p>
     </div>
   </section>
+
+  <!-- Fotos da régua (carrossel manual, sem autoplay) -->
+  {
+    galerias.degustacao.length > 0 && (
+      <section class="section secao-compacta">
+        <div class="container">
+          <h2 class="sr-only">Fotos da régua de degustação</h2>
+          <Carousel fotos={galerias.degustacao} rotulo="Fotos da régua de degustação" />
+        </div>
+      </section>
+    )
+  }
 
   <!-- Onde fazer -->
   <section class="section">

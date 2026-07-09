@@ -157,6 +157,19 @@ export const midiaSchema = z.object({
 
 export const midiasSchema = z.array(midiaSchema);
 
+/* ---------- galerias.json (carrosséis) ---------- */
+
+const fotoGaleriaSchema = z.object({
+  arquivo: z.string(),
+  alt: z.string(),
+});
+
+export const galeriasSchema = z.object({
+  degustacao: z.array(fotoGaleriaSchema),
+  'galeria-suica': z.array(fotoGaleriaSchema),
+  'vila-germanica': z.array(fotoGaleriaSchema),
+});
+
 /* ---------- Tipos exportados ---------- */
 
 export type Site = z.infer<typeof siteSchema>;

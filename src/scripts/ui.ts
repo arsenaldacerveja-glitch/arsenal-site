@@ -76,11 +76,31 @@ function initFaqDeepLink(): void {
   window.addEventListener('hashchange', abrirDoHash);
 }
 
+/** Setas dos carrosséis — o deslize por toque é scroll nativo, sem JS. */
+function initCarrosseis(): void {
+  const suave = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll<HTMLElement>('[data-carousel]').forEach((c) => {
+    const trilho = c.querySelector<HTMLElement>('[data-carousel-track]');
+    if (!trilho) return;
+    const passo = () => {
+      const slide = trilho.querySelector<HTMLElement>(':scope > *');
+      return (slide?.offsetWidth ?? 300) + 16;
+    };
+    c.querySelector('[data-carousel-prev]')?.addEventListener('click', () =>
+      trilho.scrollBy({ left: -passo(), behavior: suave ? 'smooth' : 'auto' })
+    );
+    c.querySelector('[data-carousel-next]')?.addEventListener('click', () =>
+      trilho.scrollBy({ left: passo(), behavior: suave ? 'smooth' : 'auto' })
+    );
+  });
+}
+
 function init(): void {
   initHeaderCompacto();
   initFechaveis();
   initPopoverHover();
   initFaqDeepLink();
+  initCarrosseis();
 }
 
 if (document.readyState === 'loading') {
