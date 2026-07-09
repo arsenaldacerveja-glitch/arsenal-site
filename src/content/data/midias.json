@@ -74,10 +74,10 @@
     "arquivo": "fachada-vila-germanica.jpg",
     "tipo": "foto",
     "proporcao": "16:9",
-    "descricao": "Fachada da Av. Monte Verde 1057, ao entardecer com luz acesa",
-    "alt": "Fachada do Arsenal da Cerveja na Vila Germânica, em Monte Verde",
+    "descricao": "Fachada noturna da loja na Vila Germânica, com letreiro iluminado",
+    "alt": "Fachada do Arsenal da Cerveja na Vila Germânica à noite, com letreiro iluminado e vitrines de cervejas",
     "usos": ["unidades/vila-germanica/hero", "home/unidades", "unidades/hub"],
-    "existe": false
+    "existe": true
   },
   {
     "id": "interior-galeria-suica-01",
