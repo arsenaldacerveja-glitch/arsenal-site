@@ -4,8 +4,8 @@
     "arquivo": "hero-regua-fallback.webp",
     "tipo": "foto",
     "proporcao": "16:9",
-    "descricao": "Régua com 4 taças, luz quente, fundo escuro de madeira — fallback estático do hero (3D fica para a fase 2)",
-    "alt": "Régua de degustação do Arsenal da Cerveja com quatro taças de chopp de estilos diferentes, com a vila de Monte Verde ao fundo",
+    "descricao": "Casal brindando com taças Kwak no suporte de madeira, dentro da loja, com a marca Arsenal ao fundo",
+    "alt": "Casal degustando cervejas especiais em taças Kwak com suporte de madeira no Arsenal da Cerveja, em Monte Verde",
     "usos": ["home/hero"],
     "existe": true
   },
@@ -64,10 +64,10 @@
     "arquivo": "fachada-galeria-suica.jpg",
     "tipo": "foto",
     "proporcao": "16:9",
-    "descricao": "Fachada da loja 4, Av. Monte Verde 858, ao entardecer com luz acesa",
-    "alt": "Fachada do Arsenal da Cerveja na Galeria Suíça, em Monte Verde",
+    "descricao": "Fachada da loja 4, Av. Monte Verde 858, com mesas na calçada e clientes",
+    "alt": "Fachada do Arsenal da Cerveja na Galeria Suíça, em Monte Verde, com clientes nas mesas da calçada",
     "usos": ["unidades/galeria-suica/hero", "home/unidades", "unidades/hub"],
-    "existe": false
+    "existe": true
   },
   {
     "id": "fachada-vila-germanica",
@@ -85,9 +85,9 @@
     "tipo": "foto",
     "proporcao": "3:2",
     "descricao": "Ambiente: balcão, mesas, torneiras, clima de degustação",
-    "alt": "Interior da unidade Galeria Suíça com balcão e torneiras de chopp",
+    "alt": "Interior da unidade Galeria Suíça com clientes nas mesas, torneiras de chopp e quadros da marca",
     "usos": ["unidades/galeria-suica/galeria"],
-    "existe": false
+    "existe": true
   },
   {
     "id": "interior-galeria-suica-02",

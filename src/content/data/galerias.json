@@ -22,14 +22,23 @@
     },
     {
       "arquivo": "hero-regua-fallback.webp",
-      "alt": "Régua de degustação com quatro taças e a vila de Monte Verde ao fundo"
+      "alt": "Casal degustando cervejas especiais em taças Kwak no Arsenal da Cerveja"
     },
     {
       "arquivo": "foto-regua-casal.jpg",
       "alt": "Brinde de duas taças de chopp em frente ao letreiro neon do Arsenal da Cerveja"
     }
   ],
-  "galeria-suica": [],
+  "galeria-suica": [
+    {
+      "arquivo": "fachada-galeria-suica.jpg",
+      "alt": "Fachada do Arsenal da Cerveja na Galeria Suíça com clientes nas mesas da calçada"
+    },
+    {
+      "arquivo": "interior-galeria-suica-01.jpg",
+      "alt": "Interior da unidade Galeria Suíça com torneiras de chopp e quadros da marca"
+    }
+  ],
   "vila-germanica": [
     {
       "arquivo": "fachada-vila-germanica.jpg",
