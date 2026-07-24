@@ -363,16 +363,44 @@ const midiasKits = [
     );
   }
 
-  /* Mobile: foto mais coberta no meio — o texto senta sobre área movimentada */
+  /* Mobile: empilhado (art direction) — foto INTEIRA em cima, sem corte,
+     conteúdo em bloco sólido embaixo. Nada de texto sobre foto recortada. */
   @media (max-width: 1023px) {
+    .hero {
+      display: block;
+      min-height: auto;
+    }
+
+    .hero :global(.hero__foto) {
+      position: relative;
+      inset: auto;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4 / 3;
+    }
+
     .hero__veu {
+      position: absolute;
+      inset: 0 0 auto 0;
+      aspect-ratio: 4 / 3;
       background: linear-gradient(
         180deg,
-        rgba(23, 19, 16, 0.65) 0%,
-        rgba(23, 19, 16, 0.42) 38%,
-        rgba(23, 19, 16, 0.72) 62%,
-        rgba(23, 19, 16, 0.97) 100%
+        rgba(23, 19, 16, 0.45) 0%,
+        rgba(23, 19, 16, 0) 35%,
+        rgba(23, 19, 16, 0) 62%,
+        rgba(23, 19, 16, 1) 100%
       );
+    }
+
+    .hero__conteudo {
+      padding-block: var(--sp-4) var(--sp-7);
+    }
+
+    .hero h1,
+    .hero__sub,
+    .hero__eyebrow,
+    .hero__pilares li {
+      text-shadow: none;
     }
   }
 
@@ -564,6 +592,37 @@ const midiasKits = [
     }
   }
 
+  /* Mobile: régua também empilhada — foto quadrada inteira + conteúdo no verde */
+  @media (max-width: 1023px) {
+    .regua {
+      display: block;
+      min-height: auto;
+      padding-block: 0 var(--sp-7);
+    }
+
+    .regua :global(.regua__fundo) {
+      position: relative;
+      inset: auto;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+    }
+
+    .regua__veu {
+      display: none;
+    }
+
+    .regua__conteudo {
+      padding-top: var(--sp-6);
+    }
+
+    .regua__titulo,
+    .regua__sub,
+    .regua__specs strong {
+      text-shadow: none;
+    }
+  }
+
   .regua__specs li {
     display: grid;
     justify-items: center;
@@ -735,6 +794,13 @@ const midiasKits = [
     display: flex;
     align-items: flex-end;
     min-height: 72svh;
+  }
+
+  /* Mobile: interlúdio mais baixo (a foto é vertical e cabe melhor) */
+  @media (max-width: 1023px) {
+    .mv__interlude {
+      min-height: 56svh;
+    }
   }
 
   .mv :global(.mv__foto) {
