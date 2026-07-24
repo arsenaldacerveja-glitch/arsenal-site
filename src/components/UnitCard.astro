@@ -112,6 +112,13 @@ const eventoUnidade = `click_unidade_${unidade.replace(/-/g, '_')}`;
     font-size: var(--fs-body);
   }
 
+  /* Badges podem quebrar linha dentro dos cards compactos (telas estreitas) */
+  .ucard--mini :global(.status-badge) {
+    white-space: normal;
+    line-height: 1.35;
+    max-width: 100%;
+  }
+
   .ucard__hoje {
     font-size: var(--fs-sm);
     color: var(--creme-70);

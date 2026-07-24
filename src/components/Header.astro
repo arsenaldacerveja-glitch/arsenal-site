@@ -8,6 +8,7 @@
  *   o popover com o status individual das duas unidades.
  */
 import StatusBadge from './StatusBadge.astro';
+import CTAButton from './CTAButton.astro';
 import { unidades, site } from '../content';
 
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
@@ -77,6 +78,14 @@ const ativo = (href: string) => path === href || (href !== '/' && path.startsWit
             ))
           }
         </nav>
+        <div class="hdr__panel-ctas">
+          <CTAButton href="/degustacao" variante="primario" bloco dataTrack="click_degustacao" dataOrigem="menu">
+            Fazer degustação
+          </CTAButton>
+          <CTAButton href="/unidades" variante="secundario" bloco dataTrack="click_unidades" dataOrigem="menu">
+            Ver unidades
+          </CTAButton>
+        </div>
       </div>
     </details>
   </div>
@@ -199,6 +208,14 @@ const ativo = (href: string) => path === href || (href !== '/' && path.startsWit
 
   .hdr__panel nav a[aria-current='page'] {
     color: var(--dourado-400);
+  }
+
+  .hdr__panel-ctas {
+    display: grid;
+    gap: var(--sp-3);
+    margin-top: var(--sp-7);
+    padding-top: var(--sp-6);
+    border-top: 1px solid var(--verde-700);
   }
 
   @media (min-width: 1024px) {

@@ -349,6 +349,19 @@ const midiasKits = [
     );
   }
 
+  /* Mobile: foto mais coberta no meio — o texto senta sobre área movimentada */
+  @media (max-width: 1023px) {
+    .hero__veu {
+      background: linear-gradient(
+        180deg,
+        rgba(23, 19, 16, 0.65) 0%,
+        rgba(23, 19, 16, 0.42) 38%,
+        rgba(23, 19, 16, 0.72) 62%,
+        rgba(23, 19, 16, 0.97) 100%
+      );
+    }
+  }
+
   .hero__conteudo {
     position: relative;
     padding-block: var(--sp-8) var(--sp-7);
@@ -495,6 +508,17 @@ const midiasKits = [
     justify-content: center;
     gap: var(--sp-6) var(--sp-7);
     margin-bottom: var(--sp-6);
+  }
+
+  /* Mobile: specs em grade 2×2, sem quebras irregulares */
+  @media (max-width: 767px) {
+    .regua__specs {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--sp-6) var(--sp-4);
+      width: 100%;
+      max-width: 400px;
+    }
   }
 
   .regua__specs li {
