@@ -11,6 +11,7 @@ import Breadcrumb from '../components/Breadcrumb.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import FAQAccordion from '../components/FAQAccordion.astro';
 import WhatsAppLink from '../components/WhatsAppLink.astro';
+import CTAButton from '../components/CTAButton.astro';
 import { faqGrupos } from '../content';
 
 const jsonLd = {
@@ -69,7 +70,10 @@ const jsonLd = {
     <div class="container final__in">
       <SectionHeader titulo="Não achou sua resposta?" centro />
       <WhatsAppLink contexto="faq" origem="faq" bloco class="final__wa" />
-      <p class="final__micro">Respondemos durante o horário de funcionamento das lojas.</p>
+      <CTAButton href="/unidades" variante="secundario" dataTrack="click_unidades" dataOrigem="faq">
+        Ver unidades e horários
+      </CTAButton>
+      <p class="final__micro">A equipe responde tudo na hora, na loja.</p>
     </div>
   </section>
 </Base>

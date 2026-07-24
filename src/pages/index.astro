@@ -41,7 +41,7 @@ const miniFaq = [
     id: 'home-faq-online',
     pergunta: 'Tem venda online?',
     resposta:
-      'Por enquanto, não. Kits e rótulos são vendidos somente nas lojas físicas, em Monte Verde. Para saber se um item está disponível antes de vir, chame no WhatsApp.',
+      'Por enquanto, não. Kits e rótulos são vendidos somente nas lojas físicas, em Monte Verde.',
   },
   {
     id: 'home-faq-unidade',
@@ -54,7 +54,7 @@ const miniFaq = [
     id: 'home-faq-kit-online',
     pergunta: 'O kit de R$ 39,90 é vendido online?',
     resposta:
-      'Não — como todos os kits, ele é vendido somente nas lojas físicas. Consulte a disponibilidade do dia pelo WhatsApp.',
+      'Não — como todos os kits, ele é vendido somente nas lojas físicas. A composição varia conforme a disponibilidade do dia.',
   },
 ];
 
@@ -170,10 +170,7 @@ const midiasKits = [
         subtitulo="Curadoria de cervejas especiais — com orgulho das mineiras."
       />
       <NoticeBar
-        texto="Vendemos somente nas lojas físicas. Para consultar disponibilidade, chame no WhatsApp."
-        linkTexto="chame no WhatsApp"
-        contexto="produto"
-        origem="home_kits"
+        texto="Vendemos somente nas lojas físicas — a seleção varia conforme o dia."
         class="kits__aviso"
       />
       <div class="kits__destaque">
@@ -285,7 +282,7 @@ const midiasKits = [
   <section class="section" data-observe="scroll_faq">
     <div class="container faq-home">
       <SectionHeader
-        titulo="Antes de perguntar no WhatsApp"
+        titulo="Tudo o que você precisa saber antes de vir"
         subtitulo="As respostas que mais ajudam a planejar sua visita."
       />
       <FAQAccordion itens={miniFaq} />

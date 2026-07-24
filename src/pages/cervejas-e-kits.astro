@@ -37,12 +37,7 @@ const estilosAccordion = kits.estilos.map((e) => ({
         titulo="Kits, presentes e mais de 250 rótulos no universo Arsenal"
         subtitulo="Curadoria de cervejas especiais — com orgulho das mineiras."
       />
-      <NoticeBar
-        texto={kits.aviso}
-        linkTexto="chame no WhatsApp"
-        contexto="produto"
-        origem="pagina_kits"
-      />
+      <NoticeBar texto={kits.aviso} />
     </div>
   </section>
 
@@ -55,9 +50,9 @@ const estilosAccordion = kits.estilos.map((e) => ({
         <ul class="kit__fatos" role="list">
           {kits.kitArsenal.fatos.map((f) => <li>{f}</li>)}
         </ul>
-        <WhatsAppLink contexto="kitArsenal" origem="kit_arsenal">
-          Consultar disponibilidade no WhatsApp
-        </WhatsAppLink>
+        <CTAButton href="/unidades" variante="secundario" dataTrack="click_unidades" dataOrigem="kit_arsenal">
+          Ver onde encontrar
+        </CTAButton>
       </div>
       <Media id="foto-kit-presente-01" class="kit__foto" />
     </div>
@@ -129,7 +124,7 @@ const estilosAccordion = kits.estilos.map((e) => ({
   <!-- CTA final -->
   <section class="section section--verde final">
     <div class="container final__in">
-      <SectionHeader titulo="Quer confirmar se um rótulo ou kit está disponível hoje?" centro />
+      <SectionHeader titulo="A seleção do dia te espera na loja" centro />
       <div class="final__ctas">
         <WhatsAppLink contexto="produto" origem="pagina_kits_cta" bloco />
         <CTAButton href="/unidades" variante="secundario" bloco dataTrack="click_unidades" dataOrigem="pagina_kits_cta">

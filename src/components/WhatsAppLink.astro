@@ -24,6 +24,7 @@ const { contexto, origem, variante = 'botao', bloco = false, class: className } 
 const href = waLink(contexto);
 ---
 
+{whatsapp.ativo && (
 <a
   href={href}
   target="_blank"
@@ -47,6 +48,7 @@ const href = waLink(contexto);
   </svg>
   <slot>Chamar no WhatsApp</slot>
 </a>
+)}
 
 <style>
   .wa {

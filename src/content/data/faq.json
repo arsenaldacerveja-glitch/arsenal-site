@@ -12,7 +12,7 @@
       {
         "id": "faq-feriados",
         "pergunta": "Abrem em feriados?",
-        "resposta": "Os horários de feriado podem mudar — avisamos no topo do site e no Google. Na dúvida, chame no WhatsApp.",
+        "resposta": "Os horários de feriado podem mudar — avisamos no topo do site e no Google.",
         "pendente": false
       },
       {
@@ -92,7 +92,7 @@
       {
         "id": "faq-disponibilidade",
         "pergunta": "Como sei se um rótulo específico está disponível?",
-        "resposta": "O estoque gira rápido — chame no WhatsApp que a gente confere na hora.",
+        "resposta": "O estoque gira rápido e a seleção muda conforme o dia — na loja, a equipe mostra as opções na hora.",
         "pendente": false
       }
     ]
@@ -116,7 +116,7 @@
       {
         "id": "faq-kit-online",
         "pergunta": "O kit de R$ 39,90 é vendido online?",
-        "resposta": "Não — como todos os kits, somente nas lojas físicas. Consulte a disponibilidade pelo WhatsApp.",
+        "resposta": "Não — como todos os kits, somente nas lojas físicas. A composição varia conforme a disponibilidade do dia.",
         "pendente": false
       }
     ]

@@ -87,6 +87,8 @@ export const unidadesSchema = z.array(unidadeSchema).length(2);
 /* ---------- whatsapp.json ---------- */
 
 export const whatsappSchema = z.object({
+  /** Interruptor geral: false = nenhum botão/link de WhatsApp aparece no site. */
+  ativo: z.boolean(),
   /** Número no formato internacional sem símbolos, ex.: 5535999999999 */
   numero: z.string(),
   numeroPendente: z.boolean(),

@@ -174,10 +174,10 @@
     "arquivo": "foto-monte-verde-avenida.jpg",
     "tipo": "foto",
     "proporcao": "21:9",
-    "descricao": "Avenida principal de Monte Verde, clima de montanha (névoa/friozinho)",
-    "alt": "Avenida principal de Monte Verde com clima de montanha",
+    "descricao": "Loja do Arsenal na avenida principal, com pedestres passeando ao entardecer",
+    "alt": "Avenida principal de Monte Verde com pedestres passeando em frente ao Arsenal da Cerveja",
     "usos": ["home/monte-verde"],
-    "existe": false
+    "existe": true
   },
   {
     "id": "foto-equipe",
