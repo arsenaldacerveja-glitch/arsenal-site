@@ -40,6 +40,16 @@ const jsonLd = {
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </Fragment>
 
+  <!-- Barra de produto (estilo Apple): aparece ao rolar além do topo — desktop -->
+  <div class="pbar" data-pbar hidden>
+    <div class="container pbar__in">
+      <p class="pbar__nome">Régua de Degustação <strong>· R$ 60</strong></p>
+      <CTAButton href="/unidades" variante="primario" dataTrack="click_unidades" dataOrigem="pbar">
+        Ver unidades
+      </CTAButton>
+    </div>
+  </div>
+
   <!-- Hero curto -->
   <section class="topo">
     <div class="container topo__grid">
@@ -50,6 +60,26 @@ const jsonLd = {
           Escolha 4 estilos entre os 6 chopps engatados da casa e viva uma degustação leve,
           divertida e perfeita para compartilhar.
         </p>
+        <div class="topo__texto">
+          <p>
+            A régua de degustação é o jeito Arsenal de conhecer vários estilos de uma vez:
+            um suporte de madeira com <strong>4 taças de 200 ml</strong>, servidas lado a
+            lado, para provar, comparar e eleger o seu favorito — sozinho, em dupla ou
+            dividindo com quem você ama.
+          </p>
+          <p>
+            Funciona assim: cada loja mantém <strong>6 estilos de chopp engatados</strong>,
+            que giram conforme o dia — do dourado leve ao rubi frutado. Você escolhe 4
+            (com a ajuda da equipe, se quiser) e recebe a régua completa por
+            <strong> R$ 60</strong>. Não precisa reservar: é por ordem de chegada, conforme
+            o funcionamento das lojas.
+          </p>
+          <p>
+            A régua está disponível nas duas lojas do Arsenal, na avenida principal de
+            Monte Verde. Chegue, escolha seus estilos e brinde — em dias de movimento,
+            vale chegar cedo.
+          </p>
+        </div>
       </div>
       <div class="topo__midia">
         <Media id="video-regua-servindo" prioritaria />
@@ -149,7 +179,81 @@ const jsonLd = {
   </section>
 </Base>
 
+<script>
+  // Barra de produto: aparece quando o topo da página sai da tela (desktop)
+  const pbar = document.querySelector<HTMLElement>('[data-pbar]');
+  const topo = document.querySelector('.topo');
+  if (pbar && topo && 'IntersectionObserver' in window) {
+    new IntersectionObserver(
+      ([e]) => {
+        pbar.hidden = e.isIntersecting;
+      },
+      { threshold: 0 }
+    ).observe(topo);
+  }
+</script>
+
 <style>
+  /* ---------- Barra de produto ---------- */
+  .pbar {
+    display: none;
+  }
+
+  @media (min-width: 1024px) {
+    .pbar:not([hidden]) {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 60;
+      background: rgba(33, 27, 22, 0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--dourado-500);
+      animation: pbar-desce var(--dur-base) var(--ease-out);
+    }
+  }
+
+  @keyframes pbar-desce {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  .pbar__in {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-4);
+    height: 60px;
+  }
+
+  .pbar__nome {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--fs-h3);
+    color: var(--branco-50);
+  }
+
+  .pbar__nome strong {
+    color: var(--dourado-400);
+  }
+
+  .pbar :global(.cta) {
+    height: 40px;
+    padding-inline: var(--sp-4);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pbar:not([hidden]) {
+      animation: none;
+    }
+  }
+
   .topo {
     padding-block: var(--sp-6) var(--section-y);
   }
@@ -165,6 +269,17 @@ const jsonLd = {
 
   .topo__sub {
     color: var(--creme-80);
+    margin-bottom: var(--sp-5);
+  }
+
+  .topo__texto {
+    display: grid;
+    gap: var(--sp-4);
+  }
+
+  .topo__texto p {
+    color: var(--creme-80);
+    max-width: 62ch;
   }
 
   .topo__midia {

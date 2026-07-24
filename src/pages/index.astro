@@ -15,13 +15,9 @@ import CTAButton from '../components/CTAButton.astro';
 import WhatsAppLink from '../components/WhatsAppLink.astro';
 import Media from '../components/Media.astro';
 import UnitCard from '../components/UnitCard.astro';
-import FactStrip from '../components/FactStrip.astro';
 import NoticeBar from '../components/NoticeBar.astro';
 import FAQAccordion from '../components/FAQAccordion.astro';
-import { site, unidades, degustacao, kits, mapsHref } from '../content';
-
-/** FactStrip da Home: 5 fatos (sem "disponível nas duas lojas" — wireframe). */
-const fatosHome = degustacao.fatos.filter((f) => f.icone !== 'pino');
+import { site, unidades, kits, mapsHref } from '../content';
 
 /** Mini-FAQ da Home — copy aprovada específica desta página (textos-finais.md). */
 const miniFaq = [
@@ -116,32 +112,30 @@ const midiasKits = [
     </div>
   </section>
 
-  <!-- 3 · RÉGUA — produto herói (criar desejo) -->
-  <section class="section section--verde regua" data-observe="view_regua">
-    <div class="container">
-      <div class="regua__grid">
-        <div class="regua__midia">
-          <Media id="foto-regua-completa" />
-        </div>
-        <div class="regua__conteudo">
-          <SectionHeader
-            titulo="O brinde mais bonito de Monte Verde"
-            subtitulo="Quatro taças coloridas para provar, comparar e brindar a dois."
-          />
-          <FactStrip fatos={fatosHome} sobreVerde />
-          <p class="regua__nota">
-            Sem reserva — por ordem de chegada, nas duas lojas. Os estilos variam conforme o dia.
-          </p>
-          <CTAButton
-            href="/degustacao"
-            variante="primario"
-            dataTrack="click_degustacao"
-            dataOrigem="home_regua"
-          >
-            Fazer degustação
-          </CTAButton>
-        </div>
-      </div>
+  <!-- 3 · RÉGUA — momento-produto (foto full-bleed + specs em números grandes) -->
+  <section class="section--verde regua" data-observe="view_regua">
+    <Media id="foto-regua-completa" class="regua__fundo" />
+    <div class="regua__veu" aria-hidden="true"></div>
+    <div class="container regua__conteudo">
+      <h2 class="regua__titulo">O brinde mais bonito de Monte Verde</h2>
+      <p class="regua__sub">Quatro taças coloridas para provar, comparar e brindar a dois.</p>
+      <ul class="regua__specs" role="list">
+        <li><strong>6</strong><span>estilos engatados por loja</span></li>
+        <li><strong>4</strong><span>você escolhe</span></li>
+        <li><strong>200&nbsp;ml</strong><span>em cada taça</span></li>
+        <li><strong>R$&nbsp;60</strong><span>pode dividir no casal</span></li>
+      </ul>
+      <p class="regua__nota">
+        Sem reserva — por ordem de chegada, nas duas lojas. Os estilos variam conforme o dia.
+      </p>
+      <CTAButton
+        href="/degustacao"
+        variante="primario"
+        dataTrack="click_degustacao"
+        dataOrigem="home_regua"
+      >
+        Fazer degustação
+      </CTAButton>
     </div>
   </section>
 
@@ -228,15 +222,22 @@ const midiasKits = [
     </div>
   </section>
 
-  <!-- 7 · MONTE VERDE / COMO CHEGAR — orientar a visita -->
-  <section class="section section--verde">
-    <div class="container">
-      <SectionHeader
-        titulo="No coração de Monte Verde"
-        subtitulo="As duas lojas ficam na avenida principal, no caminho de quem passeia por Monte Verde. Escolha a unidade, veja o status ao vivo e venha sem pressa. A régua, os chopps e os kits esperam por você."
-      />
-      <div class="mv__midias">
-        <Media id="foto-monte-verde-avenida" />
+  <!-- 7 · MONTE VERDE — interlúdio edge-to-edge + faixa do mapa -->
+  <section class="section--verde mv">
+    <div class="mv__interlude">
+      <Media id="foto-monte-verde-avenida" class="mv__foto" />
+      <div class="mv__veu" aria-hidden="true"></div>
+      <div class="container mv__frase">
+        <h2>No coração de Monte Verde</h2>
+        <p>
+          As duas lojas ficam na avenida principal, no caminho de quem passeia por Monte
+          Verde. Escolha a unidade, veja o status ao vivo e venha sem pressa. A régua, os
+          chopps e os kits esperam por você.
+        </p>
+      </div>
+    </div>
+    <div class="container mv__faixa">
+      <div class="mv__mapa">
         <Media id="mapa-estatico-unidades" />
       </div>
       <div class="mv__acoes">
@@ -435,41 +436,94 @@ const midiasKits = [
     }
   }
 
-  /* ---------- 3 · Régua (produto herói) ---------- */
+  /* ---------- 3 · Régua (momento-produto, estilo lançamento) ---------- */
   .regua {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    min-height: 92svh;
     padding-block: var(--section-y-hero);
   }
 
-  .regua__grid {
+  .regua :global(.regua__fundo) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+    aspect-ratio: auto;
+  }
+
+  .regua__veu {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(18, 41, 31, 0.92) 0%,
+      rgba(18, 41, 31, 0.45) 45%,
+      rgba(18, 41, 31, 0.94) 100%
+    );
+  }
+
+  .regua__conteudo {
+    position: relative;
     display: grid;
-    gap: var(--sp-6);
+    justify-items: center;
+    text-align: center;
   }
 
-  .regua__texto {
-    color: var(--creme-80);
-    margin-bottom: var(--sp-5);
+  .regua__titulo {
+    font-size: clamp(2rem, 1.5rem + 2.2vw, 3rem);
+    max-width: 18ch;
+    margin-bottom: var(--sp-3);
+    text-shadow: 0 2px 24px rgba(18, 41, 31, 0.6);
   }
 
-  .regua__conteudo :global(.facts) {
-    margin-bottom: var(--sp-4);
+  .regua__sub {
+    color: var(--creme-100);
+    margin-bottom: var(--sp-7);
+    text-shadow: 0 1px 16px rgba(18, 41, 31, 0.6);
+  }
+
+  .regua__specs {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--sp-6) var(--sp-7);
+    margin-bottom: var(--sp-6);
+  }
+
+  .regua__specs li {
+    display: grid;
+    justify-items: center;
+    gap: var(--sp-1);
+  }
+
+  .regua__specs strong {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(2.25rem, 1.8rem + 2vw, 3.25rem);
+    line-height: 1;
+    color: var(--dourado-400);
+    text-shadow: 0 2px 20px rgba(18, 41, 31, 0.7);
+  }
+
+  .regua__specs span {
+    font-size: var(--fs-sm);
+    color: var(--creme-100);
+    max-width: 14ch;
+    text-align: center;
   }
 
   .regua__nota {
     font-size: var(--fs-sm);
-    color: var(--creme-55);
-    margin-bottom: var(--sp-5);
-  }
-
-  .regua__midia {
-    max-width: 480px;
-  }
-
-  @media (min-width: 1024px) {
-    .regua__grid {
-      grid-template-columns: 5fr 7fr;
-      gap: var(--sp-8);
-      align-items: center;
-    }
+    color: var(--creme-70);
+    margin-bottom: var(--sp-6);
+    max-width: 52ch;
   }
 
   /* ---------- 4 · Unidades ---------- */
@@ -603,17 +657,76 @@ const midiasKits = [
     font-weight: 600;
   }
 
-  /* ---------- 7 · Monte Verde ---------- */
-  .mv__midias {
+  /* ---------- 7 · Monte Verde (interlúdio) ---------- */
+  .mv {
+    padding: 0;
+  }
+
+  .mv__interlude {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    min-height: 72svh;
+  }
+
+  .mv :global(.mv__foto) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+    aspect-ratio: auto;
+  }
+
+  .mv__veu {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(23, 19, 16, 0.35) 0%,
+      rgba(23, 19, 16, 0.1) 40%,
+      rgba(18, 41, 31, 0.94) 100%
+    );
+  }
+
+  .mv__frase {
+    position: relative;
+    padding-block: var(--sp-7);
+  }
+
+  .mv__frase h2 {
+    font-size: clamp(1.75rem, 1.4rem + 1.6vw, 2.5rem);
+    margin-bottom: var(--sp-3);
+    text-shadow: 0 2px 24px rgba(23, 19, 16, 0.6);
+  }
+
+  .mv__frase p {
+    color: var(--creme-100);
+    max-width: 58ch;
+    text-shadow: 0 1px 16px rgba(23, 19, 16, 0.6);
+  }
+
+  .mv__faixa {
     display: grid;
-    gap: var(--sp-4);
-    margin-bottom: var(--sp-5);
+    gap: var(--sp-5);
+    padding-block: var(--sp-7);
+  }
+
+  .mv__mapa {
+    max-width: 560px;
   }
 
   @media (min-width: 1024px) {
-    .mv__midias {
-      grid-template-columns: 3fr 2fr;
-      align-items: start;
+    .mv__faixa {
+      grid-template-columns: 7fr 5fr;
+      align-items: center;
+    }
+
+    .mv__acoes {
+      flex-direction: column;
+      align-items: flex-start;
     }
   }
 

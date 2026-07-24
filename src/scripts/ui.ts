@@ -104,10 +104,17 @@ function initReveal(): void {
   const seletor =
     '.sec-head, .ucard, .facts__item, .kits__card, .kits__destaque, .exp__card, ' +
     '.passos__item, .ocasioes__card, .smart, .comp, .horas, .tem__item, ' +
-    '[data-carousel], .media, .media-placeholder, .faq';
+    '[data-carousel], .media, .media-placeholder, .faq, .regua__specs li, ' +
+    '.regua__titulo, .regua__sub, .mv__frase';
   const alvos = [...document.querySelectorAll<HTMLElement>(seletor)].filter((el) => {
-    if (el.closest('header, footer, .sticky, .hero')) return false;
+    if (el.closest('header, footer, .sticky, .hero, .pbar')) return false;
     if (el.closest('[data-carousel]') && !el.hasAttribute('data-carousel')) return false;
+    // Fotos de fundo dos momentos full-bleed não devem deslizar
+    if (
+      (el.classList.contains('media') || el.classList.contains('media-placeholder')) &&
+      el.closest('.regua, .mv__interlude')
+    )
+      return false;
     return true;
   });
 
