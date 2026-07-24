@@ -53,12 +53,21 @@ export function waLink(contexto: keyof typeof whatsapp.mensagens) {
 }
 
 /**
- * Link do Google Maps da unidade.
- * Usa o link oficial (mapsUrl) quando existir; enquanto estiver PENDENTE,
- * cai num link real de busca pelo endereço — o botão nunca fica morto.
+ * Link do Google Maps da unidade — nunca fica morto. Prioridade:
+ * 1. mapsUrl oficial (perfil do Google Empresas), quando existir;
+ * 2. coordenadas exatas (geo) — pin de GPS preciso, sem depender de cadastro;
+ * 3. busca pelo endereço.
  */
-export function mapsHref(unidade: { mapsUrl: string; nome: string; endereco: string }) {
+export function mapsHref(unidade: {
+  mapsUrl: string;
+  nome: string;
+  endereco: string;
+  geo: { lat: number | null; lng: number | null };
+}) {
   if (unidade.mapsUrl.startsWith('http')) return unidade.mapsUrl;
+  if (unidade.geo.lat !== null && unidade.geo.lng !== null) {
+    return `https://www.google.com/maps/search/?api=1&query=${unidade.geo.lat}%2C${unidade.geo.lng}`;
+  }
   const consulta = encodeURIComponent(
     `Arsenal da Cerveja ${unidade.nome} ${unidade.endereco} Monte Verde MG`
   );

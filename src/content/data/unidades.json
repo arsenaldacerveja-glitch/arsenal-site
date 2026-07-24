@@ -6,25 +6,62 @@
     "endereco": "Av. Monte Verde, 858 · loja 4",
     "referencia": "PENDENTE: referência de ponto conhecido",
     "mapsUrl": "PENDENTE: link do Google Maps",
-    "geo": { "lat": null, "lng": null },
+    "geo": {
+      "lat": null,
+      "lng": null
+    },
     "perfil": "Degustação, porções e atendimento consultivo para viver a experiência com calma.",
     "perfilCurto": "experiência com calma — sente, prove, converse",
     "horarios": {
-      "dom": { "abre": "10:00", "fecha": "19:00" },
+      "dom": {
+        "abre": "10:00",
+        "fecha": "19:00"
+      },
       "seg": null,
       "ter": null,
-      "qua": { "abre": "10:00", "fecha": "19:00" },
-      "qui": { "abre": "10:00", "fecha": "19:00" },
-      "sex": { "abre": "10:00", "fecha": "23:00" },
-      "sab": { "abre": "10:00", "fecha": "24:00" }
+      "qua": {
+        "abre": "10:00",
+        "fecha": "19:00"
+      },
+      "qui": {
+        "abre": "10:00",
+        "fecha": "19:00"
+      },
+      "sex": {
+        "abre": "10:00",
+        "fecha": "23:00"
+      },
+      "sab": {
+        "abre": "10:00",
+        "fecha": "24:00"
+      }
     },
-    "override": { "ativo": false, "mensagem": "" },
+    "override": {
+      "ativo": false,
+      "mensagem": ""
+    },
     "oQueTem": [
-      { "titulo": "Régua de degustação", "texto": "a experiência da casa.", "href": "/degustacao" },
-      { "titulo": "6 chopps engatados", "texto": "estilos que giram conforme o dia." },
-      { "titulo": "Porções para acompanhar", "texto": "para ficar sem pressa." },
-      { "titulo": "Atendimento consultivo", "texto": "a equipe apresenta, você escolhe." },
-      { "titulo": "Rótulos gelados", "texto": "para beber na loja." }
+      {
+        "titulo": "Régua de degustação",
+        "texto": "a experiência da casa.",
+        "href": "/degustacao"
+      },
+      {
+        "titulo": "6 chopps engatados",
+        "texto": "estilos que giram conforme o dia."
+      },
+      {
+        "titulo": "Porções para acompanhar",
+        "texto": "para ficar sem pressa."
+      },
+      {
+        "titulo": "Atendimento consultivo",
+        "texto": "a equipe apresenta, você escolhe."
+      },
+      {
+        "titulo": "Rótulos gelados",
+        "texto": "para beber na loja."
+      }
     ],
     "faq": [
       {
@@ -60,25 +97,65 @@
     "endereco": "Av. Monte Verde, 1057",
     "referencia": "PENDENTE: referência de ponto conhecido",
     "mapsUrl": "PENDENTE: link do Google Maps",
-    "geo": { "lat": null, "lng": null },
+    "geo": {
+      "lat": -22.862235,
+      "lng": -46.0360256
+    },
     "perfil": "Kits, presentes e uma forte curadoria de cervejas mineiras para levar Monte Verde com você.",
     "perfilCurto": "para presentear ou colecionar",
     "horarios": {
-      "dom": { "abre": "10:00", "fecha": "22:00" },
+      "dom": {
+        "abre": "10:00",
+        "fecha": "22:00"
+      },
       "seg": null,
-      "ter": { "abre": "10:00", "fecha": "22:00" },
-      "qua": { "abre": "10:00", "fecha": "22:00" },
-      "qui": { "abre": "10:00", "fecha": "22:00" },
-      "sex": { "abre": "10:00", "fecha": "23:00" },
-      "sab": { "abre": "10:00", "fecha": "24:00" }
+      "ter": {
+        "abre": "10:00",
+        "fecha": "22:00"
+      },
+      "qua": {
+        "abre": "10:00",
+        "fecha": "22:00"
+      },
+      "qui": {
+        "abre": "10:00",
+        "fecha": "22:00"
+      },
+      "sex": {
+        "abre": "10:00",
+        "fecha": "23:00"
+      },
+      "sab": {
+        "abre": "10:00",
+        "fecha": "24:00"
+      }
     },
-    "override": { "ativo": false, "mensagem": "" },
+    "override": {
+      "ativo": false,
+      "mensagem": ""
+    },
     "oQueTem": [
-      { "titulo": "Kits e presentes", "texto": "Kit Arsenal a partir de R$ 39,90; a composição pode variar conforme disponibilidade." },
-      { "titulo": "Seleção de rótulos", "texto": "parte dos mais de 250 rótulos do universo Arsenal, com forte curadoria de mineiras." },
-      { "titulo": "Régua de degustação", "texto": "a experiência da casa também vive aqui.", "href": "/degustacao" },
-      { "titulo": "6 chopps engatados", "texto": "estilos que giram conforme o dia." },
-      { "titulo": "Venda direta para levar", "texto": "leve Monte Verde na mala." }
+      {
+        "titulo": "Kits e presentes",
+        "texto": "Kit Arsenal a partir de R$ 39,90; a composição pode variar conforme disponibilidade."
+      },
+      {
+        "titulo": "Seleção de rótulos",
+        "texto": "parte dos mais de 250 rótulos do universo Arsenal, com forte curadoria de mineiras."
+      },
+      {
+        "titulo": "Régua de degustação",
+        "texto": "a experiência da casa também vive aqui.",
+        "href": "/degustacao"
+      },
+      {
+        "titulo": "6 chopps engatados",
+        "texto": "estilos que giram conforme o dia."
+      },
+      {
+        "titulo": "Venda direta para levar",
+        "texto": "leve Monte Verde na mala."
+      }
     ],
     "faq": [
       {
