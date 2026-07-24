@@ -6,7 +6,9 @@
     "proporcao": "16:9",
     "descricao": "Casal brindando com taças Kwak no suporte de madeira, dentro da loja, com a marca Arsenal ao fundo",
     "alt": "Casal degustando cervejas especiais em taças Kwak com suporte de madeira no Arsenal da Cerveja, em Monte Verde",
-    "usos": ["home/hero"],
+    "usos": [
+      "home/hero"
+    ],
     "existe": true
   },
   {
@@ -16,7 +18,10 @@
     "proporcao": "4:5",
     "descricao": "Régua com 4 taças de cores/estilos diferentes, luz quente, madeira",
     "alt": "Quatro taças de 200 ml com chopps de cores diferentes na régua de degustação",
-    "usos": ["home/regua", "degustacao/hero-fallback"],
+    "usos": [
+      "home/regua",
+      "degustacao/hero-fallback"
+    ],
     "existe": true
   },
   {
@@ -26,7 +31,9 @@
     "proporcao": "9:16",
     "descricao": "Vídeo curto (10–15 s, sem áudio) do chopp sendo tirado e a régua montada",
     "alt": "Chopp sendo servido na torneira e régua de degustação sendo montada",
-    "usos": ["degustacao/hero"],
+    "usos": [
+      "degustacao/hero"
+    ],
     "existe": false
   },
   {
@@ -36,7 +43,9 @@
     "proporcao": "3:2",
     "descricao": "Brinde de duas taças com o neon do Arsenal ao fundo",
     "alt": "Brinde de duas taças de chopp em frente ao letreiro neon do Arsenal da Cerveja",
-    "usos": ["degustacao/dividir"],
+    "usos": [
+      "degustacao/dividir"
+    ],
     "existe": true
   },
   {
@@ -46,7 +55,11 @@
     "proporcao": "3:2",
     "descricao": "As 6 torneiras engatadas, close com identificação dos estilos",
     "alt": "Torneiras de chopp cromadas no balcão do Arsenal da Cerveja",
-    "usos": ["degustacao", "cervejas-e-kits/chopps", "home/kits-card-3"],
+    "usos": [
+      "degustacao",
+      "cervejas-e-kits/chopps",
+      "home/kits-card-3"
+    ],
     "existe": true
   },
   {
@@ -56,7 +69,10 @@
     "proporcao": "4:5",
     "descricao": "Cliente usando a Smart Tap",
     "alt": "Cliente servindo o próprio chopp na Smart Tap",
-    "usos": ["home/experiencias", "degustacao/smart-tap"],
+    "usos": [
+      "home/experiencias",
+      "degustacao/smart-tap"
+    ],
     "existe": false
   },
   {
@@ -66,7 +82,11 @@
     "proporcao": "16:9",
     "descricao": "Fachada da loja 4, Av. Monte Verde 858, com mesas na calçada e clientes",
     "alt": "Fachada do Arsenal da Cerveja na Galeria Suíça, em Monte Verde, com clientes nas mesas da calçada",
-    "usos": ["unidades/galeria-suica/hero", "home/unidades", "unidades/hub"],
+    "usos": [
+      "unidades/galeria-suica/hero",
+      "home/unidades",
+      "unidades/hub"
+    ],
     "existe": true
   },
   {
@@ -76,7 +96,11 @@
     "proporcao": "16:9",
     "descricao": "Fachada noturna da loja na Vila Germânica, com letreiro iluminado",
     "alt": "Fachada do Arsenal da Cerveja na Vila Germânica à noite, com letreiro iluminado e vitrines de cervejas",
-    "usos": ["unidades/vila-germanica/hero", "home/unidades", "unidades/hub"],
+    "usos": [
+      "unidades/vila-germanica/hero",
+      "home/unidades",
+      "unidades/hub"
+    ],
     "existe": true
   },
   {
@@ -86,7 +110,9 @@
     "proporcao": "3:2",
     "descricao": "Ambiente: balcão, mesas, torneiras, clima de degustação",
     "alt": "Interior da unidade Galeria Suíça com clientes nas mesas, torneiras de chopp e quadros da marca",
-    "usos": ["unidades/galeria-suica/galeria"],
+    "usos": [
+      "unidades/galeria-suica/galeria"
+    ],
     "existe": true
   },
   {
@@ -96,7 +122,9 @@
     "proporcao": "3:2",
     "descricao": "Ambiente: mesas e clima de degustação, ângulo alternativo",
     "alt": "Mesas e ambiente acolhedor da unidade Galeria Suíça",
-    "usos": ["unidades/galeria-suica/galeria"],
+    "usos": [
+      "unidades/galeria-suica/galeria"
+    ],
     "existe": false
   },
   {
@@ -106,7 +134,9 @@
     "proporcao": "3:2",
     "descricao": "Ambiente: prateleiras de rótulos, área de kits, geladeiras",
     "alt": "Prateleiras de cervejas especiais na unidade Vila Germânica",
-    "usos": ["unidades/vila-germanica/galeria"],
+    "usos": [
+      "unidades/vila-germanica/galeria"
+    ],
     "existe": false
   },
   {
@@ -116,7 +146,9 @@
     "proporcao": "3:2",
     "descricao": "Área de kits e presentes, ângulo alternativo",
     "alt": "Área de kits e presentes da unidade Vila Germânica",
-    "usos": ["unidades/vila-germanica/galeria"],
+    "usos": [
+      "unidades/vila-germanica/galeria"
+    ],
     "existe": false
   },
   {
@@ -126,7 +158,10 @@
     "proporcao": "3:2",
     "descricao": "Equipe do Arsenal servindo os estilos da degustação",
     "alt": "Integrante da equipe do Arsenal servindo estilos de chopp para a degustação",
-    "usos": ["degustacao/consultivo", "home/experiencias"],
+    "usos": [
+      "degustacao/consultivo",
+      "home/experiencias"
+    ],
     "existe": true
   },
   {
@@ -136,7 +171,10 @@
     "proporcao": "1:1",
     "descricao": "Kit montado com embalagem de presente",
     "alt": "Kit do Arsenal da Cerveja com garrafa e taças em caixa de presente",
-    "usos": ["cervejas-e-kits/kit-arsenal", "home/kits-card-1"],
+    "usos": [
+      "cervejas-e-kits/kit-arsenal",
+      "home/kits-card-1"
+    ],
     "existe": true
   },
   {
@@ -146,7 +184,9 @@
     "proporcao": "1:1",
     "descricao": "Cliente segurando a caixa do Kit Arsenal em frente às prateleiras",
     "alt": "Cliente segurando a caixa de presente do Kit Arsenal na loja",
-    "usos": ["cervejas-e-kits/ocasioes"],
+    "usos": [
+      "cervejas-e-kits/ocasioes"
+    ],
     "existe": true
   },
   {
@@ -156,7 +196,10 @@
     "proporcao": "3:2",
     "descricao": "Prateleiras de Cervejas Nacionais da loja, lotadas de rótulos",
     "alt": "Prateleiras de cervejas nacionais do Arsenal da Cerveja com dezenas de rótulos",
-    "usos": ["cervejas-e-kits/mineiras", "home/kits-card-2"],
+    "usos": [
+      "cervejas-e-kits/mineiras",
+      "home/kits-card-2"
+    ],
     "existe": true
   },
   {
@@ -166,7 +209,10 @@
     "proporcao": "1:1",
     "descricao": "Composição de garrafas premium, fundo escuro",
     "alt": "Garrafas de cervejas especiais importadas na prateleira do Arsenal",
-    "usos": ["cervejas-e-kits/rotulos", "home/kits-card-4"],
+    "usos": [
+      "cervejas-e-kits/rotulos",
+      "home/kits-card-4"
+    ],
     "existe": true
   },
   {
@@ -176,7 +222,9 @@
     "proporcao": "21:9",
     "descricao": "Loja do Arsenal na avenida principal, com pedestres passeando ao entardecer",
     "alt": "Avenida principal de Monte Verde com pedestres passeando em frente ao Arsenal da Cerveja",
-    "usos": ["home/monte-verde"],
+    "usos": [
+      "home/monte-verde"
+    ],
     "existe": true
   },
   {
@@ -186,38 +234,47 @@
     "proporcao": "3:2",
     "descricao": "Casal brindando sob o brasão do Arsenal da Cerveja na parede",
     "alt": "Casal brindando com chopps sob o brasão do Arsenal da Cerveja",
-    "usos": ["home/sobre"],
+    "usos": [
+      "home/sobre"
+    ],
     "existe": true
   },
   {
     "id": "mapa-estatico-unidades",
-    "arquivo": "mapa-estatico-unidades.png",
+    "arquivo": "mapa-estatico-unidades.svg",
     "tipo": "mapa",
     "proporcao": "4:3",
     "descricao": "Mapa com os 2 pins nomeados (Galeria Suíça 858 / Vila Germânica 1057)",
     "alt": "Mapa da avenida principal de Monte Verde com as duas unidades do Arsenal marcadas",
-    "usos": ["home/monte-verde", "unidades/hub"],
-    "existe": false
+    "usos": [
+      "home/monte-verde",
+      "unidades/hub"
+    ],
+    "existe": true
   },
   {
     "id": "mapa-estatico-galeria-suica",
-    "arquivo": "mapa-estatico-galeria-suica.png",
+    "arquivo": "mapa-estatico-galeria-suica.svg",
     "tipo": "mapa",
     "proporcao": "4:3",
     "descricao": "Mapa com pin da unidade Galeria Suíça",
     "alt": "Mapa com a localização da unidade Galeria Suíça",
-    "usos": ["unidades/galeria-suica"],
-    "existe": false
+    "usos": [
+      "unidades/galeria-suica"
+    ],
+    "existe": true
   },
   {
     "id": "mapa-estatico-vila-germanica",
-    "arquivo": "mapa-estatico-vila-germanica.png",
+    "arquivo": "mapa-estatico-vila-germanica.svg",
     "tipo": "mapa",
     "proporcao": "4:3",
     "descricao": "Mapa com pin da unidade Vila Germânica",
     "alt": "Mapa com a localização da unidade Vila Germânica",
-    "usos": ["unidades/vila-germanica"],
-    "existe": false
+    "usos": [
+      "unidades/vila-germanica"
+    ],
+    "existe": true
   },
   {
     "id": "og-home",
@@ -226,7 +283,9 @@
     "proporcao": "livre",
     "descricao": "Imagem de compartilhamento 1200×630 com headline sobre foto escura",
     "alt": "Arsenal da Cerveja — degustação, kits e cervejas especiais em Monte Verde",
-    "usos": ["meta/og"],
+    "usos": [
+      "meta/og"
+    ],
     "existe": false
   },
   {
@@ -236,7 +295,9 @@
     "proporcao": "livre",
     "descricao": "Logo horizontal para header (versão clara para fundo escuro)",
     "alt": "Arsenal da Cerveja",
-    "usos": ["header"],
+    "usos": [
+      "header"
+    ],
     "existe": false
   },
   {
@@ -246,7 +307,10 @@
     "proporcao": "1:1",
     "descricao": "Símbolo do logo para footer e favicon",
     "alt": "Símbolo do Arsenal da Cerveja",
-    "usos": ["footer", "favicon"],
+    "usos": [
+      "footer",
+      "favicon"
+    ],
     "existe": false
   }
 ]
