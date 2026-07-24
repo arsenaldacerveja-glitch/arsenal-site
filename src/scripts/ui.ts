@@ -95,12 +95,59 @@ function initCarrosseis(): void {
   });
 }
 
+/**
+ * Revelação suave no scroll — vocabulário único da direção visual
+ * (fade + 12px, 400ms, uma vez, stagger de 60ms em grades).
+ * Sem JS nada é escondido; com reduced-motion o CSS neutraliza tudo.
+ */
+function initReveal(): void {
+  const seletor =
+    '.sec-head, .ucard, .facts__item, .kits__card, .kits__destaque, .exp__card, ' +
+    '.passos__item, .ocasioes__card, .smart, .comp, .horas, .tem__item, ' +
+    '[data-carousel], .media, .media-placeholder, .faq';
+  const alvos = [...document.querySelectorAll<HTMLElement>(seletor)].filter((el) => {
+    if (el.closest('header, footer, .sticky, .hero')) return false;
+    if (el.closest('[data-carousel]') && !el.hasAttribute('data-carousel')) return false;
+    return true;
+  });
+
+  if (alvos.length === 0) return;
+
+  if (!('IntersectionObserver' in window)) {
+    alvos.forEach((el) => el.classList.add('revelado'));
+    return;
+  }
+
+  alvos.forEach((el) => {
+    el.setAttribute('data-reveal', '');
+    const pai = el.parentElement;
+    if (pai) {
+      const irmaos = [...pai.children].filter((c) => c.hasAttribute('data-reveal'));
+      const i = irmaos.indexOf(el);
+      if (i > 0) el.style.setProperty('--reveal-delay', `${Math.min(i * 60, 240)}ms`);
+    }
+  });
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        entry.target.classList.add('revelado');
+        io.unobserve(entry.target);
+      }
+    },
+    { threshold: 0.15, rootMargin: '0px 0px -5% 0px' }
+  );
+  alvos.forEach((el) => io.observe(el));
+}
+
 function init(): void {
   initHeaderCompacto();
   initFechaveis();
   initPopoverHover();
   initFaqDeepLink();
   initCarrosseis();
+  initReveal();
 }
 
 if (document.readyState === 'loading') {

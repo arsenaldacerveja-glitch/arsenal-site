@@ -144,20 +144,20 @@
     "arquivo": "foto-kit-presente-02.jpg",
     "tipo": "foto",
     "proporcao": "1:1",
-    "descricao": "Segunda variação de kit (ocasião diferente)",
-    "alt": "Variação do kit de cervejas especiais para presente",
+    "descricao": "Cliente segurando a caixa do Kit Arsenal em frente às prateleiras",
+    "alt": "Cliente segurando a caixa de presente do Kit Arsenal na loja",
     "usos": ["cervejas-e-kits/ocasioes"],
-    "existe": false
+    "existe": true
   },
   {
     "id": "foto-prateleira-mineiras",
     "arquivo": "foto-prateleira-mineiras.jpg",
     "tipo": "foto",
     "proporcao": "3:2",
-    "descricao": "Prateleira com destaque para rótulos mineiros",
-    "alt": "Prateleira com cervejas de cervejarias mineiras",
+    "descricao": "Prateleiras de Cervejas Nacionais da loja, lotadas de rótulos",
+    "alt": "Prateleiras de cervejas nacionais do Arsenal da Cerveja com dezenas de rótulos",
     "usos": ["cervejas-e-kits/mineiras", "home/kits-card-2"],
-    "existe": false
+    "existe": true
   },
   {
     "id": "foto-rotulos-especiais",
@@ -184,10 +184,10 @@
     "arquivo": "foto-equipe.jpg",
     "tipo": "foto",
     "proporcao": "3:2",
-    "descricao": "Equipe nas lojas, tom acolhedor",
-    "alt": "Equipe do Arsenal da Cerveja nas lojas em Monte Verde",
+    "descricao": "Casal brindando sob o brasão do Arsenal da Cerveja na parede",
+    "alt": "Casal brindando com chopps sob o brasão do Arsenal da Cerveja",
     "usos": ["home/sobre"],
-    "existe": false
+    "existe": true
   },
   {
     "id": "mapa-estatico-unidades",

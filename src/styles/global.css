@@ -178,6 +178,29 @@ strong {
 .ratio-21x9 { aspect-ratio: 21 / 9; }
 .ratio-9x16 { aspect-ratio: 9 / 16; }
 
+/* ---------- Revelação no scroll (aplicada só com JS; sem JS tudo visível) ---------- */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity var(--dur-reveal) ease,
+    transform var(--dur-reveal) var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.js [data-reveal].revelado {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 /* ---------- Motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   html {

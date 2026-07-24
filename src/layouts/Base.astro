@@ -74,6 +74,8 @@ const organizationJsonLd = {
 
     <meta name="theme-color" content="#171310" />
 
+    <script is:inline>document.documentElement.classList.add('js');</script>
+
     <script type="application/ld+json" set:html={JSON.stringify(organizationJsonLd)} />
 
     {ga4Valido && <meta name="ga4-id" content={site.ga4Id} />}
