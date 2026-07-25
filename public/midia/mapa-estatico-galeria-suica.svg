@@ -1,95 +1,117 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Mapa ilustrado: a loja do Arsenal na Galeria Suíça fica dentro da galeria de lojas, no lado sul da avenida principal">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Mapa com a localização do Arsenal na Galeria Suíça, dentro da galeria no lado sul da avenida principal de Monte Verde, perto do Termômetro Oficial e a cerca de 400 metros (5 minutos a pé) da unidade Vila Germânica">
   <rect width="800" height="600" fill="#12291F"/>
 
-  <!-- mata no canto noroeste, como no mapa real -->
-  <path d="M-10 -10 H300 C 250 50 180 80 110 84 C 60 88 20 96 -10 92 Z" fill="#0E2119"/>
+  <!-- mata no canto noroeste -->
+  <path d="M-10 -10 H280 C 235 46 170 72 105 76 C 55 80 20 86 -10 82 Z" fill="#0E2119"/>
   <g stroke="#24503C" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.9">
-    <path d="M70 44 l0 18 M70 44 l-8 12 h16 z M70 51 l-11 14 h22 z"/>
-    <path d="M170 30 l0 18 M170 30 l-8 12 h16 z M170 37 l-11 14 h22 z"/>
+    <path d="M64 40 l0 16 M64 40 l-8 11 h16 z M64 46 l-10 13 h20 z"/>
+    <path d="M152 26 l0 16 M152 26 l-8 11 h16 z M152 32 l-10 13 h20 z"/>
   </g>
 
   <!-- quarteirões discretos -->
   <g fill="#163026">
-    <rect x="330" y="120" width="150" height="120" rx="8"/>
-    <rect x="60" y="150" width="180" height="140" rx="8"/>
+    <rect x="60" y="150" width="170" height="130" rx="8"/>
+    <rect x="300" y="130" width="130" height="110" rx="8"/>
     <rect x="90" y="480" width="150" height="90" rx="8"/>
-    <rect x="420" y="500" width="160" height="80" rx="8"/>
-    <rect x="660" y="440" width="110" height="120" rx="8"/>
+    <rect x="440" y="500" width="150" height="80" rx="8"/>
+    <rect x="660" y="470" width="110" height="100" rx="8"/>
   </g>
 
-  <!-- ruas secundárias -->
-  <g stroke="#F0E6D2" stroke-opacity="0.28" stroke-width="12" stroke-linecap="round" fill="none">
-    <path d="M470 96 C 452 220 440 320 428 402"/>
-    <path d="M700 120 L 694 585"/>
+  <!-- ruas reais que cruzam a avenida -->
+  <g stroke="#F0E6D2" stroke-opacity="0.28" stroke-width="11" stroke-linecap="round" fill="none">
+    <path d="M412 250 C 406 330 402 390 398 448 C 396 498 395 538 394 576"/>
+    <path d="M512 410 C 516 462 520 512 523 578"/>
   </g>
-  <g fill="#F0E6D2" fill-opacity="0.5" font-family="Georgia, serif" font-size="14" font-style="italic">
-    <text transform="translate(466 170) rotate(82)">Al. Pinheral</text>
-    <text transform="translate(688 190) rotate(88)">R. da Mantiqueira</text>
+  <g fill="#F0E6D2" fill-opacity="0.5" font-family="Georgia, serif" font-size="13" font-style="italic">
+    <text transform="translate(418 266) rotate(87)">R. Pinheiro Velho</text>
+    <text transform="translate(538 476) rotate(80)">R. da Mantiqueira</text>
   </g>
 
-  <!-- Praça da Árvore (referência real, a leste) -->
+  <!-- PRAÇA DA ÁRVORE + BRADESCO (referências reais, logo após a Vila Germânica) -->
   <g>
-    <rect x="722" y="300" width="66" height="60" rx="12" fill="#1F4534"/>
+    <rect x="664" y="270" width="84" height="62" rx="12" fill="#1F4534"/>
     <g stroke="#8FBF7F" stroke-width="2.5" fill="none" stroke-linecap="round">
-      <path d="M755 318 l0 22 M755 318 l-10 14 h20 z M755 326 l-12 15 h24 z"/>
+      <path d="M690 288 l0 22 M690 288 l-9 13 h18 z M690 296 l-12 15 h24 z"/>
     </g>
-    <text x="755" y="378" text-anchor="middle" fill="#F0E6D2" fill-opacity="0.7" font-family="Georgia, serif" font-size="12" font-style="italic">Praça da Árvore</text>
+    <g stroke="#B08D3E" stroke-width="1.8" fill="none" stroke-linejoin="round">
+      <rect x="716" y="306" width="22" height="16" rx="2"/>
+      <path d="M713 306 L727 296 L741 306"/>
+    </g>
+    <text x="706" y="254" text-anchor="middle" fill="#F0E6D2" fill-opacity="0.7" font-family="Georgia, serif" font-size="12" font-style="italic">Praça da Árvore · Bradesco</text>
   </g>
 
-  <!-- AVENIDA PRINCIPAL (sobe para nordeste, como no real) -->
+  <!-- LAGO (referência real, seguindo a avenida para o leste) -->
+  <g>
+    <path d="M758 266 C 784 254 810 262 820 284 C 828 306 808 326 778 324 C 752 322 738 302 744 284 C 748 273 752 269 758 266 Z" fill="#1D4B57"/>
+    <path d="M762 288 q9 -5 18 0 t18 0" stroke="#8FC7D4" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.7"/>
+    <text x="780" y="310" text-anchor="middle" fill="#F0E6D2" fill-opacity="0.85" font-family="Georgia, serif" font-size="13" font-style="italic">Lago</text>
+  </g>
+
+  <!-- AVENIDA PRINCIPAL -->
   <path d="M-20 470 C 150 452 280 448 420 415 C 550 385 670 378 820 355" stroke="#F0E6D2" stroke-opacity="0.9" stroke-width="26" fill="none" stroke-linecap="round"/>
   <path d="M-20 470 C 150 452 280 448 420 415 C 550 385 670 378 820 355" stroke="#12291F" stroke-width="2.5" fill="none" stroke-dasharray="13 11"/>
-  <text transform="translate(60 498) rotate(-5)" fill="#F0E6D2" fill-opacity="0.65" font-family="Georgia, serif" font-size="18" font-style="italic">Av. Monte Verde</text>
+  <text transform="translate(10 500) rotate(-5)" fill="#F0E6D2" fill-opacity="0.65" font-family="Georgia, serif" font-size="18" font-style="italic">Av. Monte Verde</text>
 
-  <!-- acesso que contorna a galeria (lado sul), como no real -->
-  <path d="M262 462 C 268 500 300 520 350 522 C 400 524 428 500 430 468" stroke="#F0E6D2" stroke-opacity="0.28" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <!-- comércios no calçadão, entre as lojas -->
+  <g stroke="#B08D3E" stroke-width="1.6" fill="none" stroke-linejoin="round" opacity="0.8">
+    <rect x="322" y="382" width="24" height="22" rx="2"/>
+    <path d="M319 382 h30 l-4 -9 h-22 z"/>
+    <rect x="356" y="378" width="24" height="22" rx="2"/>
+    <path d="M353 378 h30 l-4 -9 h-22 z"/>
+  </g>
+  <text x="352" y="360" text-anchor="middle" fill="#F0E6D2" fill-opacity="0.6" font-family="Georgia, serif" font-size="12" font-style="italic">comércios</text>
 
-  <!-- GALERIA SUÍÇA: prédio da galeria no lado SUL, com a loja DENTRO -->
+  <!-- TERMÔMETRO OFICIAL (no calçadão, entre as duas lojas) -->
   <g>
-    <!-- prédio da galeria -->
-    <rect x="200" y="470" width="200" height="86" rx="10" fill="#1A3A2C" stroke="#B08D3E" stroke-width="1.8"/>
-    <path d="M192 470 L300 432 L408 470" fill="none" stroke="#B08D3E" stroke-width="2.2" stroke-linejoin="round"/>
-    <!-- arcadas da galeria -->
+    <rect x="437" y="352" width="14" height="46" rx="7" fill="#F0E6D2"/>
+    <rect x="441" y="360" width="6" height="30" rx="3" fill="#C25B4E"/>
+    <circle cx="444" cy="400" r="9" fill="#C25B4E" stroke="#F0E6D2" stroke-width="2.5"/>
+    <text x="458" y="372" text-anchor="start" fill="#F0E6D2" fill-opacity="0.75" font-family="Georgia, serif" font-size="13" font-style="italic">Termômetro</text>
+  </g>
+
+  <!-- acesso que contorna a galeria (lado sul) -->
+  <path d="M240 464 C 246 502 278 522 328 524 C 378 526 406 502 408 470" stroke="#F0E6D2" stroke-opacity="0.28" stroke-width="10" fill="none" stroke-linecap="round"/>
+
+  <!-- ARSENAL GALERIA SUÍÇA: dentro da galeria, lado SUL -->
+  <g>
+    <rect x="178" y="472" width="200" height="84" rx="10" fill="#1A3A2C" stroke="#B08D3E" stroke-width="1.8"/>
+    <path d="M170 472 L278 434 L386 472" fill="none" stroke="#B08D3E" stroke-width="2.2" stroke-linejoin="round"/>
     <g stroke="#B08D3E" stroke-width="1.6" fill="none" opacity="0.85">
-      <path d="M222 556 v-30 a12 12 0 0 1 24 0 v30"/>
-      <path d="M262 556 v-30 a12 12 0 0 1 24 0 v30"/>
-      <path d="M342 556 v-30 a12 12 0 0 1 24 0 v30"/>
+      <path d="M200 556 v-28 a11 11 0 0 1 22 0 v28"/>
+      <path d="M238 556 v-28 a11 11 0 0 1 22 0 v28"/>
+      <path d="M318 556 v-28 a11 11 0 0 1 22 0 v28"/>
     </g>
-    <text x="300" y="590" text-anchor="middle" fill="#F0E6D2" fill-opacity="0.75" font-family="Georgia, serif" font-size="13" font-style="italic">Galeria Suíça (galeria de lojas)</text>
-    <!-- pin da loja DENTRO da galeria -->
-    <path d="M310 530 C 300 514 292 506 292 494 a18 18 0 1 1 36 0 c0 12 -8 20 -18 36 Z" fill="#D4B36A"/>
-    <circle cx="310" cy="494" r="6.5" fill="#12291F"/>
-    <!-- placa -->
-    <line x1="180" y1="392" x2="286" y2="470" stroke="#B08D3E" stroke-width="2"/>
-    <rect x="36" y="320" width="290" height="72" rx="10" fill="#1A3A2C" stroke="#B08D3E" stroke-width="1.6"/>
-    <text x="181" y="350" text-anchor="middle" fill="#FAF6ED" font-family="Georgia, serif" font-size="21" font-weight="bold">Arsenal · Galeria Suíça</text>
-    <text x="181" y="375" text-anchor="middle" fill="#F0E6D2" fill-opacity="0.75" font-family="Georgia, serif" font-size="14">loja 4, dentro da galeria · nº 858</text>
+    <text x="278" y="588" text-anchor="middle" fill="#F0E6D2" fill-opacity="0.75" font-family="Georgia, serif" font-size="13" font-style="italic">Galeria Suíça (galeria de lojas)</text>
+    <path d="M290 532 C 280 516 272 508 272 496 a18 18 0 1 1 36 0 c0 12 -8 20 -18 36 Z" fill="#D4B36A"/>
+    <circle cx="290" cy="496" r="6.5" fill="#12291F"/>
+    <line x1="160" y1="394" x2="264" y2="472" stroke="#B08D3E" stroke-width="2"/>
+    <rect x="24" y="322" width="278" height="72" rx="10" fill="#1A3A2C" stroke="#B08D3E" stroke-width="1.6"/>
+    <text x="163" y="352" text-anchor="middle" fill="#FAF6ED" font-family="Georgia, serif" font-size="20" font-weight="bold">Arsenal · Galeria Suíça</text>
+    <text x="163" y="377" text-anchor="middle" fill="#F0E6D2" fill-opacity="0.75" font-family="Georgia, serif" font-size="14">loja 4, dentro da galeria · nº 858</text>
   </g>
 
-  <!-- VILA GERMÂNICA: loja de rua no lado NORTE, a leste -->
+  <!-- ARSENAL VILA GERMÂNICA: loja de rua, lado NORTE -->
   <g opacity="0.35">
-    <!-- chalé da loja -->
-    <rect x="540" y="300" width="96" height="62" rx="8" fill="#1A3A2C" stroke="#B08D3E" stroke-width="1.8"/>
-    <path d="M534 300 L588 266 L642 300" fill="none" stroke="#B08D3E" stroke-width="2.2" stroke-linejoin="round"/>
-    <!-- pin da loja -->
-    <path d="M588 352 C 578 336 570 328 570 316 a18 18 0 1 1 36 0 c0 12 -8 20 -18 36 Z" fill="#D4B36A"/>
-    <circle cx="588" cy="316" r="6.5" fill="#12291F"/>
-    <!-- placa -->
-    <line x1="588" y1="266" x2="588" y2="230" stroke="#B08D3E" stroke-width="2"/>
-    <rect x="443" y="158" width="290" height="72" rx="10" fill="#1A3A2C" stroke="#B08D3E" stroke-width="1.6"/>
-    <text x="588" y="188" text-anchor="middle" fill="#FAF6ED" font-family="Georgia, serif" font-size="21" font-weight="bold">Arsenal · Vila Germânica</text>
-    <text x="588" y="213" text-anchor="middle" fill="#F0E6D2" fill-opacity="0.75" font-family="Georgia, serif" font-size="14">loja de rua · Av. Monte Verde, 1057</text>
+    <rect x="548" y="298" width="92" height="60" rx="8" fill="#1A3A2C" stroke="#B08D3E" stroke-width="1.8"/>
+    <path d="M542 298 L594 266 L646 298" fill="none" stroke="#B08D3E" stroke-width="2.2" stroke-linejoin="round"/>
+    <path d="M594 350 C 584 334 576 326 576 314 a18 18 0 1 1 36 0 c0 12 -8 20 -18 36 Z" fill="#D4B36A"/>
+    <circle cx="594" cy="314" r="6.5" fill="#12291F"/>
+    <line x1="594" y1="266" x2="594" y2="232" stroke="#B08D3E" stroke-width="2"/>
+    <rect x="452" y="160" width="284" height="72" rx="10" fill="#1A3A2C" stroke="#B08D3E" stroke-width="1.6"/>
+    <text x="594" y="190" text-anchor="middle" fill="#FAF6ED" font-family="Georgia, serif" font-size="20" font-weight="bold">Arsenal · Vila Germânica</text>
+    <text x="594" y="215" text-anchor="middle" fill="#F0E6D2" fill-opacity="0.75" font-family="Georgia, serif" font-size="14">loja de rua · nº 1057</text>
   </g>
 
-  <!-- legenda + escala + bússola -->
-  <text x="36" y="42" fill="#F0E6D2" fill-opacity="0.6" font-family="Georgia, serif" font-size="15">Uma em cada lado da avenida — poucos minutos a pé entre elas</text>
-  <g transform="translate(646 566)">
-    <line x1="0" y1="0" x2="90" y2="0" stroke="#F0E6D2" stroke-opacity="0.6" stroke-width="2"/>
-    <line x1="0" y1="-5" x2="0" y2="5" stroke="#F0E6D2" stroke-opacity="0.6" stroke-width="2"/>
-    <line x1="90" y1="-5" x2="90" y2="5" stroke="#F0E6D2" stroke-opacity="0.6" stroke-width="2"/>
-    <text x="45" y="-10" text-anchor="middle" fill="#F0E6D2" fill-opacity="0.55" font-family="Georgia, serif" font-size="12">≈ 150 m</text>
+  <!-- DISTÂNCIA REAL entre as lojas: caminho a pé pela avenida -->
+  <g>
+    <path d="M294 482 C 340 466 400 444 444 428 C 500 412 540 396 578 368" stroke="#D4B36A" stroke-width="2" fill="none" stroke-dasharray="7 7" opacity="0.9"/>
+    <rect x="372" y="424" width="132" height="48" rx="14" fill="#12291F" stroke="#B08D3E" stroke-width="1.4"/>
+    <text x="438" y="445" text-anchor="middle" fill="#D4B36A" font-family="Georgia, serif" font-size="15" font-weight="bold">≈ 400 m</text>
+    <text x="438" y="464" text-anchor="middle" fill="#F0E6D2" fill-opacity="0.85" font-family="Georgia, serif" font-size="13">5 min a pé</text>
   </g>
-  <g transform="translate(756 78)">
+
+  <!-- bússola -->
+  <g transform="translate(756 546)">
     <circle r="22" fill="none" stroke="#B08D3E" stroke-width="1.6" opacity="0.9"/>
     <path d="M0 -13 L5.5 7 L0 3 L-5.5 7 Z" fill="#D4B36A"/>
     <text y="-28" text-anchor="middle" fill="#F0E6D2" fill-opacity="0.7" font-family="Georgia, serif" font-size="13">N</text>
